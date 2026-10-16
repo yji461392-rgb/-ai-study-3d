@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b18">
+<title>AI Study 3D | Made by Ankit</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#090b18;--panel:#12162a;--line:#292e49;
+--purple:#a78bfa;--blue:#60a5fa;--muted:#a6acc5}
+body{margin:0;background:var(--bg);color:#f7f7ff;
+font-family:Inter,-apple-system,BlinkMacSystemFont,Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.top{padding:23px 18px 25px;
+background:radial-gradient(ellipse at top right,#433078 0,transparent 60%),
+linear-gradient(130deg,#10172d,#17102c)}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:46px;height:46px;display:grid;place-items:center;
+border-radius:15px;background:linear-gradient(135deg,#8b5cf6,#3b82f6);
+font-size:24px;box-shadow:0 0 25px #8b5cf644}
+.brand h1{font-size:20px;margin:0;letter-spacing:.3px}
+.brand p{margin:5px 0 0;color:#c4b5fd;font-size:12px}
+.tag{display:inline-block;margin-top:23px;padding:6px 10px;
+border:1px solid #8b5cf655;border-radius:20px;color:#ddd6fe;font-size:11px}
+.top h2{font-size:29px;line-height:1.2;margin:12px 0 8px}
+.top .sub{color:#c4c9df;font-size:14px;line-height:1.6;margin:0}
+main{max-width:760px;margin:auto;padding:16px 14px 35px}
+.card{background:linear-gradient(145deg,#151a30,#101426);
+border:1px solid var(--line);border-radius:20px;
+padding:17px;margin-bottom:15px;box-shadow:0 10px 30px #0002}
+.heading{display:flex;align-items:center;gap:10px;margin-bottom:15px}
+.heading .emoji{width:39px;height:39px;display:grid;place-items:center;
+border-radius:13px;background:#8b5cf622;font-size:20px}
+.heading h3{margin:0;font-size:17px}
+.heading p{margin:4px 0 0;color:var(--muted);font-size:12px}
+label{display:block;color:#d6d9ec;font-size:13px;margin:13px 0 7px}
+input,select{width:100%;padding:13px;background:#0a0e1e;
+border:1px solid #333a59;border-radius:12px;color:#fff;outline:none}
+input:focus,select:focus{border-color:#9b87f5}
+input[type=file]{font-size:12px}
+.primary{width:100%;padding:14px;border:0;border-radius:13px;
+background:linear-gradient(100deg,#8b5cf6,#4f7cf7);
+color:white;font-weight:700;margin-top:15px;
+box-shadow:0 7px 22px #7054d633}
+.secondary{padding:10px 13px;border-radius:11px;
+background:#202642;color:#ddd6fe;border:1px solid #353d61}
+.small{color:var(--muted);font-size:12px;line-height:1.65}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{padding:8px 11px;border:1px solid #343a59;
+border-radius:20px;background:#171c32;color:#e1e5ff;font-size:12px}
+.preview{display:none;width:100%;max-height:220px;object-fit:contain;
+border-radius:12px;margin-top:12px;background:#090b18}
+.scene{height:245px;position:relative;overflow:hidden;
+border-radius:17px;display:flex;align-items:center;justify-content:center;
+background:radial-gradient(ellipse at center,#29366b,#11152b 55%,#090d1c)}
+.scene:before,.scene:after{content:"";position:absolute;width:230px;height:230px;
+border:1px solid #8b9df633;border-radius:50%;transform:rotateX(65deg)}
+.scene:after{width:180px;height:180px;transform:rotateX(65deg) rotateZ(45deg)}
+.orb{width:125px;height:125px;border-radius:50%;position:relative;z-index:1;
+background:radial-gradient(circle at 28% 24%,#dbeafe,#60a5fa 28%,#4f46e5 65%,#151d51);
+box-shadow:inset -15px -12px 30px #0b123b,0 0 40px #818cf855;
+animation:float 4s ease-in-out infinite,turn 12s linear infinite}
+.core{position:absolute;width:48px;height:48px;left:39px;top:38px;
+border-radius:50%;background:radial-gradient(circle at 30% 25%,#f5d0fe,#c026d3 60%,#701a75);
+box-shadow:0 0 25px #d946efaa}
+.orbit{position:absolute;width:174px;height:67px;border:1px solid #c4b5fd;
+border-radius:50%;z-index:2;transform:rotate(-28deg);animation:turn 9s linear infinite}
+.orbit:after{content:"";position:absolute;top:5px;left:12px;width:10px;height:10px;
+background:#c4b5fd;border-radius:50%;box-shadow:0 0 15px #c4b5fd}
+@keyframes float{50%{transform:translateY(-9px)}}
+@keyframes turn{to{rotate:360deg}}
+.model-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.model-tabs button.active{background:#8b5cf6;color:white;border-color:#8b5cf6}
+.notes{white-space:pre-wrap;line-height:1.8;font-size:14px;color:#e1e5f5}
+.lesson{background:#0b1021;padding:14px;border-radius:13px;
+border:1px solid #292e49;line-height:1.7;font-size:14px}
+.steps{display:flex;gap:7px;margin:12px 0}
+.steps button{flex:1}
+.steps button.active{background:#8b5cf6;color:white}
+footer{text-align:center;padding:23px;color:#a78bfa;font-size:13px}
+footer span{display:block;margin-top:7px;color:#77809e;font-size:11px}
+@media(min-width:600px){main{padding-top:22px}.top{padding-left:max(22px,calc((100% - 720px)/2))}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo">✦</div>
+    <div>
+      <h1>AI STUDY 3D</h1>
+      <p>YOUR PERSONAL LEARNING SPACE</p>
+    </div>
+  </div>
+  <div class="tag">✧ LEARN • VISUALIZE • MASTER</div>
+  <h2>Study smarter.<br>See the science.</h2>
+  <p class="sub">Difficult concepts ko aasaan banao — ek chapter, ek step, ek discovery.</p>
+</header>
+
+<main>
+<section class="card">
+  <div class="heading">
+    <div class="emoji">📚</div>
+    <div><h3>Smart Chapter Studio</h3><p>Apna topic chuno aur padhai shuru karo</p></div>
+  </div>
+  <label>SUBJECT</label>
+  <select id="subject">
+    <option>Biology</option><option>Physics</option>
+    <option>Chemistry</option><option>Mathematics</option>
+  </select>
+  <label>CHAPTER NAME</label>
+  <input id="chapter" placeholder="e.g. Cell, Motion, Atomic Structure">
+  <div class="chips">
+    <button class="chip" onclick="quick('Cell')">Cell</button>
+    <button class="chip" onclick="quick('Photosynthesis')">Photosynthesis</button>
+    <button class="chip" onclick="quick('Atom')">Atom</button>
+    <button class="chip" onclick="quick('Motion')">Motion</button>
+  </div>
+  <label>BOOK PAGE PHOTO (OPTIONAL)</label>
+  <input id="photo" type="file" accept="image/*">
+  <img id="preview" class="preview" alt="Uploaded book page">
+  <button class="primary" onclick="makeNotes()">✦ Generate Short Notes</button>
+  <p class="small">Demo version: sample topics par notes bante hain. AI se kisi bhi chapter ki photo read karne ka feature abhi connect nahi hai.</p>
+</section>
+
+<section class="card">
+  <div class="heading">
+    <div class="emoji">🧬</div>
+    <div><h3>3D Visual Lab</h3><p>Concept ko visual form mein explore karo</p></div>
+  </div>
+  <div class="scene">
+    <div class="orb" id="orb"><div class="core" id="core"></div></div>
+    <div class="orbit" id="orbit"></div>
+  </div>
+  <p id="modelDesc" class="small">Atom-style abstract visual. Educational concept ko samajhne ke liye simplified model.</p>
+  <div class="model-tabs">
+    <button class="secondary active" onclick="model('atom',this)">⚛ Atom</button>
+    <button class="secondary" onclick="model('cell',this)">🧫 Cell</button>
+    <button class="secondary" onclick="model('plant',this)">🌿 Plant</button>
+  </div>
+  <p class="small">Ye animated visual demo hai, abhi full scientific 3D model nahi. Touch rotation aur detailed labels agle version mein add kiye ja sakte hain.</p>
+</section>
+
+<section class="card">
+  <div class="heading">
+    <div class="emoji">📝</div>
+    <div><h3>Smart Revision Notes</h3><p>Important points ek jagah</p></div>
+  </div>
+  <div id="notes" class="notes">Apna chapter likho aur “Generate Short Notes” dabao. Sample notes yahan dikhai denge.</div>
+</section>
+
+<section class="card">
+  <div class="heading">
+    <div class="emoji">🎬</div>
+    <div><h3>Guided Learning</h3><p>Step-by-step concept explanation</p></div>
+  </div>
+  <div class="steps">
+    <button class="secondary active" onclick="lesson(0,this)">Step 1</button>
+    <button class="secondary" onclick="lesson(1,this)">Step 2</button>
+    <button class="secondary" onclick="lesson(2,this)">Step 3</button>
+  </div>
+  <div class="lesson" id="lessonText">Step 1: Pehle chapter ka main idea aur definition samjho. Phir diagram ya model ko dekho.</div>
+</section>
+</main>
+
+<footer>
+  ✦ Made by Ankit ❤️
+  <span>AI Study 3D · Learning prototype</span>
+</footer>
+
+<script>
+const data={
+ cell:"BIOLOGY • CELL\n\n1. Cell jeevon ki basic structural aur functional unit hai.\n2. Cell membrane substances ke aane-jaane ko regulate karti hai.\n3. Nucleus mein genetic material hota hai.\n4. Cytoplasm mein kai cellular reactions hoti hain.\n5. Mitochondria energy production mein important hai.\n\nQUICK REVISION\n• Cell ke main parts kaun-se hain?\n• Nucleus ka kya function hai?",
+ photosynthesis:"BIOLOGY • PHOTOSYNTHESIS\n\n1. Plants light energy ki madad se food banate hain.\n2. Chlorophyll light absorb karta hai.\n3. Carbon dioxide aur water raw materials hain.\n4. Glucose banta hai aur oxygen release hoti hai.\n5. Light, water aur CO₂ ki availability process ko affect karti hai.\n\nQUICK REVISION\n• Chlorophyll ka kya role hai?\n• Photosynthesis ke raw materials kya hain?",
+ atom:"CHEMISTRY • ATOMIC STRUCTURE\n\n1. Atom matter ka basic unit hai.\n2. Nucleus mein protons aur neutrons hote hain.\n3. Proton positive charge rakhta hai.\n4. Electron negative aur neutron neutral hota hai.\n5. Atomic number protons ki sankhya hoti hai.\n\nQUICK REVISION\n• Atomic number kya batata hai?\n• Neutron ka charge kya hai?",
+ motion:"PHYSICS • MOTION\n\n1. Motion mein time ke saath position badalti hai.\n2. Average speed = total distance / total time.\n3. Velocity mein direction bhi hoti hai.\n4. Acceleration = velocity mein change / time.\n5. Speed ki SI unit m/s aur acceleration ki m/s² hai.\n\nQUICK REVISION\n• Speed aur velocity mein kya antar hai?\n• Acceleration ki SI unit kya hai?"
+};
+function quick(name){
+ document.getElementById('chapter').value=name;
+ document.getElementById('chapter').focus();
+}
+document.getElementById('photo').addEventListener('change',function(){
+ const f=this.files&&this.files[0];
+ if(!f)return;
+ const img=document.getElementById('preview');
+ img.src=URL.createObjectURL(f);
+ img.style.display='block';
+});
+function makeNotes(){
+ const c=document.getElementById('chapter').value.trim().toLowerCase();
+ const subject=document.getElementById('subject').value;
+ if(!c){alert('Pehle chapter ka naam likho.');return;}
+ const key=Object.keys(data).find(k=>c.includes(k));
+ document.getElementById('notes').textContent=key?data[key]:
+ subject.toUpperCase()+' • '+c.toUpperCase()+
+ '\n\nIs topic ke sample notes is demo mein available nahi hain.\n\nAgla upgrade: AI connection jodne ke baad chapter ke hisaab se short notes, simple explanation aur revision questions generate karna.\n\nImportant: Notes ko apni textbook se verify karein.';
+}
+function model(type,btn){
+ document.querySelectorAll('.model-tabs button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ const orb=document.getElementById('orb');
+ const core=document.getElementById('core');
+ const desc=document.getElementById('modelDesc');
+ if(type==='atom'){
+  orb.style.background='radial-gradient(circle at 28% 24%,#dbeafe,#60a5fa 28%,#4f46e5 65%,#151d51)';
+  core.style.background='radial-gradient(circle at 30% 25%,#f5d0fe,#c026d3 60%,#701a75)';
+  desc.textContent='Atom-style visual: nucleus aur surrounding orbital illustration. Actual electrons fixed circular paths par nahi chalte.';
+ }else if(type==='cell'){
+  orb.style.background='radial-gradient(circle at 28% 24%,#d1fae5,#34d399 35%,#047857 75%)';
+  core.style.background='radial-gradient(circle at 30% 25%,#f5d0fe,#a855f7 70%)';
+  desc.textContent='Cell-style visual: nucleus aur outer cell region ka simplified illustration.';
+ }else{
+  orb.style.background='radial-gradient(circle at 28% 24%,#d9f99d,#84cc16 35%,#166534 75%)';
+  core.style.background='radial-gradient(circle at 30% 25%,#fde68a,#ca8a04 70%)';
+  desc.textContent='Plant-cell inspired visual. Real plant cells mein cell wall, chloroplasts aur large central vacuole hota hai.';
+ }
+}
+function lesson(n,btn){
+ document.querySelectorAll('.steps button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ const text=[
+ 'STEP 1 — Main idea: Chapter ki definition padho. Apne words mein socho ki concept kya batata hai.',
+ 'STEP 2 — Visualize: Diagram ya model mein important parts identify karo. Har part ka function samjho.',
+ 'STEP 3 — Recall: Book band karke concept explain karo. Phir practice questions solve karke answers check karo.'
+ ];
+ document.getElementById('lessonText').textContent=text[n];
+}
+</script>
+</body>
+</html>

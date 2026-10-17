@@ -5,226 +5,275 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080b18">
-  <link rel="manifest" href="/-ai-study-3d/manifest.json">
-<title>AI STUDY 3D — Learn Smarter</title>
+<link rel="manifest" href="/-ai-study-3d/manifest.json">
+<title>AI STUDY 3D — Premium Learning</title>
 <style>
-:root{--bg:#080b18;--panel:#11172a;--line:#27314c;--blue:#6c8cff;--cyan:#54e8ff;--purple:#a879ff;--text:#f4f6ff;--muted:#9ba8c7;--green:#55e6b0}
+:root{
+  --bg:#070a16;--panel:#11172b;--line:#293655;
+  --blue:#7594ff;--cyan:#53eaff;--purple:#b17cff;
+  --text:#f5f7ff;--muted:#9ba9c9;--green:#55e6b0;
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 80% 0%,#25205b 0,transparent 35%),radial-gradient(ellipse at 0% 40%,#102b4c 0,transparent 30%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Arial,sans-serif;min-height:100vh}
+html{scroll-behavior:smooth}
+body{
+ margin:0;color:var(--text);font-family:system-ui,-apple-system,Arial,sans-serif;
+ background:radial-gradient(ellipse at 85% 0%,#292060 0,transparent 34%),
+ radial-gradient(ellipse at 0% 45%,#103750 0,transparent 32%),var(--bg);
+ min-height:100vh
+}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.app{max-width:1150px;margin:auto;padding:18px 16px 90px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 24px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.5px}
-.logo{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 0 30px #6c8cff50}
-.brand small{display:block;color:var(--cyan);font-size:10px;letter-spacing:2px;margin-top:3px}
-.pill{border:1px solid #43517b;background:#131b32;color:#cbd5ff;padding:8px 12px;border-radius:30px;font-size:12px}
-.hero{position:relative;overflow:hidden;border:1px solid #3a4274;border-radius:28px;padding:28px 22px;background:linear-gradient(120deg,#18264aee,#20194be8 60%,#10283b);box-shadow:0 20px 70px #0005}
-.hero:after{content:"✦";position:absolute;right:24px;top:18px;font-size:100px;color:#ffffff12}
-.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:2px}
-h1{font-size:clamp(30px,6vw,53px);line-height:1.06;letter-spacing:-1.5px;margin:13px 0}
-h1 span{background:linear-gradient(90deg,#fff,#8be9ff,#ba9aff);background-clip:text;color:transparent}
+button{cursor:pointer;transition:transform .2s,border-color .2s}
+button:active{transform:scale(.97)}
+.app{max-width:1150px;margin:auto;padding:16px 15px 100px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 22px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.4px}
+.logo{
+ width:48px;height:48px;display:grid;place-items:center;border-radius:16px;
+ font-size:27px;background:linear-gradient(140deg,var(--blue),var(--purple));
+ box-shadow:0 0 28px #7894ff55
+}
+.brand small{display:block;color:var(--cyan);font-size:9px;letter-spacing:2px;margin-top:3px}
+.pill{border:1px solid #46557e;background:#151c34;padding:8px 11px;border-radius:30px;font-size:11px;color:#d4ddff}
+.hero{
+ position:relative;overflow:hidden;border:1px solid #424b83;border-radius:28px;
+ padding:29px 23px;background:linear-gradient(125deg,#1a2c50,#251b50 65%,#103344);
+ box-shadow:0 22px 65px #0006;isolation:isolate
+}
+.hero:before{
+ content:"✦";position:absolute;right:18px;top:-18px;font-size:145px;
+ color:#ffffff0d;z-index:-1;animation:float 5s ease-in-out infinite
+}
+.eyebrow{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--cyan)}
+h1{font-size:clamp(32px,7vw,57px);line-height:1.06;letter-spacing:-1.8px;margin:14px 0}
+.gradient{background:linear-gradient(90deg,#fff,#81eaff,#c3a0ff);background-clip:text;color:transparent}
 p{color:var(--muted);line-height:1.6}
-.hero p{max-width:540px;font-size:14px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
-.stat{padding:13px;background:#ffffff0a;border:1px solid #ffffff16;border-radius:15px}
-.stat b{display:block;font-size:20px}.stat small{color:var(--muted);font-size:10px}
-.section{margin-top:28px}
+.hero p{max-width:550px;font-size:14px}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap}
+.primary,.secondary{
+ border-radius:13px;padding:12px 15px;font-weight:800;border:1px solid transparent
+}
+.primary{color:#07101d;background:linear-gradient(100deg,#91aaff,#5deaff);box-shadow:0 6px 25px #5deaff20}
+.secondary{color:var(--text);background:#161e36;border-color:#344363}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:23px}
+.stat{padding:13px 10px;border:1px solid #ffffff1c;border-radius:15px;background:#ffffff0b}
+.stat b{display:block;font-size:21px}.stat small{font-size:9px;color:#b6c4e5}
+.section{margin-top:29px}
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-h2{font-size:19px;margin:0;letter-spacing:-.3px}
+h2{font-size:19px;letter-spacing:-.4px;margin:0}
 .sub{font-size:12px;color:var(--muted);margin-top:5px}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.card{border:1px solid var(--line);border-radius:19px;background:linear-gradient(145deg,#151d34,#0e1324);padding:16px;min-width:0;transition:.2s}
-.card:hover{border-color:#778cff;transform:translateY(-2px)}
-.subject-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:#ffffff0b;margin-bottom:13px}
-.card h3{font-size:14px;margin:0 0 6px}
+.card{
+ min-width:0;padding:16px;border:1px solid var(--line);border-radius:20px;
+ background:linear-gradient(145deg,#161f38,#0d1325);transition:transform .25s,border-color .25s;
+ box-shadow:0 12px 25px #0001
+}
+.card:hover{transform:translateY(-3px);border-color:#728fff}
+.subject-icon{
+ width:46px;height:46px;display:grid;place-items:center;border-radius:15px;
+ background:linear-gradient(145deg,#273657,#171d34);font-size:23px;margin-bottom:13px
+}
+.card h3{font-size:14px;margin:0 0 7px}
 .card p{font-size:11px;margin:0 0 13px}
-button.primary{border:0;border-radius:12px;padding:12px 16px;color:#081021;font-weight:800;background:linear-gradient(100deg,#8aabff,#65e8ff);box-shadow:0 5px 22px #6c8cff25}
-button.secondary{border:1px solid #344363;border-radius:12px;padding:11px 14px;color:var(--text);background:#151d33}
-button:disabled{opacity:.5;cursor:wait}
-.btnrow{display:flex;gap:9px;flex-wrap:wrap}
-.field{width:100%;background:#090f20;color:var(--text);border:1px solid #344363;border-radius:12px;padding:13px;outline:none}
-.field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #54e8ff12}
-label{font-size:12px;color:#b8c5e5;display:block;margin-bottom:8px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.card button{font-size:12px}
+.field{
+ width:100%;padding:13px;border-radius:12px;border:1px solid #354566;
+ background:#090f20;color:var(--text);outline:none
+}
+.field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #53eaff15}
+label{display:block;color:#bfcae8;font-size:12px;margin-bottom:8px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .full{grid-column:1/-1}
-.result{margin-top:16px;border:1px solid #303d5c;background:#0a1020;border-radius:17px;padding:17px;overflow-wrap:anywhere}
-.result h3{margin-top:0}
-.answer{white-space:pre-wrap;line-height:1.8;font-size:14px;color:#e2e9ff}
-.loading{color:var(--cyan);padding:15px 0}
+textarea{resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font-size:11px;padding:8px 11px;border-radius:22px;border:1px solid #354566;background:#111a30;color:#d2ddff}
+.result{margin-top:16px;padding:17px;border:1px solid #354566;border-radius:17px;background:#090f20;overflow-wrap:anywhere}
+.result h3{margin:0 0 12px}
+.answer{white-space:pre-wrap;line-height:1.8;font-size:14px;color:#e7ecff}
 .hidden{display:none!important}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.chip{border:1px solid #354566;background:#111a30;color:#cbd7f6;padding:8px 11px;border-radius:20px;font-size:11px}
-.quiz-option{display:block;width:100%;text-align:left;background:#111a30;color:#e8edff;border:1px solid #344363;border-radius:12px;padding:13px;margin:8px 0}
-.quiz-option:hover{border-color:var(--cyan)}
-.quiz-option.correct{border-color:var(--green);background:#14362e}
-.quiz-option.wrong{border-color:#ff7c9c}
-footer{text-align:center;color:#697795;font-size:11px;margin-top:35px}
-@media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:23px 18px}.app{padding:12px 12px 70px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}}
-@media(max-width:360px){.grid{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:9px}.stat b{font-size:17px}}
+.progress-track{height:8px;border-radius:20px;background:#252f49;overflow:hidden;margin:12px 0}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:20px;transition:width .4s}
+.task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #ffffff10;font-size:13px}
+.task:last-child{border:0}
+.task input{width:18px;height:18px;accent-color:#72e8ff}
+.task span{flex:1}
+.badge{font-size:10px;color:var(--cyan);border:1px solid #354566;padding:5px 8px;border-radius:20px}
+footer{text-align:center;color:#71809f;font-size:11px;line-height:1.8;margin-top:35px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(9px) rotate(7deg)}}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.app{padding:12px 12px 85px}.hero{padding:24px 18px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}}
+@media(max-width:370px){.grid{grid-template-columns:1fr}.stats{gap:5px}.stat{padding:10px 7px}.stat b{font-size:18px}.pill{font-size:9px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
-  <div class="brand"><div class="logo">✦</div><div>AI STUDY 3D<small>YOUR SMART STUDY SPACE</small></div></div>
-  <div class="pill">✧ AI LEARNING</div>
+ <div class="brand"><div class="logo">✦</div><div>AI STUDY 3D<small>YOUR SMART STUDY SPACE</small></div></div>
+ <div class="pill">⚡ PREMIUM LEARNING</div>
 </header>
 
 <section class="hero">
-  <div class="eyebrow">LEARN • PRACTICE • MASTER</div>
-  <h1>Your future.<br><span>Your intelligence.</span></h1>
-  <p>Study smarter with AI-powered explanations, revision notes and practice. From school basics to JEE and NEET preparation.</p>
-  <div class="stats">
-    <div class="stat"><b>6–12</b><small>SCHOOL CLASSES</small></div>
-    <div class="stat"><b>03</b><small>CORE SCIENCES</small></div>
-    <div class="stat"><b>AI</b><small>STUDY ASSISTANT</small></div>
-  </div>
+ <div class="eyebrow">LEARN • PRACTICE • ACHIEVE</div>
+ <h1>Unlock your<br><span class="gradient">next level.</span></h1>
+ <p>Your personal study space for school, JEE and NEET. Understand concepts, create revision notes and practise questions with AI assistance.</p>
+ <div class="btnrow">
+  <button class="primary" onclick="goTo('studio')">✦ Start Learning</button>
+  <button class="secondary" onclick="goTo('planner')">My Study Plan ↓</button>
+ </div>
+ <div class="stats">
+  <div class="stat"><b>6–12</b><small>SCHOOL CLASSES</small></div>
+  <div class="stat"><b>JEE</b><small>EXAM PRACTICE</small></div>
+  <div class="stat"><b>NEET</b><small>MEDICAL PREP</small></div>
+ </div>
 </section>
 
 <section class="section">
-  <div class="section-head"><div><h2>Choose your learning path</h2><div class="sub">Select a course to set up your study session.</div></div></div>
-  <div class="grid" id="paths">
-    <div class="card"><div class="subject-icon">📘</div><h3>School Learning</h3><p>Classes 6 to 10 · Build strong foundations</p><button class="secondary" onclick="choosePath('school')">Explore →</button></div>
-    <div class="card"><div class="subject-icon">🎓</div><h3>Senior Secondary</h3><p>Classes 11 and 12 · Concepts and revision</p><button class="secondary" onclick="choosePath('senior')">Explore →</button></div>
-    <div class="card"><div class="subject-icon">⚡</div><h3>JEE Preparation</h3><p>Physics, Chemistry and Mathematics</p><button class="secondary" onclick="choosePath('jee')">Explore →</button></div>
-    <div class="card"><div class="subject-icon">🧬</div><h3>NEET Preparation</h3><p>Biology, Physics and Chemistry</p><button class="secondary" onclick="choosePath('neet')">Explore →</button></div>
-  </div>
+ <div class="section-head"><div><h2>Choose your path</h2><div class="sub">Your next step starts here.</div></div><span class="badge">4 COURSES</span></div>
+ <div class="grid">
+  <div class="card"><div class="subject-icon">📘</div><h3>School Learning</h3><p>Classes 6–10. Build strong foundations.</p><button class="secondary" onclick="choosePath('school')">Explore →</button></div>
+  <div class="card"><div class="subject-icon">🎓</div><h3>Class 11–12</h3><p>Concepts, revision and examples.</p><button class="secondary" onclick="choosePath('senior')">Explore →</button></div>
+  <div class="card"><div class="subject-icon">⚡</div><h3>JEE Preparation</h3><p>Physics, Chemistry and Mathematics.</p><button class="secondary" onclick="choosePath('jee')">Explore →</button></div>
+  <div class="card"><div class="subject-icon">🧬</div><h3>NEET Preparation</h3><p>Biology, Physics and Chemistry.</p><button class="secondary" onclick="choosePath('neet')">Explore →</button></div>
+ </div>
 </section>
 
-<section class="section" id="workspace">
-<div class="section-head"><div><h2>✧ AI Study Studio</h2><div class="sub">Choose a class, subject and topic.</div></div><span class="pill">LIVE AI</span></div>
-<div class="card">
+<section class="section" id="studio">
+ <div class="section-head"><div><h2>✦ AI Study Studio</h2><div class="sub">Choose your subject and enter a topic.</div></div><span class="badge">AI TOOLS</span></div>
+ <div class="card">
   <div class="formgrid">
-    <div><label for="course">Course</label><select id="course" class="field"><option value="school">School Learning</option><option value="senior">Senior Secondary</option><option value="jee">JEE Main / Advanced</option><option value="neet">NEET</option></select></div>
-    <div><label for="grade">Class / Level</label><select id="grade" class="field"></select></div>
-    <div><label for="subject">Subject</label><select id="subject" class="field"></select></div>
-    <div><label for="language">Explanation language</label><select id="language" class="field"><option>Simple English</option><option>Hindi</option><option>Hinglish</option></select></div>
-    <div class="full"><label for="topic">Topic or question</label><textarea id="topic" class="field" rows="3" placeholder="Example: Newton's Laws of Motion"></textarea>
-      <div class="chips"><button class="chip" onclick="setTopic('Fractions and decimals')">Fractions</button><button class="chip" onclick="setTopic('Chemical bonding')">Chemical bonding</button><button class="chip" onclick="setTopic('Newton’s Laws of Motion')">Newton’s Laws</button><button class="chip" onclick="setTopic('Human physiology')">Human physiology</button></div>
+   <div><label for="course">Course</label><select id="course" class="field"><option value="school">School Learning</option><option value="senior">Senior Secondary</option><option value="jee">JEE Main / Advanced</option><option value="neet">NEET</option></select></div>
+   <div><label for="grade">Class / Level</label><select id="grade" class="field"></select></div>
+   <div><label for="subject">Subject</label><select id="subject" class="field"></select></div>
+   <div><label for="language">Explanation language</label><select id="language" class="field"><option>Simple English</option><option>Hindi</option><option>Hinglish</option></select></div>
+   <div class="full"><label for="topic">Topic or question</label><textarea id="topic" class="field" rows="3" placeholder="Example: Newton's Laws of Motion"></textarea>
+    <div class="chips">
+     <button class="chip" onclick="setTopic('Fractions and decimals')">Fractions</button>
+     <button class="chip" onclick="setTopic('Chemical bonding')">Chemical bonding</button>
+     <button class="chip" onclick="setTopic('Newton’s Laws of Motion')">Newton’s Laws</button>
+     <button class="chip" onclick="setTopic('Human physiology')">Human physiology</button>
     </div>
-    <div class="full btnrow"><button class="primary" id="notesBtn" onclick="askAI('notes')">✦ Generate AI Notes</button><button class="secondary" onclick="askAI('solve')">Solve Question</button><button class="secondary" onclick="makeQuiz()">Create Practice Quiz</button></div>
+   </div>
+   <div class="full btnrow">
+    <button class="primary" id="notesBtn" onclick="askAI('notes')">✦ Generate Notes</button>
+    <button class="secondary" id="solveBtn" onclick="askAI('solve')">Solve Question</button>
+    <button class="secondary" id="quizBtn" onclick="askAI('quiz')">Create Quiz</button>
+   </div>
   </div>
   <div id="result" class="result hidden" aria-live="polite"></div>
-</div>
+ </div>
 </section>
 
 <section class="section">
-  <div class="section-head"><div><h2>Explore subjects</h2><div class="sub">Start with a subject and choose any topic.</div></div></div>
-  <div class="grid">
-    <div class="card"><div class="subject-icon">⚛️</div><h3>Physics</h3><p>Motion, energy, electricity and more.</p><button class="secondary" onclick="pickSubject('Physics')">Study Physics</button></div>
-    <div class="card"><div class="subject-icon">🧪</div><h3>Chemistry</h3><p>Atoms, reactions and chemical concepts.</p><button class="secondary" onclick="pickSubject('Chemistry')">Study Chemistry</button></div>
-    <div class="card"><div class="subject-icon">📐</div><h3>Mathematics</h3><p>Formulas, worked examples and practice.</p><button class="secondary" onclick="pickSubject('Mathematics')">Study Maths</button></div>
-    <div class="card"><div class="subject-icon">🧬</div><h3>Biology</h3><p>Cells, organisms and human biology.</p><button class="secondary" onclick="pickSubject('Biology')">Study Biology</button></div>
-  </div>
+ <div class="section-head"><div><h2>Explore subjects</h2><div class="sub">Choose a subject to begin.</div></div></div>
+ <div class="grid">
+  <div class="card"><div class="subject-icon">⚛️</div><h3>Physics</h3><p>Motion, energy and electricity.</p><button class="secondary" onclick="pickSubject('Physics')">Study Physics →</button></div>
+  <div class="card"><div class="subject-icon">🧪</div><h3>Chemistry</h3><p>Atoms, reactions and bonding.</p><button class="secondary" onclick="pickSubject('Chemistry')">Study Chemistry →</button></div>
+  <div class="card"><div class="subject-icon">📐</div><h3>Mathematics</h3><p>Formulas and worked examples.</p><button class="secondary" onclick="pickSubject('Mathematics')">Study Maths →</button></div>
+  <div class="card"><div class="subject-icon">🧬</div><h3>Biology</h3><p>Cells and human biology.</p><button class="secondary" onclick="pickSubject('Biology')">Study Biology →</button></div>
+ </div>
+</section>
+
+<section class="section" id="planner">
+ <div class="section-head"><div><h2>🎯 My Study Plan</h2><div class="sub">Tick off your tasks as you complete them.</div></div><span class="badge" id="progressText">0% DONE</span></div>
+ <div class="card">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="task"><input type="checkbox" class="studyTask"><span>Revise one important concept</span></div>
+  <div class="task"><input type="checkbox" class="studyTask"><span>Practise five questions</span></div>
+  <div class="task"><input type="checkbox" class="studyTask"><span>Review notes and formulas</span></div>
+  <div class="task"><input type="checkbox" class="studyTask"><span>Take a short self-test</span></div>
+  <p style="font-size:11px;margin-bottom:0">Your progress is tracked on this page while it remains open.</p>
+ </div>
 </section>
 
 <section class="section">
-  <div class="card">
-    <div class="subject-icon">🧠</div><h3>Study tip</h3>
-    <p>Learn one concept, explain it in your own words, then test yourself. Use AI explanations to understand the steps—not just to copy the final answer.</p>
-  </div>
+ <div class="card">
+  <div class="subject-icon">💡</div><h3>Study smarter</h3>
+  <p>Understand one concept, explain it in your own words, then test yourself. AI can help you learn the steps, but always verify important answers with your textbook.</p>
+ </div>
 </section>
-
-<footer>AI STUDY 3D · Independent learning project<br>AI responses can make mistakes. Verify important answers with your textbook.</footer>
+<footer>AI STUDY 3D · Independent learning project<br>AI answers may contain mistakes. Verify important information with trusted study materials.</footer>
 </div>
 
 <script>
-const API_URL = "https://quiet-feather-9c7b.yji461392.workers.dev/";
-const $ = id => document.getElementById(id);
+const API_URL="https://quiet-feather-9c7b.yji461392.workers.dev/";
+const $=id=>document.getElementById(id);
 
-const courseData = {
-  school: {grades:["Class 6","Class 7","Class 8","Class 9","Class 10"],subjects:["Mathematics","Science","English","Social Science","Biology","Physics","Chemistry"]},
-  senior: {grades:["Class 11","Class 12"],subjects:["Physics","Chemistry","Mathematics","Biology","English"]},
-  jee: {grades:["JEE Foundation","JEE Main","JEE Advanced"],subjects:["Physics","Chemistry","Mathematics"]},
-  neet: {grades:["NEET Foundation","NEET UG"],subjects:["Biology","Physics","Chemistry"]}
+const courseData={
+ school:{grades:["Class 6","Class 7","Class 8","Class 9","Class 10"],subjects:["Mathematics","Science","English","Social Science","Biology","Physics","Chemistry"]},
+ senior:{grades:["Class 11","Class 12"],subjects:["Physics","Chemistry","Mathematics","Biology","English"]},
+ jee:{grades:["JEE Foundation","JEE Main","JEE Advanced"],subjects:["Physics","Chemistry","Mathematics"]},
+ neet:{grades:["NEET Foundation","NEET UG"],subjects:["Biology","Physics","Chemistry"]}
 };
 
-function fillSelect(id, items, preferred) {
-  const el = $(id);
-  el.innerHTML = "";
-  items.forEach(item => {
-    const opt = document.createElement("option");
-    opt.value = item; opt.textContent = item;
-    el.appendChild(opt);
-  });
-  if (preferred && items.includes(preferred)) el.value = preferred;
+function fillSelect(id,items,preferred){
+ const el=$(id);el.replaceChildren();
+ items.forEach(item=>{const opt=document.createElement("option");opt.value=item;opt.textContent=item;el.appendChild(opt)});
+ if(preferred&&items.includes(preferred))el.value=preferred;
 }
-function updateOptions() {
-  const c = $("course").value, d = courseData[c];
-  fillSelect("grade", d.grades);
-  fillSelect("subject", d.subjects);
+function updateOptions(){
+ const d=courseData[$("course").value];
+ fillSelect("grade",d.grades);fillSelect("subject",d.subjects);
 }
-$("course").addEventListener("change", updateOptions);
+$("course").addEventListener("change",updateOptions);
 updateOptions();
 
-function choosePath(path) {
-  $("course").value = path;
-  updateOptions();
-  $("workspace").scrollIntoView({behavior:"smooth"});
+function goTo(id){$(id).scrollIntoView({behavior:"smooth",block:"start"})}
+function choosePath(path){
+ $("course").value=path;updateOptions();goTo("studio");
 }
-function setTopic(t) { $("topic").value = t; }
-function pickSubject(s) {
-  if ([...$("subject").options].some(o => o.value === s)) $("subject").value = s;
-  $("topic").focus();
-  $("workspace").scrollIntoView({behavior:"smooth"});
+function setTopic(t){$("topic").value=t;$("topic").focus()}
+function pickSubject(s){
+ if([...$("subject").options].some(o=>o.value===s))$("subject").value=s;
+ goTo("studio");$("topic").focus();
 }
-
-function makePrompt(mode) {
-  const course = $("course").selectedOptions[0].textContent;
-  const grade = $("grade").value;
-  const subject = $("subject").value;
-  const language = $("language").value;
-  const topic = $("topic").value.trim();
-  const action = mode === "solve"
-    ? "Solve the question step by step. Explain the method, formulas, and final answer."
-    : mode === "quiz"
-    ? "Create 5 multiple-choice practice questions. Include four options per question, the correct answer, and a brief explanation after each question."
-    : "Create clear study notes with headings, definitions, key concepts, examples, formulas when relevant, common mistakes, and a short revision summary.";
-  return `You are an accurate and encouraging study tutor for ${course}, ${grade}, subject ${subject}. Explain in ${language}. ${action}\nTopic or question: ${topic}\nUse age-appropriate language. If the topic is ambiguous, clarify assumptions. Do not invent syllabus claims or facts.`;
+function makePrompt(mode){
+ const course=$("course").selectedOptions[0].textContent;
+ const grade=$("grade").value,subject=$("subject").value;
+ const language=$("language").value,topic=$("topic").value.trim();
+ const action=mode==="solve"
+ ? "Solve the question step by step. Explain the method, formulas and final answer."
+ :mode==="quiz"
+ ? "Create 5 multiple-choice practice questions. Give four options per question, mark the correct answer and briefly explain why."
+ :"Create clear study notes with headings, definitions, key concepts, examples, formulas when relevant, common mistakes and a short revision summary.";
+ return `You are an accurate, encouraging tutor for ${course}, ${grade}, subject ${subject}. Explain in ${language}. ${action}\nTopic or question: ${topic}\nUse age-appropriate language. If information is uncertain, say so.`;
 }
-
-async function askAI(mode) {
-  const topic = $("topic").value.trim();
-  if (!topic) {
-    $("topic").focus();
-    showMessage("Please enter a topic or question first.");
-    return;
-  }
-  const btn = $("notesBtn");
-  btn.disabled = true;
-  showMessage("✦ Connecting to AI… Please wait.");
-  try {
-    const prompt = makePrompt(mode);
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({topic: prompt})
-    });
-    const data = await response.json();
-    if (!response.ok || data.error) {
-      throw new Error(data.error || `Request failed (${response.status})`);
-    }
-    if (!data.answer) throw new Error("The AI returned no answer. Please try again.");
-    showMessage(data.answer);
-  } catch (err) {
-    showMessage("AI could not complete this request.\n\n" + err.message + "\n\nPlease try again shortly. If the timeout continues, the AI service or network may be busy.");
-  } finally {
-    btn.disabled = false;
-  }
+function showMessage(text){
+ const box=$("result");box.classList.remove("hidden");box.replaceChildren();
+ const heading=document.createElement("h3");heading.textContent="✦ Study Result";
+ const content=document.createElement("div");content.className="answer";content.textContent=text;
+ const copy=document.createElement("button");copy.className="secondary";copy.style.marginTop="14px";copy.textContent="Copy answer";
+ copy.onclick=async()=>{
+  try{await navigator.clipboard.writeText(text);copy.textContent="Copied ✓"}
+  catch(e){copy.textContent="Select and copy the answer"}
+ };
+ box.append(heading,content,copy);
 }
-function showMessage(text) {
-  const box = $("result");
-  box.classList.remove("hidden");
-  box.replaceChildren();
-  const heading = document.createElement("h3");
-  heading.textContent = "✦ Study result";
-  const content = document.createElement("div");
-  content.className = "answer";
-  content.textContent = text;
-  box.append(heading, content);
+async function askAI(mode){
+ const topic=$("topic").value.trim();
+ if(!topic){showMessage("Please enter a topic or question first.");$("topic").focus();return}
+ const buttons=["notesBtn","solveBtn","quizBtn"].map(id=>$(id));
+ buttons.forEach(b=>b.disabled=true);
+ showMessage("✦ Connecting to AI… Please wait.");
+ try{
+  const response=await fetch(API_URL,{
+   method:"POST",headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({topic:makePrompt(mode)})
+  });
+  const data=await response.json();
+  if(!response.ok||data.error)throw new Error(data.error||`Request failed (${response.status})`);
+  if(!data.answer)throw new Error("The AI returned no answer. Please try again.");
+  showMessage(data.answer);
+ }catch(err){
+  showMessage("AI could not complete this request.\n\n"+err.message+"\n\nThe AI service may be busy or its free usage limit may have been reached. Please try again later.");
+ }finally{buttons.forEach(b=>b.disabled=false)}
 }
-function makeQuiz() { askAI("quiz"); }
+document.querySelectorAll(".studyTask").forEach(task=>{
+ task.addEventListener("change",()=>{
+  const all=[...document.querySelectorAll(".studyTask")];
+  const done=all.filter(t=>t.checked).length;
+  const percent=Math.round(done/all.length*100);
+  $("progressFill").style.width=percent+"%";
+  $("progressText").textContent=percent+"% DONE";
+ });
+});
 </script>
 </body>
 </html>

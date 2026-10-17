@@ -6,67 +6,56 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#080d1c">
 <link rel="manifest" href="/-ai-study-3d/manifest.json">
-<title>AI STUDY 3D | Smart JEE Learning</title>
+<title>AI STUDY 3D | Premium</title>
 <style>
-:root{--bg:#080d1c;--panel:#121b30;--blue:#4d8dff;--cyan:#49e5ff;--text:#f3f6ff;--muted:#98a6c2;--line:#263652;--green:#4de0a2}
+:root{--bg:#070b18;--panel:#111a30;--line:#283858;--blue:#568bff;--cyan:#51e7ff;--text:#f4f7ff;--muted:#9aabc9;--green:#50e3a4}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#172b50,var(--bg) 55%);color:var(--text);font-family:system-ui,Arial,sans-serif}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer;color:inherit}
+body{margin:0;background:radial-gradient(ellipse at top,#20396a 0,#0b1021 42%,var(--bg) 78%);color:var(--text);font-family:system-ui,Arial,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit}
 .app{max-width:1000px;margin:auto;padding:16px 14px 100px}
-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px}
-.brand{display:flex;gap:10px;align-items:center}
-.logo{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#55a0ff,#694bff);font-size:23px}
-.brand h1{font-size:16px;margin:0;letter-spacing:1px}
-.brand small{display:block;font-size:10px;color:var(--cyan);letter-spacing:1.5px;margin-top:4px}
-.badge{font-size:10px;border:1px solid #4de0a255;color:var(--green);padding:7px 9px;border-radius:20px}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:45px;height:45px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#52e5ff,#665aff);box-shadow:0 0 25px #4d8dff55;font-size:25px}
+.brand h1{font-size:16px;margin:0;letter-spacing:1px}.brand small{display:block;color:var(--cyan);font-size:10px;letter-spacing:2px;margin-top:4px}
+.badge{border:1px solid #50e3a455;border-radius:20px;padding:7px 9px;color:var(--green);font-size:10px}
 .page{display:none}.page.active{display:block;animation:appear .25s ease}
-@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.hero,.card{border:1px solid #728fca28;background:linear-gradient(145deg,#162442,#10172a);border-radius:20px;padding:18px;margin-bottom:13px}
-.hero{padding:25px 20px;background:linear-gradient(125deg,#1b3a6b,#161b36 70%,#29204d)}
-.eyebrow{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:2px}
-h2{font-size:clamp(26px,6vw,38px);line-height:1.15;margin:12px 0}
+@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.hero,.card{border:1px solid #8aaeff25;background:linear-gradient(145deg,#172644eF,#10172bee);border-radius:20px;padding:17px;margin-bottom:13px;box-shadow:0 12px 35px #0002}
+.hero{padding:26px 20px;background:radial-gradient(circle at 90% 15%,#375eb777,transparent 35%),linear-gradient(125deg,#1c3e70,#171b39 70%,#29204b)}
+.eyebrow{font-size:10px;letter-spacing:2px;color:var(--cyan);font-weight:800}
+h2{font-size:clamp(28px,6vw,40px);line-height:1.12;margin:12px 0}
 h3{font-size:15px;margin:5px 0 9px}
-p{color:var(--muted);font-size:13px;line-height:1.6}
-.btn{background:linear-gradient(110deg,#477fff,#7359ff);border:0;border-radius:12px;padding:12px 15px;font-weight:750;color:white}
-.btn.secondary{background:#1c2a45;border:1px solid var(--line)}
+p{color:var(--muted);font-size:13px;line-height:1.65}
+.btn{background:linear-gradient(110deg,#477fff,#7458ff);border:0;border-radius:12px;padding:12px 15px;font-weight:750;color:white}
+.secondary{background:#1b2a45;border:1px solid var(--line)}
 .btn:disabled{opacity:.5}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.feature{padding:15px;min-height:130px;cursor:pointer;transition:.2s}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.feature{min-height:125px;padding:15px;cursor:pointer;transition:.2s}
 .feature:active{transform:scale(.98)}
-.icon{font-size:25px;margin-bottom:9px}
-.feature h3{font-size:13px}.feature p{font-size:11px;margin-bottom:0}
-.heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:23px 0 12px}
-.heading h3{margin:0;font-size:17px}
+.icon{font-size:25px;margin-bottom:8px}.feature h3{font-size:13px}.feature p{font-size:11px;margin-bottom:0}
+.heading{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}
-.stat{text-align:center;background:#111a2c;border:1px solid var(--line);padding:12px 4px;border-radius:14px}
+.stat{text-align:center;background:#0e172a;border:1px solid var(--line);padding:12px 3px;border-radius:14px}
 .stat strong{display:block;font-size:21px}.stat span{font-size:10px;color:var(--muted)}
-input,textarea,select{width:100%;background:#0a1223;color:white;border:1px solid var(--line);border-radius:11px;padding:12px;margin:6px 0}
-textarea{resize:vertical;min-height:100px}
-label{display:block;font-size:12px;color:#bac7df;margin-top:12px}
-.chatbox{height:300px;overflow:auto;display:flex;flex-direction:column;gap:10px;background:#090f1c;border:1px solid var(--line);border-radius:15px;padding:11px}
-.msg{padding:11px 12px;border-radius:13px;max-width:95%;font-size:13px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
-.msg.ai{background:#18253d;align-self:flex-start}.msg.user{background:#284b91;align-self:flex-end}
-.msg.error{border:1px solid #ff778877}
+input,textarea,select{width:100%;background:#091225;color:white;border:1px solid var(--line);border-radius:11px;padding:12px;margin:6px 0}
+textarea{min-height:95px;resize:vertical}label{display:block;font-size:12px;color:#bac7df;margin-top:12px}
+.chatbox{height:290px;overflow:auto;display:flex;flex-direction:column;gap:9px;background:#080f1e;border:1px solid var(--line);border-radius:15px;padding:10px}
+.msg{padding:11px 12px;border-radius:13px;max-width:96%;font-size:13px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.ai{background:#182640;align-self:flex-start}.msg.user{background:#294b91;align-self:flex-end}
 .compose{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:end}
-.compose textarea{margin-bottom:0}
-.status{font-size:11px;color:var(--muted);margin:9px 0;overflow-wrap:anywhere}
+.compose textarea{margin-bottom:0}.status{font-size:11px;color:var(--muted);margin:9px 0;overflow-wrap:anywhere}
 .pills{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
 .pill{background:#1a2943;border:1px solid var(--line);padding:8px 10px;border-radius:20px;font-size:11px}
-.progress{height:7px;background:#29354b;border-radius:10px;overflow:hidden}
-.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan))}
-.scene{height:230px;border-radius:18px;border:1px solid var(--line);display:grid;place-items:center;perspective:600px;background:radial-gradient(ellipse,#1c4376,#0a1223 70%);overflow:hidden}
+.scene{height:235px;border:1px solid #3a628c;border-radius:18px;display:grid;place-items:center;perspective:600px;background:radial-gradient(ellipse,#214e82,#0a1223 70%);overflow:hidden}
 .cube{width:80px;height:80px;position:relative;transform-style:preserve-3d;animation:spin 8s linear infinite}
-.face{position:absolute;width:80px;height:80px;border:2px solid var(--cyan);background:#438cff25;box-shadow:inset 0 0 20px #438cff35}
+.face{position:absolute;width:80px;height:80px;border:2px solid var(--cyan);background:#438cff20;box-shadow:inset 0 0 20px #438cff40}
 .face:nth-child(1){transform:translateZ(40px)}.face:nth-child(2){transform:rotateY(180deg) translateZ(40px)}.face:nth-child(3){transform:rotateY(90deg) translateZ(40px)}.face:nth-child(4){transform:rotateY(-90deg) translateZ(40px)}.face:nth-child(5){transform:rotateX(90deg) translateZ(40px)}.face:nth-child(6){transform:rotateX(-90deg) translateZ(40px)}
 @keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
 .option{display:block;width:100%;text-align:left;background:#111d32;border:1px solid var(--line);border-radius:11px;padding:12px;margin:7px 0}
-.option.selected{border-color:var(--blue)}.option.correct{border-color:var(--green)}.option.wrong{border-color:#ff7189}
-.note{border-left:3px solid var(--cyan);padding:10px 12px;background:#101d32;border-radius:0 10px 10px 0;margin:10px 0;font-size:12px;line-height:1.6}
-.bottom{position:fixed;z-index:10;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:2px;background:#0a1122f5;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:7px 3px calc(7px + env(safe-area-inset-bottom))}
+.option.correct{border-color:var(--green)}.option.wrong{border-color:#ff7189}
+.note{border-left:3px solid var(--cyan);padding:11px;background:#101d32;border-radius:0 10px 10px 0;margin:10px 0;font-size:12px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.bottom{position:fixed;z-index:10;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:2px;background:#091020f5;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:7px 3px calc(7px + env(safe-area-inset-bottom))}
 .nav{flex:1;max-width:125px;border:0;background:transparent;color:#8997b4;font-size:9px;padding:7px 1px;border-radius:10px}
 .nav span{display:block;font-size:18px;margin-bottom:3px}.nav.active{color:var(--cyan);background:#1b3455}
-.toast{display:none;position:fixed;z-index:20;bottom:90px;left:50%;transform:translateX(-50%);background:#1b2c49;border:1px solid var(--line);border-radius:12px;padding:12px;max-width:90%;font-size:12px}
 footer{text-align:center;color:#657493;font-size:10px;padding:15px}
 @media(min-width:700px){.app{padding:25px 25px 110px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:35px}}
 @media(prefers-reduced-motion:reduce){.cube{animation:none}}
@@ -75,15 +64,15 @@ footer{text-align:center;color:#657493;font-size:10px;padding:15px}
 <body>
 <div class="app">
 <header>
- <div class="brand"><div class="logo">✦</div><div><h1>AI STUDY <span style="color:#7da8ff">3D</span></h1><small>SMART JEE LEARNING</small></div></div>
+ <div class="brand"><div class="logo">✦</div><div><h1>AI STUDY <span style="color:#7da8ff">3D</span></h1><small>PREMIUM LEARNING</small></div></div>
  <div class="badge">● STUDY MODE</div>
 </header>
 
 <section id="home" class="page active">
  <div class="hero">
-  <div class="eyebrow">YOUR PERSONAL LEARNING SPACE</div>
+  <div class="eyebrow">YOUR PERSONAL LEARNING UNIVERSE</div>
   <h2>Learn smarter.<br><span style="color:var(--cyan)">Aim higher.</span></h2>
-  <p>JEE preparation with AI notes, interactive visual learning, practice questions and mock tests.</p>
+  <p>Your JEE preparation space for AI-assisted learning, revision, practice and progress.</p>
   <button class="btn" onclick="go('teacher')">✦ Ask AI Teacher →</button>
  </div>
  <div class="stats">
@@ -93,92 +82,69 @@ footer{text-align:center;color:#657493;font-size:10px;padding:15px}
  </div>
  <div class="heading"><h3>Learning Studio</h3></div>
  <div class="grid">
-  <div class="card feature" onclick="go('teacher')"><div class="icon">🤖</div><h3>AI Teacher</h3><p>Ask questions and learn step by step.</p></div>
-  <div class="card feature" onclick="go('notes')"><div class="icon">📚</div><h3>AI Notes</h3><p>Create chapter notes and explanations.</p></div>
-  <div class="card feature" onclick="go('short')"><div class="icon">⚡</div><h3>Short Notes</h3><p>Quick revision and formula sheets.</p></div>
-  <div class="card feature" onclick="go('visual')"><div class="icon">🧊</div><h3>3D Learning</h3><p>Explore interactive visual concepts.</p></div>
-  <div class="card feature" onclick="go('pyq')"><div class="icon">📖</div><h3>JEE PYQs</h3><p>Browse available verified question sets.</p></div>
-  <div class="card feature" onclick="go('practice')"><div class="icon">🎯</div><h3>AI Practice</h3><p>Sample practice and AI-generated questions.</p></div>
-  <div class="card feature" onclick="go('cbt')"><div class="icon">📝</div><h3>CBT Mock</h3><p>Timed sample test and score.</p></div>
-  <div class="card feature" onclick="go('goals')"><div class="icon">📈</div><h3>Daily Goals</h3><p>Track your daily study targets.</p></div>
+  <div class="card feature" onclick="go('teacher')"><div class="icon">🤖</div><h3>AI Teacher</h3><p>Study questions, step by step.</p></div>
+  <div class="card feature" onclick="go('notes')"><div class="icon">📚</div><h3>AI Notes</h3><p>Build chapter notes.</p></div>
+  <div class="card feature" onclick="go('short')"><div class="icon">⚡</div><h3>Quick Revision</h3><p>Formula and concept notes.</p></div>
+  <div class="card feature" onclick="go('visual')"><div class="icon">🧊</div><h3>3D Learning</h3><p>Explore a rotating 3D model.</p></div>
+  <div class="card feature" onclick="go('practice')"><div class="icon">🎯</div><h3>Practice Zone</h3><p>Check sample answers.</p></div>
+  <div class="card feature" onclick="go('goals')"><div class="icon">📈</div><h3>Daily Goals</h3><p>Track your study routine.</p></div>
  </div>
- <footer>Learn • Practice • Revise • Improve</footer>
+ <footer>LEARN • PRACTICE • REVISE • IMPROVE</footer>
 </section>
 
 <section id="teacher" class="page">
  <div class="eyebrow">YOUR STUDY ASSISTANT</div><h2>AI <span style="color:var(--cyan)">Teacher</span></h2>
- <p>Ask in Hinglish or English. Select a subject and send your question.</p>
+ <p>Ask in Hinglish or English. AI responses require a working server connection.</p>
  <div class="card">
   <label>Subject</label><select id="subject"><option>JEE Main Physics</option><option>JEE Main Chemistry</option><option>JEE Main Mathematics</option><option>General Study</option></select>
   <div class="pills"><button class="pill" onclick="prefill('Explain this concept in simple Hinglish with an example.')">Explain simply</button><button class="pill" onclick="prefill('Explain step by step with formulas.')">Step-by-step</button></div>
-  <div id="chat" class="chatbox" aria-live="polite"><div class="msg ai">Namaste! Apna study question bhejo. Main tumhe concept samajhne mein madad karunga.</div></div>
+  <div id="chat" class="chatbox" aria-live="polite"><div class="msg ai">Namaste! Apna study question bhejo.</div></div>
   <div class="compose"><textarea id="question" placeholder="Apna question likho..." aria-label="Study question"></textarea><button id="send" class="btn" onclick="askAI()">Send ↑</button></div>
   <div id="aiStatus" class="status">Ready.</div>
   <button class="btn secondary" onclick="checkWorker()">Check connection</button>
-  <div class="note">Agar 502 aaye, Worker ya uski AI provider service check karni hogi. HTML akela server-side error fix nahi kar sakta.</div>
  </div>
 </section>
 
 <section id="notes" class="page">
  <div class="eyebrow">SMART REVISION STUDIO</div><h2>AI <span style="color:var(--cyan)">Notes</span></h2>
- <p>Chapter choose karo aur AI se notes banwane ki request bhejo.</p>
  <div class="card">
   <label>Subject</label><select id="noteSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
   <label>Chapter name</label><input id="noteChapter" placeholder="e.g. Laws of Motion">
-  <label>Notes type</label><select id="noteType"><option>Detailed chapter notes</option><option>Easy explanation with examples</option><option>Important formulas and concepts</option><option>Revision notes for JEE Main</option></select>
+  <label>Notes type</label><select id="noteType"><option>Detailed chapter notes</option><option>Easy explanation with examples</option><option>Important formulas and concepts</option><option>JEE Main revision notes</option></select>
   <button class="btn" onclick="generateNotes()">✦ Generate with AI</button>
-  <div id="notesOutput" class="note" style="margin-top:15px">Your generated notes will appear here. AI connection is required.</div>
+  <div id="notesOutput" class="note">Your notes will appear here.</div>
   <button class="btn secondary" onclick="copyText('notesOutput')">Copy notes</button>
  </div>
 </section>
 
 <section id="short" class="page">
  <div class="eyebrow">QUICK REVISION</div><h2>Short <span style="color:var(--cyan)">Notes</span></h2>
- <p>Quick revision notes ke liye subject aur chapter select karo.</p>
  <div class="card">
   <label>Subject</label><select id="shortSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
   <label>Chapter</label><input id="shortChapter" placeholder="e.g. Electrostatics">
   <button class="btn" onclick="generateShort()">Generate short notes</button>
-  <div id="shortOutput" class="note" style="margin-top:15px">AI se concise revision notes generate karo. Formulas ko textbook se verify karna.</div>
+  <div id="shortOutput" class="note">Your revision notes will appear here.</div>
   <button class="btn secondary" onclick="copyText('shortOutput')">Copy notes</button>
  </div>
 </section>
 
 <section id="visual" class="page">
  <div class="eyebrow">VISUAL LEARNING LAB</div><h2>3D <span style="color:var(--cyan)">Learning</span></h2>
- <p>Ye interactive rotating-cube demo hai. Real scientific animations ko chapter-wise add kiya ja sakta hai.</p>
+ <p>This is a rotating 3D cube demonstration, not a scientific simulation.</p>
  <div class="scene"><div class="cube"><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div></div></div>
- <div class="card" style="margin-top:14px"><h3>Learn a concept</h3><label>Choose a topic</label><select id="visualTopic"><option>Vectors and scalars</option><option>Electric field</option><option>Atomic structure</option><option>3D geometry</option><option>Wave motion</option></select><button class="btn" onclick="visualExplain()">Explain this topic with AI</button><div id="visualOutput" class="note">Choose a topic to request an explanation.</div></div>
-</section>
-
-<section id="pyq" class="page">
- <div class="eyebrow">JEE MAIN QUESTION LIBRARY</div><h2>Chapter-wise <span style="color:var(--cyan)">PYQs</span></h2>
- <div class="card">
-  <p>Yahan abhi verified full PYQ database bundled nahi hai. Pehle subject aur chapter choose karke practice section use karo; official source se verify kiye hue papers ko hi PYQ label dena chahiye.</p>
-  <label>Subject</label><select id="pyqSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
-  <label>Chapter</label><input id="pyqChapter" placeholder="Enter chapter name">
-  <button class="btn" onclick="makePYQPractice()">Create AI practice request</button>
-  <div class="note" id="pyqInfo">AI-generated practice is not an official previous-year question.</div>
-  <button class="btn secondary" onclick="go('practice')">Open practice →</button>
-  <p><a href="https://jeemain.nta.nic.in/" target="_blank" rel="noopener" style="color:var(--cyan)">Open official JEE Main website ↗</a></p>
- </div>
+ <div class="card" style="margin-top:14px"><h3>Learn a concept</h3><label>Choose a topic</label><select id="visualTopic"><option>Vectors and scalars</option><option>Electric field</option><option>Atomic structure</option><option>3D geometry</option><option>Wave motion</option></select><button class="btn" onclick="visualExplain()">Explain with AI</button><div id="visualOutput" class="note">Choose a topic.</div></div>
 </section>
 
 <section id="practice" class="page">
- <div class="eyebrow">QUICK PRACTICE</div><h2>Practice <span style="color:var(--cyan)">Zone</span></h2>
- <p>Built-in sample questions hain; ye official PYQs nahi hain.</p>
- <div class="card"><div id="qCount" class="status">Question 1 of 3</div><h3 id="qText"></h3><div id="options"></div><p id="feedback"></p><button id="checkAnswer" class="btn" onclick="checkPractice()">Check answer</button> <button class="btn secondary" onclick="nextQuestion()">Next →</button></div>
- <div class="card"><h3>Generate more with AI</h3><label>Topic</label><input id="practiceTopic" placeholder="e.g. Newton's laws"><button class="btn" onclick="generateQuestions()">Generate questions</button><div id="generatedOutput" class="note">AI-generated questions will appear here when the AI service is working.</div></div>
-</section>
-
-<section id="cbt" class="page">
- <div class="eyebrow">COMPUTER BASED PRACTICE</div><h2>CBT <span style="color:var(--cyan)">Mock</span></h2>
- <div class="card"><div class="heading" style="margin-top:0"><h3>Sample test</h3><strong id="timer">05:00</strong></div><div class="progress"><span id="timerBar" style="width:100%"></span></div><p>3 built-in sample questions · 1 mark per correct answer. Not an official full-length JEE mock.</p><div id="cbtBody">Press Start when ready.</div><button id="startTest" class="btn" onclick="startTest()">Start mock</button> <button id="submitTest" class="btn secondary" onclick="submitTest()" style="display:none">Submit test</button><p id="testResult"></p></div>
+ <div class="eyebrow">JEE MAIN PRACTICE</div><h2>Practice <span style="color:var(--cyan)">Zone</span></h2>
+ <p>These are sample questions, not official PYQs.</p>
+ <div class="card"><div id="qCount" class="status"></div><h3 id="qText"></h3><div id="options"></div><p id="feedback"></p><button id="checkAnswer" class="btn" onclick="checkPractice()">Check answer</button> <button class="btn secondary" onclick="nextQuestion()">Next →</button></div>
+ <div class="card"><h3>Generate more with AI</h3><label>Topic</label><input id="practiceTopic" placeholder="e.g. Newton's laws"><button class="btn" onclick="generateQuestions()">Generate questions</button><div id="generatedOutput" class="note">AI-generated practice requires a working AI service.</div></div>
 </section>
 
 <section id="goals" class="page">
  <div class="eyebrow">DAILY CONSISTENCY</div><h2>Daily <span style="color:var(--cyan)">Goals</span></h2>
- <div class="card"><div id="goalList"></div><div class="progress"><span id="goalBar"></span></div><p id="goalSummary"></p><button class="btn secondary" onclick="resetGoals()">Reset goals</button></div>
+ <div class="card"><div id="goalList"></div><div style="height:7px;background:#29354b;border-radius:10px;overflow:hidden"><div id="goalBar" style="height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div><p id="goalSummary"></p><button class="btn secondary" onclick="resetGoals()">Reset goals</button></div>
 </section>
 </div>
 
@@ -189,20 +155,17 @@ footer{text-align:center;color:#657493;font-size:10px;padding:15px}
  <button class="nav" data-id="practice" onclick="go('practice')"><span>⚡</span>Practice</button>
  <button class="nav" data-id="goals" onclick="go('goals')"><span>◎</span>Goals</button>
 </nav>
-<div id="toast" class="toast" role="status"></div>
 
 <script>
 "use strict";
-
-/* Keep the existing Worker endpoint and manifest path. */
 const API_URL="https://quiet-feather-9c7b.yji461392.workers.dev/";
-const STORE="ai-study-3d-progress-v2";
+const STORE="ai-study-3d-premium-progress";
 const qs=[
  {q:"What is the SI unit of force?",o:["Joule","Newton","Watt","Pascal"],a:1,e:"Force ka SI unit Newton (N) hai."},
  {q:"If f(x) = 2x + 3, what is f(2)?",o:["5","6","7","8"],a:2,e:"f(2) = 2 × 2 + 3 = 7."},
  {q:"Which particle has a negative charge?",o:["Proton","Neutron","Electron","Photon"],a:2,e:"Electron par negative electric charge hota hai."}
 ];
-let qi=0,choice=null,checked=false,testIndex=0,testAnswers=[],testRunning=false,testEnded=false,seconds=300,timerId=null,busy=false;
+let qi=0,choice=null,checked=false,busy=false;
 
 function go(id){
  const target=document.getElementById(id);if(!target)return;
@@ -212,129 +175,74 @@ function go(id){
  window.scrollTo(0,0);
  if(id==="practice")renderPractice();
  if(id==="goals")renderGoals();
- if(id==="cbt"&&!testRunning&&!testEnded)document.getElementById("cbtBody").textContent="Press Start when ready.";
  updateStats();
 }
-function toast(s){const t=document.getElementById("toast");t.textContent=s;t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",2500)}
 function loadData(){
  try{let d=JSON.parse(localStorage.getItem(STORE)||"{}");if(d.date!==new Date().toLocaleDateString())d={...d,goals:[false,false,false],date:new Date().toLocaleDateString()};return {done:Number(d.done)||0,tests:Number(d.tests)||0,goals:Array.isArray(d.goals)?d.goals:[false,false,false],date:d.date}}catch(e){return {done:0,tests:0,goals:[false,false,false],date:new Date().toLocaleDateString()}}
 }
 function saveData(d){try{localStorage.setItem(STORE,JSON.stringify(d))}catch(e){}}
 function updateStats(){const d=loadData();document.getElementById("doneStat").textContent=d.done;document.getElementById("goalStat").textContent=d.goals.filter(Boolean).length+"/3";document.getElementById("testStat").textContent=d.tests}
-function recordDone(){const d=loadData();d.done++;saveData(d);updateStats()}
-function addMsg(text,who="ai",error=false){const box=document.getElementById("chat"),el=document.createElement("div");el.className="msg "+who+(error?" error":"");el.textContent=text;box.appendChild(el);box.scrollTop=box.scrollHeight;return el}
+function toast(s){alert(s)}
 function prefill(t){document.getElementById("question").value=t;document.getElementById("question").focus()}
-function promptFor(text,subject){return "You are a reliable JEE Main study tutor. Subject: "+subject+". Explain in simple Hinglish when appropriate. Be accurate; show steps and formulas; do not claim invented questions are official PYQs. Request: "+text}
+function addMsg(text,who="ai"){const box=document.getElementById("chat"),el=document.createElement("div");el.className="msg "+who;el.textContent=text;box.appendChild(el);box.scrollTop=box.scrollHeight;return el}
+function promptFor(text,subject){return "You are a reliable JEE Main study tutor. Subject: "+subject+". Explain in simple Hinglish when useful. Show steps and formulas. Do not call invented questions official PYQs. Request: "+text}
 async function fetchAI(text,subject){
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),35000);
  try{
-  /* Existing integration shape retained: Worker expects {topic: ...}. */
-  const response=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({topic:promptFor(text,subject)}),signal:controller.signal});
-  const body=await response.text();let data=null;try{data=JSON.parse(body)}catch(e){}
-  if(!response.ok){let msg="HTTP "+response.status+" "+response.statusText;if(body)msg+="\n"+body.slice(0,700);throw new Error(msg)}
-  if(data){
-   if(typeof data.answer==="string"&&data.answer.trim())return data.answer;
-   if(typeof data.response==="string"&&data.response.trim())return data.response;
-   if(typeof data.message==="string"&&data.message.trim())return data.message;
-   if(data.error)throw new Error(typeof data.error==="string"?data.error:JSON.stringify(data.error));
-  }
-  throw new Error("Worker response mein answer/response/message field nahi mili. Body: "+(body||"(empty)").slice(0,500));
+  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({topic:promptFor(text,subject)}),signal:controller.signal});
+  const body=await r.text();let d=null;try{d=JSON.parse(body)}catch(e){}
+  if(!r.ok)throw new Error("HTTP "+r.status+": "+body.slice(0,350));
+  if(d){for(const k of ["answer","response","message"])if(typeof d[k]==="string"&&d[k].trim())return d[k];if(d.error)throw new Error(typeof d.error==="string"?d.error:JSON.stringify(d.error))}
+  throw new Error("AI response format unexpected: "+body.slice(0,250));
+ }catch(e){
+  if(e.name==="AbortError")throw new Error("AI request timed out.");
+  throw e;
  }finally{clearTimeout(timeout)}
 }
-function explainError(error){
- const s=String(error.message||error);
- if(s.includes("502"))return "502 Bad Gateway: Worker ya upstream AI provider fail hua. Cloudflare Worker logs aur provider response check karna hoga.";
- if(s.includes("429"))return "429 Rate limit: thodi der baad try karo aur provider usage limits check karo.";
- if(s.includes("401")||s.includes("403"))return "Access/authentication error: Worker ke credentials aur permissions check karne honge. API key HTML mein mat rakho.";
- if(s.includes("AbortError"))return "Request timeout: AI service ne 35 seconds mein response nahi diya.";
- if(s.includes("Failed to fetch")||s.includes("NetworkError"))return "Network/CORS request fail hui. Internet aur Worker CORS settings check karo.";
- return "AI request failed:\n"+s;
-}
+function friendlyError(e){const s=String(e.message||e);if(s.includes("502"))return "AI server returned 502. Worker ya AI provider ko check karna hoga.";if(s.includes("429"))return "AI usage limit reached. Thodi der baad try karo.";if(s.includes("401")||s.includes("403"))return "Server authentication error. Credentials server settings mein check honge.";if(s.includes("Failed to fetch"))return "Network ya CORS error. Internet aur Worker settings check karo.";return "AI request failed: "+s}
 async function askAI(){
  const input=document.getElementById("question"),text=input.value.trim(),btn=document.getElementById("send");
  if(busy)return;if(!text){toast("Pehle question likho.");return}
- busy=true;btn.disabled=true;btn.textContent="...";addMsg(text,"user");input.value="";
- const thinking=addMsg("AI Teacher se connect ho raha hoon…");document.getElementById("aiStatus").textContent="Request in progress…";
- try{const answer=await fetchAI(text,document.getElementById("subject").value);thinking.remove();addMsg(answer);document.getElementById("aiStatus").textContent="Answer received."}
- catch(e){thinking.remove();const message=explainError(e);addMsg(message,"ai",true);document.getElementById("aiStatus").textContent=message}
- finally{busy=false;btn.disabled=false;btn.textContent="Send ↑"}
+ busy=true;btn.disabled=true;addMsg(text,"user");input.value="";
+ const thinking=addMsg("AI se connect ho raha hoon…");document.getElementById("aiStatus").textContent="Request in progress";
+ try{thinking.remove();addMsg(await fetchAI(text,document.getElementById("subject").value));document.getElementById("aiStatus").textContent="Answer received."}
+ catch(e){thinking.remove();const m=friendlyError(e);addMsg(m);document.getElementById("aiStatus").textContent=m}
+ finally{busy=false;btn.disabled=false}
 }
 document.getElementById("question").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();askAI()}});
 async function checkWorker(){
- document.getElementById("aiStatus").textContent="Checking GET endpoint…";
- try{const r=await fetch(API_URL,{method:"GET",headers:{"Accept":"application/json"}});const t=await r.text();document.getElementById("aiStatus").textContent="GET returned HTTP "+r.status+". "+t.slice(0,180)+" — GET success does not guarantee AI POST success."}
- catch(e){document.getElementById("aiStatus").textContent="GET check failed: "+explainError(e)+" Some Workers may not support GET."}
+ const s=document.getElementById("aiStatus");s.textContent="Checking connection…";
+ try{const r=await fetch(API_URL,{method:"GET"});s.textContent="GET status: "+r.status+". This does not guarantee that AI POST works."}
+ catch(e){s.textContent=friendlyError(e)}
 }
-async function outputAI(target,text,subject){
- const el=document.getElementById(target);el.textContent="Generating…";
- try{el.textContent=await fetchAI(text,subject)}catch(e){el.textContent=explainError(e)}
+async function outputAI(id,text,subject){
+ const el=document.getElementById(id);el.textContent="Generating…";
+ try{el.textContent=await fetchAI(text,subject)}catch(e){el.textContent=friendlyError(e)}
 }
-function generateNotes(){
- const subject=document.getElementById("noteSubject").value,chapter=document.getElementById("noteChapter").value.trim(),type=document.getElementById("noteType").value;
- if(!chapter){toast("Chapter name likho.");return}
- outputAI("notesOutput","Create "+type+" for JEE Main. Chapter: "+chapter+". Organize with headings, definitions, formulas, examples and common mistakes. Clearly state anything uncertain.",subject);
-}
-function generateShort(){
- const subject=document.getElementById("shortSubject").value,chapter=document.getElementById("shortChapter").value.trim();
- if(!chapter){toast("Chapter name likho.");return}
- outputAI("shortOutput","Create concise JEE Main revision short notes for chapter "+chapter+". Use key definitions, formula list, conditions, quick reminders and common traps. Keep it easy to revise.",subject);
-}
-function visualExplain(){
- const topic=document.getElementById("visualTopic").value;
- outputAI("visualOutput","Explain "+topic+" for JEE Main in simple language. Include a mental visualisation, important formulae and one example. Do not claim the current rotating cube is a scientific simulation.", "JEE Main Physics / interdisciplinary");
-}
-function makePYQPractice(){
- const subject=document.getElementById("pyqSubject").value,chapter=document.getElementById("pyqChapter").value.trim();
- if(!chapter){toast("Chapter name likho.");return}
- document.getElementById("pyqInfo").textContent="Request ready: "+subject+" / "+chapter+". AI-created questions will not be labelled as official PYQs. Verified PYQs need source papers and answer-key validation.";
- document.getElementById("practiceTopic").value=chapter;
-}
-async function generateQuestions(){
- const topic=document.getElementById("practiceTopic").value.trim();if(!topic){toast("Topic likho.");return}
- await outputAI("generatedOutput","Create 5 JEE Main style MCQs on "+topic+". Give four options, correct answer and a short solution. Label these as AI-generated practice, NOT official PYQs.","JEE Main");
-}
+function generateNotes(){const s=document.getElementById("noteSubject").value,c=document.getElementById("noteChapter").value.trim(),t=document.getElementById("noteType").value;if(!c)return toast("Chapter name likho.");outputAI("notesOutput","Create "+t+" for JEE Main chapter "+c+". Use headings, definitions, formulas, examples and common mistakes.","JEE Main "+s)}
+function generateShort(){const s=document.getElementById("shortSubject").value,c=document.getElementById("shortChapter").value.trim();if(!c)return toast("Chapter name likho.");outputAI("shortOutput","Create concise revision notes for "+c+". Include important formulas, concepts, conditions and common traps.","JEE Main "+s)}
+function visualExplain(){outputAI("visualOutput","Explain "+document.getElementById("visualTopic").value+" for JEE Main with a simple visualisation, formulas and one example.","JEE Main")}
+function generateQuestions(){const t=document.getElementById("practiceTopic").value.trim();if(!t)return toast("Topic likho.");outputAI("generatedOutput","Create 5 JEE Main style MCQs on "+t+". Give four options, answers and short solutions. Clearly label them AI-generated, not official PYQs.","JEE Main")}
 function renderPractice(){
- const q=qs[qi];document.getElementById("qCount").textContent="Sample question "+(qi+1)+" of "+qs.length;
- document.getElementById("qText").textContent=q.q;const box=document.getElementById("options");box.innerHTML="";
- q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>{if(checked)return;choice=i;box.querySelectorAll("button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")};box.appendChild(b)});
+ const q=qs[qi];document.getElementById("qCount").textContent="Sample question "+(qi+1)+" of "+qs.length;document.getElementById("qText").textContent=q.q;
+ const box=document.getElementById("options");box.innerHTML="";
+ q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>{if(checked)return;choice=i;box.querySelectorAll("button").forEach(x=>x.style.outline="");b.style.outline="2px solid var(--blue)"};box.appendChild(b)});
  document.getElementById("feedback").textContent="";document.getElementById("checkAnswer").disabled=false;choice=null;checked=false;
 }
 function checkPractice(){
- if(checked)return;if(choice===null){toast("Ek option choose karo.");return}checked=true;recordDone();
- const q=qs[qi],buttons=document.querySelectorAll("#options button");buttons[q.a].classList.add("correct");if(choice!==q.a)buttons[choice].classList.add("wrong");
+ if(checked)return;if(choice===null)return toast("Ek option choose karo.");checked=true;
+ const d=loadData();d.done++;saveData(d);updateStats();const q=qs[qi],buttons=document.querySelectorAll("#options button");
+ buttons[q.a].classList.add("correct");if(choice!==q.a)buttons[choice].classList.add("wrong");
  document.getElementById("feedback").textContent=(choice===q.a?"Correct! ":"Incorrect. ")+q.e;document.getElementById("checkAnswer").disabled=true;
 }
 function nextQuestion(){qi=(qi+1)%qs.length;renderPractice()}
-function startTest(){
- testIndex=0;testAnswers=[];testRunning=true;testEnded=false;seconds=300;
- document.getElementById("startTest").style.display="none";document.getElementById("submitTest").style.display="inline-block";document.getElementById("testResult").textContent="";
- renderTestQuestion();updateTimer();clearInterval(timerId);timerId=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)submitTest()},1000);
-}
-function renderTestQuestion(){
- const q=qs[testIndex],body=document.getElementById("cbtBody");body.innerHTML="";
- const title=document.createElement("h3");title.textContent="Question "+(testIndex+1)+" of "+qs.length+": "+q.q;body.appendChild(title);
- q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;if(testAnswers[testIndex]===i)b.classList.add("selected");b.onclick=()=>{testAnswers[testIndex]=i;renderTestQuestion()};body.appendChild(b)});
- const controls=document.createElement("div");controls.className="pills";
- const prev=document.createElement("button");prev.className="btn secondary";prev.textContent="← Previous";prev.disabled=testIndex===0;prev.onclick=()=>{testIndex--;renderTestQuestion()};
- const next=document.createElement("button");next.className="btn secondary";next.textContent=testIndex===qs.length-1?"Back to first":"Next →";next.onclick=()=>{testIndex=(testIndex+1)%qs.length;renderTestQuestion()};controls.append(prev,next);body.appendChild(controls);
-}
-function updateTimer(){document.getElementById("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");document.getElementById("timerBar").style.width=(seconds/300*100)+"%"}
-function submitTest(){
- if(!testRunning)return;testRunning=false;testEnded=true;clearInterval(timerId);
- const score=qs.reduce((n,q,i)=>n+(testAnswers[i]===q.a?1:0),0),d=loadData();d.tests++;saveData(d);updateStats();
- document.getElementById("cbtBody").textContent="Test submitted.";document.getElementById("submitTest").style.display="none";document.getElementById("startTest").style.display="inline-block";document.getElementById("startTest").textContent="Try again";document.getElementById("testResult").textContent="Score: "+score+" / "+qs.length+". This is a sample test, not an official full JEE mock.";
-}
 function renderGoals(){
  const d=loadData(),names=["Study for 25 minutes","Solve practice questions","Revise one chapter"],box=document.getElementById("goalList");box.innerHTML="";
- names.forEach((name,i)=>{const label=document.createElement("label");label.style.display="flex";label.style.alignItems="center";label.style.gap="10px";label.style.padding="12px 0";const cb=document.createElement("input");cb.type="checkbox";cb.style.width="20px";cb.checked=!!d.goals[i];cb.onchange=()=>{const fresh=loadData();fresh.goals[i]=cb.checked;saveData(fresh);renderGoals();updateStats()};const span=document.createElement("span");span.textContent=name;label.append(cb,span);box.appendChild(label)});
- const n=d.goals.filter(Boolean).length;document.getElementById("goalBar").style.width=(n/3*100)+"%";document.getElementById("goalSummary").textContent=n+" of 3 goals completed.";
+ names.forEach((name,i)=>{const label=document.createElement("label");label.style.display="flex";label.style.alignItems="center";label.style.gap="10px";label.style.padding="12px 0";const cb=document.createElement("input");cb.type="checkbox";cb.style.width="20px";cb.checked=!!d.goals[i];cb.onchange=()=>{const fresh=loadData();fresh.goals[i]=cb.checked;saveData(fresh);renderGoals();updateStats()};const span=document.createElement("span");span.textContent=name;label.append(cb,span);box.append(label)});
+ const n=d.goals.filter(Boolean).length;document.getElementById("goalBar").style.width=(n/3*100)+"%";document.getElementById("goalSummary").textContent=n+" of 3 goals completed today.";
 }
 function resetGoals(){const d=loadData();d.goals=[false,false,false];saveData(d);renderGoals();updateStats()}
-function copyText(id){
- const text=document.getElementById(id).innerText;
- if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>toast("Copied!")).catch(()=>toast("Text select karke copy karo."));
- else toast("Text ko long-press karke copy karo.");
-}
+function copyText(id){const text=document.getElementById(id).innerText;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>toast("Copied!")).catch(()=>toast("Text select karke copy karo."));else toast("Text ko long-press karke copy karo.")}
 renderPractice();renderGoals();updateStats();
 </script>
 </body>

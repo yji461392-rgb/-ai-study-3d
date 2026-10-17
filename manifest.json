@@ -1,0 +1,13 @@
+
+{
+  "id": "/-ai-study-3d/",
+  "name": "AI STUDY 3D",
+  "short_name": "AI Study",
+  "description": "AI-powered learning platform for school students, JEE and NEET preparation, notes, quizzes and step-by-step question solving.",
+  "start_url": "/-ai-study-3d/",
+  "scope": "/-ai-study-3d/",
+  "display": "standalone",
+  "background_color": "#071018",
+  "theme_color": "#071018",
+  "orientation": "portrait"
+}

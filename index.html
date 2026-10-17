@@ -5,677 +5,505 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#080b18">
-<title>AI Study 3D | JEE CBT</title>
-
-<!-- PDF text extraction library; internet required on first load -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
+<title>AI Study 3D | Made by Ankit</title>
 <style>
-:root{--bg:#080b18;--panel:#11182d;--panel2:#192342;--blue:#6d85ff;--cyan:#44e8ff;--purple:#a16aff;--text:#f4f6ff;--muted:#9ba7c6;--border:#ffffff18;--green:#42dca0;--red:#ff718a;--yellow:#ffcc68}
+:root{
+  --bg:#080b18;--panel:#11182d;--blue:#6d85ff;
+  --cyan:#44e8ff;--purple:#a16aff;--text:#f4f6ff;
+  --muted:#9ba7c6;--border:#ffffff20;
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 20% 0%,#202b5a,transparent 40%),var(--bg);color:var(--text);font-family:system-ui,Arial,sans-serif;padding-bottom:85px}
-button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit}button:disabled{opacity:.45;cursor:not-allowed}
-header{display:flex;justify-content:space-between;align-items:center;padding:17px;gap:10px}
-.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#5787ff,#a05bff);font-size:23px;box-shadow:0 0 22px #7b73ff44}
-.brand strong{font-size:15px;letter-spacing:.5px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
-main{max-width:850px;margin:auto;padding:0 14px}.page{display:none}.page.active{display:block;animation:fade .2s}@keyframes fade{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}
-.panel,.card,.stat{background:linear-gradient(145deg,#151e37,#0e1427);border:1px solid var(--border);border-radius:19px;padding:16px;margin-bottom:13px}
-.hero{padding:23px;background:linear-gradient(130deg,#1d3266,#302052 70%,#10192f);border:1px solid #9eafff30;border-radius:24px;margin-bottom:14px}
-.eyebrow{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
-h1{font-size:29px;line-height:1.2;margin:10px 0}h2{font-size:20px;margin:8px 0}h3{font-size:15px;margin:8px 0}
-.gradient{background:linear-gradient(90deg,#51eaff,#9d8bff,#d7a2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+body{
+  margin:0;padding-bottom:85px;color:var(--text);
+  background:radial-gradient(ellipse at top,#202b5a,transparent 45%),var(--bg);
+  font-family:system-ui,Arial,sans-serif
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;color:inherit}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:17px;gap:10px
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{
+  width:44px;height:44px;display:grid;place-items:center;
+  border-radius:15px;background:linear-gradient(135deg,#5787ff,#a05bff);
+  font-size:24px;box-shadow:0 0 22px #7b73ff44
+}
+.brand strong{font-size:15px;letter-spacing:.5px}
+.brand small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+main{max-width:760px;margin:auto;padding:0 14px}
+.page{display:none}
+.page.active{display:block;animation:fade .2s}
+@keyframes fade{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}
+.panel,.card,.stat{
+  background:linear-gradient(145deg,#151e37,#0e1427);
+  border:1px solid var(--border);border-radius:19px;padding:16px;margin-bottom:13px
+}
+.hero{
+  padding:23px;background:linear-gradient(130deg,#1d3266,#302052 70%,#10192f);
+  border:1px solid #9eafff30;border-radius:24px;margin-bottom:14px
+}
+.eyebrow{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:1.8px}
+h1{font-size:29px;line-height:1.2;margin:10px 0}
+h2{font-size:21px;margin:8px 0}
+h3{font-size:15px;margin:8px 0}
 p,.muted{font-size:12px;line-height:1.7;color:var(--muted)}
+.gradient{
+  background:linear-gradient(90deg,#51eaff,#9d8bff,#d7a2ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.card{margin:0;min-height:120px}.emoji{font-size:25px}.card p{margin:7px 0 12px}
-.btn{border:0;border-radius:12px;padding:12px 15px;background:linear-gradient(100deg,#557eff,#945bff);font-weight:750}
-.btn.secondary{background:#202b4c;border:1px solid var(--border)}.btn.danger{background:#6a263c}.btn.small{padding:8px 10px;font-size:12px}
+.card{margin:0;min-height:135px}
+.emoji{font-size:26px}
+.card p{margin:7px 0 12px}
+.btn{
+  border:0;border-radius:12px;padding:12px 15px;
+  background:linear-gradient(100deg,#557eff,#945bff);font-weight:750
+}
+.btn.secondary{background:#202b4c;border:1px solid var(--border)}
+.btn.small{padding:9px 11px;font-size:12px}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 label{display:block;font-size:12px;color:#cbd3ee;margin:12px 0 6px}
-input,textarea,select{width:100%;padding:12px;border:1px solid #3b496d;border-radius:12px;background:#090f20;color:var(--text);outline:none}
-textarea{min-height:110px;resize:vertical}input[type=file]{font-size:12px}input[type=checkbox],input[type=radio]{width:auto;accent-color:#9278ff}
-.result{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;font-size:13px;background:#090f20;border:1px solid var(--border);padding:13px;border-radius:13px;margin-top:12px}
+input,textarea,select{
+  width:100%;padding:12px;border:1px solid #3b496d;border-radius:12px;
+  background:#090f20;color:var(--text);outline:none
+}
+textarea{min-height:120px;resize:vertical}
+input[type=range]{padding:5px;accent-color:#9278ff}
+.result{
+  white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.75;font-size:13px;
+  background:#090f20;border:1px solid var(--border);padding:13px;
+  border-radius:13px;margin-top:12px
+}
 .result:empty{display:none}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.stat{margin:0;padding:12px}.stat strong{font-size:20px;display:block}.stat span{font-size:10px;color:var(--muted)}
-.track{height:7px;border-radius:20px;background:#28314b;overflow:hidden;margin:10px 0}.fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));width:0%}
-.badge{display:inline-block;border:1px solid var(--border);border-radius:20px;padding:6px 9px;font-size:10px;color:#d6ddff}
-.upload{border:1px dashed #7586c8;border-radius:15px;padding:15px;background:#101831}
-.question{font-size:15px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}
-.option{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;border:1px solid var(--border);background:#121b32;border-radius:12px;padding:12px;margin-top:9px;line-height:1.55}
-.option .letter{min-width:24px;height:24px;display:grid;place-items:center;border-radius:7px;background:#27365e;font-weight:800}
-.option.selected{border-color:#8b81ff;background:#25234c}.option.correct{border-color:var(--green)}.option.wrong{border-color:var(--red)}
-.palette{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:12px}
-.qnum{min-height:38px;border:1px solid #35415f;border-radius:9px;background:#121a2d;font-size:12px}
-.qnum.answered{background:#145943;border-color:#40d8a0}.qnum.review{background:#594084;border-color:#b291ff}.qnum.both{background:#4b3c73;border-color:#b291ff}.qnum.current{outline:2px solid #f5f6ff;outline-offset:1px}
-.qnum.unanswered{background:#192137}
-.status-key{display:flex;gap:9px;flex-wrap:wrap;font-size:10px;color:var(--muted);margin-top:10px}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px}
-.cbt-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.timer{font-size:19px;font-weight:850;color:var(--cyan);font-variant-numeric:tabular-nums}
-.progress-text{font-size:11px;color:var(--muted)}
-.goal{display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);font-size:13px}.goal:last-child{border:0}
-.goal span{flex:1}.goal.done span{text-decoration:line-through;color:var(--muted)}
-.cube-scene{height:200px;display:grid;place-items:center;perspective:600px}.cube{width:90px;height:90px;position:relative;transform-style:preserve-3d;animation:spin 10s linear infinite}
-.face{position:absolute;width:90px;height:90px;display:grid;place-items:center;font-size:30px;border:2px solid #67e8ff;background:#6b72ff44;box-shadow:inset 0 0 25px #7c8cff77}
-.f1{transform:translateZ(45px)}.f2{transform:rotateY(180deg) translateZ(45px)}.f3{transform:rotateY(90deg) translateZ(45px)}.f4{transform:rotateY(-90deg) translateZ(45px)}.f5{transform:rotateX(90deg) translateZ(45px)}.f6{transform:rotateX(-90deg) translateZ(45px)}
-@keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
-.nav{position:fixed;z-index:10;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#0b1022ed;backdrop-filter:blur(15px);border-top:1px solid var(--border);padding:8px 3px calc(8px + env(safe-area-inset-bottom))}
-.nav button{flex:1;min-width:0;background:transparent;border:0;color:#9aa5c6;font-size:10px;padding:6px 1px;border-radius:10px}.nav button span{display:block;font-size:19px;margin-bottom:3px}.nav button.active{color:#c6d0ff;background:#24294b}
+.badge{border:1px solid var(--border);border-radius:20px;padding:6px 9px;font-size:10px;color:#d6ddff}
+.scene{
+  height:280px;position:relative;overflow:hidden;display:grid;place-items:center;
+  border:1px solid #ffffff25;border-radius:18px;
+  background:radial-gradient(circle,#202c59,#080b18)
+}
+.model{
+  width:180px;height:180px;position:relative;
+  transform-style:preserve-3d;animation:rotateModel 12s linear infinite
+}
+@keyframes rotateModel{
+  from{transform:rotateX(15deg) rotateY(0deg)}
+  to{transform:rotateX(375deg) rotateY(360deg)}
+}
+.core{
+  position:absolute;top:65px;left:65px;width:50px;height:50px;
+  border-radius:50%;background:radial-gradient(circle,#fff,#44e8ff 35%,#615bff 75%);
+  box-shadow:0 0 35px #44e8ff
+}
+.orbit{
+  position:absolute;top:20px;left:20px;width:140px;height:140px;
+  border:2px solid #44e8ff99;border-radius:50%
+}
+.orbit.two{border-color:#a16aff;transform:rotateX(65deg)}
+.orbit.three{border-color:#ffffff88;transform:rotateY(65deg)}
+.electron{
+  position:absolute;top:18px;left:83px;width:14px;height:14px;
+  border-radius:50%;background:white;box-shadow:0 0 15px #44e8ff
+}
+#sceneLabel{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:11px;color:#cbd3ee}
+.nav{
+  position:fixed;z-index:10;bottom:0;left:0;right:0;
+  display:flex;justify-content:space-around;background:#0b1022ed;
+  backdrop-filter:blur(15px);border-top:1px solid var(--border);
+  padding:8px 3px calc(8px + env(safe-area-inset-bottom))
+}
+.nav button{
+  flex:1;min-width:0;background:transparent;border:0;color:#9aa5c6;
+  font-size:10px;padding:6px 1px;border-radius:10px
+}
+.nav button span{display:block;font-size:19px;margin-bottom:3px}
+.nav button.active{color:#c6d0ff;background:#24294b}
 footer{text-align:center;color:var(--muted);font-size:11px;padding:24px}
-@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.palette{grid-template-columns:repeat(10,minmax(0,1fr))}}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 </head>
-
 <body>
+
 <header>
-  <div class="brand"><div class="logo">🎓</div><div><strong>AI STUDY <span class="gradient">3D</span></strong><small>YOUR PERSONAL AI TUTOR</small></div></div>
+  <div class="brand">
+    <div class="logo">🎓</div>
+    <div><strong>AI STUDY <span class="gradient">3D</span></strong>
+    <small>YOUR PERSONAL AI TUTOR</small></div>
+  </div>
   <span class="badge">JEE MAIN 2027</span>
 </header>
 
 <main>
 <section class="page active" id="home">
   <div class="hero">
-    <div class="eyebrow">✦ Your smart study space</div>
+    <div class="eyebrow">✦ YOUR SMART STUDY SPACE</div>
     <h1>Learn Smarter.<br><span class="gradient">Dream Bigger.</span></h1>
-    <p>Study, revise and practise with your personal learning workspace.</p>
-    <button class="btn" onclick="showPage('cbt')">Start JEE CBT ↗</button>
+    <p>AI learning, animated science and quick revision in one place.</p>
+    <button class="btn" onclick="showPage('tutor')">Ask Your AI Tutor ↗</button>
   </div>
-  <div class="stats">
-    <div class="stat"><strong id="statTests">0</strong><span>Tests completed</span></div>
-    <div class="stat"><strong id="statGoals">0%</strong><span>Daily goals</span></div>
-    <div class="stat"><strong id="statQuestions">0</strong><span>Questions answered</span></div>
-  </div>
+
   <h2>Explore Learning</h2>
   <div class="grid">
-    <div class="card"><div class="emoji">🖥️</div><h3>PDF to CBT</h3><p>Upload questions and start a mock test.</p><button class="btn small" onclick="showPage('cbt')">Open CBT</button></div>
-    <div class="card"><div class="emoji">🤖</div><h3>AI Teacher</h3><p>Ask your study questions.</p><button class="btn small secondary" onclick="showPage('tutor')">Open Tutor</button></div>
-    <div class="card"><div class="emoji">📝</div><h3>AI Notes</h3><p>Create and save revision notes.</p><button class="btn small secondary" onclick="showPage('notes')">Open Notes</button></div>
-    <div class="card"><div class="emoji">🧊</div><h3>3D Learning</h3><p>Explore a 3D-style learning object.</p><button class="btn small secondary" onclick="showPage('threeD')">Explore</button></div>
-    <div class="card"><div class="emoji">🎯</div><h3>Practice</h3><p>Try built-in sample questions.</p><button class="btn small secondary" onclick="showPage('practice')">Practise</button></div>
-    <div class="card"><div class="emoji">🌟</div><h3>Daily Goals</h3><p>Track your study routine.</p><button class="btn small secondary" onclick="showPage('goals')">View Goals</button></div>
+    <div class="card">
+      <div class="emoji">🤖</div><h3>AI Tutor</h3>
+      <p>Ask questions and understand concepts step by step.</p>
+      <button class="btn small" onclick="showPage('tutor')">Open Tutor</button>
+    </div>
+    <div class="card">
+      <div class="emoji">🧊</div><h3>3D Science Lab</h3>
+      <p>Explore animated science models.</p>
+      <button class="btn small secondary" onclick="showPage('threeD')">Explore 3D</button>
+    </div>
+    <div class="card">
+      <div class="emoji">📝</div><h3>AI Smart Notes</h3>
+      <p>Generate revision notes and important formulas.</p>
+      <button class="btn small secondary" onclick="showPage('notes')">Make Notes</button>
+    </div>
   </div>
-</section>
 
-<section class="page" id="cbt">
-  <div class="panel">
-    <div class="eyebrow">✦ JEE Main 2027</div>
-    <h2>PDF <span class="gradient">to CBT</span></h2>
-    <p>Upload a question PDF. The app will extract readable text and try to detect multiple-choice questions. You can review the extracted questions before starting.</p>
-
-    <label>Exam target</label>
-    <input id="examTarget" value="JEE Main 2027">
-
-    <label>Upload question PDF</label>
-    <div class="upload">
-      <input id="pdfFile" type="file" accept="application/pdf,.pdf">
-      <p id="pdfStatus">No PDF selected. Text-based PDFs work best.</p>
-      <button class="btn small" onclick="extractPDF()">Extract PDF Text</button>
-    </div>
-
-    <label>PDF text preview / edit</label>
-    <textarea id="pdfText" placeholder="Extracted PDF text will appear here. You can also paste text manually."></textarea>
-    <p class="muted">Privacy: extraction runs in your browser. The PDF is not uploaded by this feature. If you ask the AI to create extra questions, only the text prompt you send to your configured AI service is transmitted.</p>
-
-    <h3>Mock test settings</h3>
-    <div class="grid">
-      <div><label>Questions</label><input id="testCount" type="number" min="1" max="90" value="90"></div>
-      <div><label>Duration (minutes)</label><input id="testMinutes" type="number" min="1" max="180" value="180"></div>
-      <div><label>AI extra questions</label><input id="aiCount" type="number" min="0" max="30" value="10"></div>
-    </div>
-    <label><input id="useAI" type="checkbox" checked> Add AI-generated questions too</label>
+  <div class="panel" style="margin-top:13px">
+    <div class="eyebrow">✦ YOUR STUDY PLAN</div>
+    <h2>Today's Focus</h2>
+    <p>Choose one JEE topic, understand it with AI, then save your revision notes.</p>
     <div class="actions">
-      <button class="btn" onclick="prepareTest()">Prepare CBT Questions</button>
-      <button class="btn secondary" onclick="loadDemoQuestions()">Try Demo Test</button>
+      <button class="btn small" onclick="showPage('tutor')">Learn a Topic</button>
+      <button class="btn small secondary" onclick="showPage('notes')">Revise Notes</button>
     </div>
-    <div class="result" id="cbtSetupResult"></div>
-  </div>
-
-  <div class="panel hidden" id="readyPanel">
-    <div class="eyebrow">✦ Test ready</div>
-    <h2 id="readyTitle">JEE Mock Test</h2>
-    <p id="readyInfo"></p>
-    <button class="btn" onclick="startTest()">Start CBT Test →</button>
-    <p class="muted">The timer starts when you press Start. Check the questions and answers before starting.</p>
-  </div>
-
-  <div class="panel hidden" id="testPanel">
-    <div class="cbt-top">
-      <div><div class="eyebrow">Computer Based Test</div><strong id="testTitle">JEE Mock Test</strong></div>
-      <div class="timer" id="timer">180:00</div>
-    </div>
-    <div class="track"><div class="fill" id="testProgress"></div></div>
-    <div class="cbt-top"><span class="progress-text" id="qPosition">Question 1</span><span class="badge" id="subjectBadge">JEE</span></div>
-    <div class="panel" style="margin-top:13px">
-      <div class="question" id="questionText"></div>
-      <div id="options"></div>
-      <div class="result" id="questionFeedback"></div>
-      <div class="actions">
-        <button class="btn secondary" onclick="previousQuestion()">← Previous</button>
-        <button class="btn secondary" onclick="toggleReview()">☆ Mark for Review</button>
-        <button class="btn" onclick="nextQuestion()">Save & Next →</button>
-      </div>
-      <div class="actions">
-        <button class="btn secondary" onclick="clearAnswer()">Clear Response</button>
-        <button class="btn danger" onclick="confirmSubmit()">Submit Test</button>
-      </div>
-    </div>
-    <div class="panel">
-      <h3>Question Palette</h3>
-      <p class="muted">Tap any number to move to that question.</p>
-      <div class="palette" id="palette"></div>
-      <div class="status-key">
-        <span><i class="dot" style="background:#145943"></i>Answered</span>
-        <span><i class="dot" style="background:#192137"></i>Not answered</span>
-        <span><i class="dot" style="background:#594084"></i>Review</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel hidden" id="resultPanel">
-    <div class="eyebrow">✦ Test completed</div>
-    <h2>Mock Test <span class="gradient">Result</span></h2>
-    <div class="stats">
-      <div class="stat"><strong id="resScore">0</strong><span>Score</span></div>
-      <div class="stat"><strong id="resCorrect">0</strong><span>Correct</span></div>
-      <div class="stat"><strong id="resAccuracy">0%</strong><span>Accuracy</span></div>
-    </div>
-    <p id="resultSummary"></p>
-    <div class="actions">
-      <button class="btn" onclick="startReview()">Review Answers</button>
-      <button class="btn secondary" onclick="backToSetup()">New Test</button>
-    </div>
-    <div id="reviewList"></div>
   </div>
 </section>
 
 <section class="page" id="tutor">
   <div class="panel">
-    <div class="eyebrow">✦ Personal AI assistant</div><h2>AI Teacher</h2>
-    <label>Subject</label><select id="tutorSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>Biology</option><option>General</option></select>
-    <label>Your question</label><textarea id="tutorPrompt" placeholder="Explain a topic step by step..."></textarea>
-    <button class="btn" onclick="askTutor()">Ask AI ✦</button>
-    <div class="result" id="tutorResult"></div>
-  </div>
-</section>
+    <div class="eyebrow">✦ PERSONAL AI ASSISTANT</div>
+    <h2>AI <span class="gradient">Tutor</span></h2>
+    <p>Ask a JEE concept or paste a problem for a step-by-step explanation.</p>
 
-<section class="page" id="notes">
-  <div class="panel">
-    <div class="eyebrow">✦ Study organiser</div><h2>Smart Notes</h2>
-    <label>Topic</label><input id="notesTopic" placeholder="e.g. Laws of Motion">
-    <label>Subject</label><select id="notesSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>Biology</option></select>
-    <div class="actions"><button class="btn" onclick="generateNotes()">Generate Notes</button><button class="btn secondary" onclick="saveNotes()">Save Notes</button><button class="btn secondary" onclick="loadNotes()">Load Notes</button></div>
-    <label>Your notes</label><textarea id="notesText" placeholder="Write or generate notes..."></textarea>
-    <button class="btn secondary" onclick="exportNotes()">Export Text</button>
-    <div class="result" id="notesResult"></div>
+    <label>Subject</label>
+    <select id="tutorSubject">
+      <option>Physics</option><option>Chemistry</option>
+      <option>Mathematics</option><option>Biology</option><option>General</option>
+    </select>
+
+    <label>Explanation style</label>
+    <select id="tutorStyle">
+      <option value="simple Hinglish">Simple Hinglish</option>
+      <option value="simple English">Simple English</option>
+      <option value="exam-focused">Exam-focused</option>
+    </select>
+
+    <label>Your question</label>
+    <textarea id="tutorPrompt" placeholder="e.g. Explain Newton's laws with examples..."></textarea>
+    <div class="actions">
+      <button class="btn" onclick="askTutor()">Ask AI ✦</button>
+      <button class="btn secondary" onclick="clearTutor()">Clear</button>
+    </div>
+    <div class="result" id="tutorResult" aria-live="polite"></div>
   </div>
 </section>
 
 <section class="page" id="threeD">
   <div class="panel">
-    <div class="eyebrow">✦ Visual learning lab</div><h2>3D Learning</h2>
-    <div class="cube-scene"><div class="cube"><div class="face f1">⚛️</div><div class="face f2">🧠</div><div class="face f3">π</div><div class="face f4">∑</div><div class="face f5">✦</div><div class="face f6">∞</div></div></div>
-    <label>Concept</label><input id="threeDTopic" placeholder="e.g. Vectors, atoms, calculus">
-    <button class="btn" onclick="explain3D()">Explain Concept</button>
-    <div class="result" id="threeDResult"></div>
-    <p class="muted">The rotating object is a visual demo, not a scientific 3D simulator.</p>
+    <div class="eyebrow">✦ INTERACTIVE SCIENCE LAB</div>
+    <h2>3D <span class="gradient">Learning</span></h2>
+    <p>Select a model and watch its animation.</p>
+
+    <label>Choose a model</label>
+    <select id="modelType" onchange="changeModel()">
+      <option value="atom">Atom</option>
+      <option value="solar">Solar System</option>
+      <option value="molecule">Molecule</option>
+      <option value="cube">3D Geometry Cube</option>
+    </select>
+
+    <div class="scene">
+      <div id="scienceModel" class="model">
+        <div class="core"></div>
+        <div class="orbit"></div>
+        <div class="orbit two"></div>
+        <div class="orbit three"></div>
+        <div class="electron"></div>
+      </div>
+      <div id="sceneLabel">ATOM · ILLUSTRATIVE MODEL</div>
+    </div>
+
+    <label>Animation speed</label>
+    <input id="scienceSpeed" type="range" min="4" max="20" value="12"
+      oninput="setSpeed()">
+
+    <label>Concept to understand</label>
+    <input id="threeDTopic" placeholder="e.g. Atomic structure, vectors, force">
+
+    <button class="btn" style="margin-top:12px" onclick="explain3D()">Explain with AI ✦</button>
+    <div class="result" id="threeDResult" aria-live="polite"></div>
+    <p class="muted">These are educational animated illustrations, not scale-accurate scientific simulations.</p>
   </div>
 </section>
 
-<section class="page" id="practice">
-  <div class="panel"><div class="eyebrow">✦ Sample questions</div><h2>Quick Practice</h2><p>These are sample questions, not official JEE questions.</p><div id="samplePractice"></div><button class="btn secondary" onclick="renderSample()">Restart Practice</button></div>
-</section>
+<section class="page" id="notes">
+  <div class="panel">
+    <div class="eyebrow">✦ JEE MAIN 2027</div>
+    <h2>AI Smart <span class="gradient">Notes</span></h2>
+    <p>Generate concise revision notes, formulas and examples.</p>
 
-<section class="page" id="goals">
-  <div class="panel"><div class="eyebrow">✦ Daily routine</div><h2>Daily Goals</h2>
-    <div class="stat"><strong id="goalPercent">0%</strong><span>DAILY COMPLETION</span><div class="track"><div class="fill" id="goalFill"></div></div></div>
-    <div id="goalList"></div>
-    <button class="btn secondary" onclick="resetGoals()">Reset Goals</button>
+    <label>Topic</label>
+    <input id="notesTopic" placeholder="e.g. Laws of Motion">
+
+    <label>Subject</label>
+    <select id="notesSubject">
+      <option>Physics</option><option>Chemistry</option>
+      <option>Mathematics</option><option>Biology</option>
+    </select>
+
+    <label>Notes format</label>
+    <select id="notesFormat">
+      <option value="complete revision notes">Revision Notes</option>
+      <option value="formula sheet with symbol meanings">Formula Sheet</option>
+      <option value="short last-minute revision notes">Quick Revision</option>
+      <option value="concepts with worked examples">Examples & Concepts</option>
+    </select>
+
+    <div class="actions">
+      <button class="btn" onclick="generateNotes()">Generate Notes ✦</button>
+      <button class="btn secondary" onclick="saveNotes()">Save</button>
+      <button class="btn secondary" onclick="loadNotes()">Load</button>
+    </div>
+
+    <label>Your notes (editable)</label>
+    <textarea id="notesText" style="min-height:260px" placeholder="Your generated notes will appear here. You can edit them too."></textarea>
+
+    <div class="actions">
+      <button class="btn secondary" onclick="exportNotes()">Export Text</button>
+      <button class="btn secondary" onclick="clearNotes()">Clear Notes</button>
+    </div>
+    <div class="result" id="notesResult" aria-live="polite"></div>
   </div>
 </section>
 
-<footer>AI STUDY 3D · Learn • Practice • Grow<br><br><span class="gradient">✦ Made by Ankit ✦</span></footer>
+<footer>
+  AI STUDY 3D · Learn • Understand • Revise<br><br>
+  <span class="gradient">✦ Made by Ankit ✦</span>
+</footer>
 </main>
 
 <nav class="nav">
   <button class="active" data-page="home" onclick="showPage('home',this)"><span>⌂</span>Home</button>
-  <button data-page="cbt" onclick="showPage('cbt',this)"><span>▦</span>CBT</button>
   <button data-page="tutor" onclick="showPage('tutor',this)"><span>✧</span>AI Tutor</button>
+  <button data-page="threeD" onclick="showPage('threeD',this)"><span>🧊</span>3D Lab</button>
   <button data-page="notes" onclick="showPage('notes',this)"><span>▤</span>Notes</button>
-  <button data-page="goals" onclick="showPage('goals',this)"><span>♧</span>Goals</button>
 </nav>
 
 <script>
+/* Existing Cloudflare AI Worker */
 const API_URL="https://quiet-feather-9c7b.yji461392.workers.dev/";
-const GOALS_KEY="ai-study-3d-goals-v2";
-const NOTES_KEY="ai-study-3d-notes-v2";
-const STATS_KEY="ai-study-3d-stats-v2";
-
-let pdfQuestions=[];
-let testQuestions=[];
-let answers={};
-let reviewMarks={};
-let current=0;
-let secondsLeft=180*60;
-let timerHandle=null;
-let testStarted=false;
-let testFinished=false;
-let reviewMode=false;
-let completedTests=0;
-let totalAnswered=0;
+const NOTES_KEY="ai-study-3d-smart-notes-v3";
 
 function $(id){return document.getElementById(id)}
+
 function showPage(id,button){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   $(id).classList.add("active");
   document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
-  const btn=button||document.querySelector('.nav button[data-page="'+id+'"]');
-  if(btn)btn.classList.add("active");
+  const navButton=button||document.querySelector('.nav button[data-page="'+id+'"]');
+  if(navButton)navButton.classList.add("active");
   window.scrollTo({top:0,behavior:"smooth"});
 }
-function safeNumber(id,min,max,fallback){
-  const n=Number($(id).value);
-  return Number.isFinite(n)?Math.max(min,Math.min(max,Math.floor(n))):fallback;
-}
 
-/* PDF extraction */
-async function extractPDF(){
-  const file=$("pdfFile").files[0];
-  if(!file){$("pdfStatus").textContent="Please select a PDF first.";return}
-  if(file.size>25*1024*1024){$("pdfStatus").textContent="PDF is too large. Please choose a file under 25 MB.";return}
-  if(!window.pdfjsLib){$("pdfStatus").textContent="PDF library could not load. Check your internet connection and reload the app.";return}
-  $("pdfStatus").textContent="Reading PDF...";
-  $("cbtSetupResult").textContent="";
-  pdfQuestions=[];
-  try{
-    pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-    const buffer=await file.arrayBuffer();
-    const doc=await pdfjsLib.getDocument({data:buffer}).promise;
-    let allText="";
-    for(let p=1;p<=doc.numPages;p++){
-      const page=await doc.getPage(p);
-      const content=await page.getTextContent();
-      const lines=content.items.map(item=>item.str).filter(Boolean);
-      allText+="\n\n[Page "+p+"]\n"+lines.join(" ");
-      $("pdfStatus").textContent="Extracting page "+p+" of "+doc.numPages+"...";
-    }
-    $("pdfText").value=allText.trim();
-    pdfQuestions=parseQuestions(allText);
-    $("pdfStatus").textContent="Extracted "+doc.numPages+" pages. Detected "+pdfQuestions.length+" possible MCQs.";
-    $("cbtSetupResult").textContent=pdfQuestions.length
-      ?"Questions detected. Check the text preview and prepare your CBT."
-      :"Text extracted, but automatic MCQ detection found none. This can happen with scanned PDFs or unusual layouts. Paste/edit the text or use the demo test.";
-  }catch(e){
-    $("pdfStatus").textContent="Could not read PDF: "+e.message;
-  }
-}
-
-/* Best-effort parser for text-based MCQ PDFs. Review results before the test. */
-function parseQuestions(text){
-  const normalized=text
-    .replace(/\r/g,"\n")
-    .replace(/[ \t]+/g," ")
-    .replace(/([A-D])\s*[\)\.]\s+/g,"\n$1) ")
-    .replace(/\n{3,}/g,"\n\n");
-  const starts=[...normalized.matchAll(/(?:^|\n)\s*(?:(?:Q(?:uestion)?\.?\s*)?(\d{1,3})\s*[\)\.:]\s+)/g)];
-  const found=[];
-  for(let i=0;i<starts.length;i++){
-    const start=starts[i].index+(starts[i][0].startsWith("\n")?1:0);
-    const end=i+1<starts.length?starts[i+1].index:normalized.length;
-    const block=normalized.slice(start,end).trim();
-    const q=block.replace(/^(?:(?:Q(?:uestion)?\.?\s*)?\d{1,3}\s*[\)\.:]\s*)/,"").trim();
-    const matches=[...q.matchAll(/(?:^|\n)\s*([A-D])\s*[\)\.]\s*(.+?)(?=(?:\n\s*[A-D]\s*[\)\.])|(?:\n\s*(?:Answer|Ans|Solution)\s*[:\-])|$)/gis)];
-    if(matches.length>=4){
-      const opts={};
-      matches.forEach(m=>opts[m[1].toUpperCase()]=m[2].trim().replace(/\n/g," "));
-      if(["A","B","C","D"].every(k=>opts[k])){
-        const firstOption=matches[0].index;
-        const prompt=q.slice(0,firstOption).trim();
-        const answerMatch=q.match(/(?:Answer|Ans)\s*[:\-]\s*([A-D])/i);
-        found.push({
-          q:prompt||"Question "+(found.length+1),
-          options:[opts.A,opts.B,opts.C,opts.D],
-          answer:answerMatch?answerMatch[1].toUpperCase().charCodeAt(0)-65:null,
-          explanation:"Answer key not detected reliably. Check your source PDF."
-        });
-      }
-    }
-  }
-  return found;
-}
-
-/* AI helper: Worker must support the topic JSON contract and return answer/response/message. */
 async function askWorker(topic){
-  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({topic})});
-  if(!r.ok)throw new Error("AI service status "+r.status);
-  const data=await r.json();
+  const response=await fetch(API_URL,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({topic})
+  });
+  if(!response.ok)throw new Error("AI service status "+response.status);
+  const data=await response.json();
   const answer=data.answer||data.response||data.message;
-  if(typeof answer!=="string"||!answer.trim())throw new Error("No text answer returned by AI service.");
-  return answer;
+  if(typeof answer!=="string"||!answer.trim()){
+    throw new Error("No text answer returned by AI service.");
+  }
+  return answer.trim();
 }
 
-function parseAIQuestions(text){
-  let data;
+async function runAI(prompt,resultId){
+  const output=$(resultId);
+  output.textContent="Thinking... Please wait.";
   try{
-    const cleaned=text.replace(/```(?:json)?/gi,"").replace(/```/g,"").trim();
-    const start=cleaned.indexOf("[");
-    const end=cleaned.lastIndexOf("]");
-    if(start<0||end<start)throw new Error("No JSON array found");
-    data=JSON.parse(cleaned.slice(start,end+1));
-  }catch(e){return []}
-  if(!Array.isArray(data))return [];
-  return data.filter(q=>q&&typeof q.q==="string"&&Array.isArray(q.options)&&q.options.length===4)
-    .map(q=>{
-      let answer=q.answer;
-      if(typeof answer==="string"){
-        answer=answer.trim().toUpperCase();
-        if(["A","B","C","D"].includes(answer))answer=answer.charCodeAt(0)-65;
-        else answer=Number(answer);
-      }
-      return {q:q.q,options:q.options.map(String),answer:Number.isInteger(answer)&&answer>=0&&answer<=3?answer:null,explanation:String(q.explanation||"")};
-    });
+    output.textContent=await askWorker(prompt);
+  }catch(error){
+    output.textContent="AI response unavailable: "+error.message+
+      "\nCheck your internet connection and Cloudflare Worker configuration, then try again.";
+  }
 }
 
-async function prepareTest(){
-  $("readyPanel").classList.add("hidden");
-  $("cbtSetupResult").textContent="Preparing questions...";
-  const count=safeNumber("testCount",1,90,90);
-  let questions=pdfQuestions.slice(0,count);
-  const useAI=$("useAI").checked;
-  const extra=safeNumber("aiCount",0,30,10);
-  if(useAI&&extra>0){
-    try{
-      const context=$("pdfText").value.trim().slice(0,12000);
-      const target=$("examTarget").value.trim()||"JEE Main 2027";
-      const prompt=
-`Create exactly ${extra} original practice MCQs for ${target}, using this source material as context.
-Return ONLY a valid JSON array. Each item must have:
-{"q":"question text","options":["A text","B text","C text","D text"],"answer":0,"explanation":"short explanation"}
-answer must be integer 0,1,2,3 indicating the correct option. Do not include markdown.
-Do not claim the questions are official or copied from the source.
-Source text:\n${context||"Create a balanced Physics, Chemistry and Mathematics practice set."}`;
-      $("cbtSetupResult").textContent="Asking AI to create extra questions...";
-      const aiText=await askWorker(prompt);
-      const extraQuestions=parseAIQuestions(aiText);
-      questions=questions.concat(extraQuestions);
-      if(!extraQuestions.length){
-        $("cbtSetupResult").textContent="AI returned text that could not be parsed into MCQs. Preparing detected PDF questions only.";
-      }
-    }catch(e){
-      $("cbtSetupResult").textContent="AI extra questions unavailable ("+e.message+"). Preparing detected PDF questions only.";
-    }
-  }
-  questions=questions.slice(0,count);
-  if(questions.length<count){
-    $("cbtSetupResult").textContent+="\nOnly "+questions.length+" questions were available. Upload a PDF with more MCQs or use Demo Test.";
-  }
-  if(!questions.length){
-    $("cbtSetupResult").textContent="No usable MCQs detected. Try Demo Test, or edit the PDF text and upload/prepare again.";
+function askTutor(){
+  const question=$("tutorPrompt").value.trim();
+  if(!question){
+    $("tutorResult").textContent="Please enter your question first.";
     return;
   }
-  testQuestions=questions;
-  $("readyTitle").textContent=$("examTarget").value.trim()||"JEE Mock Test";
-  $("readyInfo").textContent=questions.length+" questions · "+safeNumber("testMinutes",1,180,180)+" minutes · "+(questions.filter(q=>q.answer!==null).length)+" questions with detected/known answer keys.";
-  $("readyPanel").classList.remove("hidden");
-  $("cbtSetupResult").textContent="Prepared "+questions.length+" questions. Review the detected text and press Start CBT when ready.";
+  const subject=$("tutorSubject").value;
+  const style=$("tutorStyle").value;
+  runAI(
+    "Act as an accurate JEE Main 2027 tutor. Subject: "+subject+
+    ". Explain in "+style+". Question: "+question+
+    ". Explain step by step, define symbols, show calculations where relevant, "+
+    "and finish with a short exam tip. Do not invent facts.",
+    "tutorResult"
+  );
 }
 
-function loadDemoQuestions(){
-  testQuestions=[
-    {q:"Physics: What is the SI unit of force?",options:["Joule","Newton","Watt","Pascal"],answer:1,explanation:"Force is measured in newtons."},
-    {q:"Mathematics: What is the derivative of x²?",options:["x","2x","x³","2"],answer:1,explanation:"Using the power rule, the derivative of x² is 2x."},
-    {q:"Chemistry: What is Avogadro's constant approximately?",options:["6.022 × 10²³ mol⁻¹","3 × 10⁸ m/s","9.8 m/s²","1.6 × 10⁻¹⁹ C"],answer:0,explanation:"Avogadro's constant is approximately 6.022 × 10²³ per mole."},
-    {q:"Physics: Which particle has a negative charge?",options:["Proton","Neutron","Electron","Alpha particle"],answer:2,explanation:"An electron has a negative elementary charge."},
-    {q:"Mathematics: Probability of heads in one fair coin toss?",options:["0","1/4","1/2","1"],answer:2,explanation:"The two outcomes are equally likely."},
-    {q:"Chemistry: The pH of a neutral aqueous solution at 25°C is approximately:",options:["1","5","7","14"],answer:2,explanation:"At 25°C, neutral water has pH 7."},
-    {q:"Physics: Speed is defined as:",options:["Distance divided by time","Displacement divided by time","Force divided by mass","Mass times acceleration"],answer:0,explanation:"Average speed is total distance divided by total time."},
-    {q:"Mathematics: The sum of the angles of a triangle is:",options:["90°","180°","270°","360°"],answer:1,explanation:"The interior angles of a Euclidean triangle sum to 180°."},
-    {q:"Chemistry: The chemical formula of water is:",options:["CO₂","O₂","H₂O","NaCl"],answer:2,explanation:"Water contains two hydrogen atoms and one oxygen atom."},
-    {q:"Mathematics: What is 2³?",options:["6","8","9","12"],answer:1,explanation:"2³ = 2 × 2 × 2 = 8."}
-  ];
-  testQuestions=testQuestions.map(q=>({...q,options:[...q.options]}));
-  $("readyTitle").textContent="JEE Main 2027 · Demo CBT";
-  $("readyInfo").textContent=testQuestions.length+" sample questions · "+safeNumber("testMinutes",1,180,180)+" minutes. This is a short demo, not a full JEE paper.";
-  $("readyPanel").classList.remove("hidden");
-  $("cbtSetupResult").textContent="Demo test prepared.";
+function clearTutor(){
+  $("tutorPrompt").value="";
+  $("tutorResult").textContent="";
 }
 
-/* CBT engine */
-function startTest(){
-  if(!testQuestions.length)return;
-  clearInterval(timerHandle);
-  answers={};reviewMarks={};current=0;testStarted=true;testFinished=false;reviewMode=false;
-  secondsLeft=safeNumber("testMinutes",1,180,180)*60;
-  $("readyPanel").classList.add("hidden");
-  $("resultPanel").classList.add("hidden");
-  $("testPanel").classList.remove("hidden");
-  $("testTitle").textContent=$("readyTitle").textContent;
-  renderQuestion();
-  updateTimer();
-  timerHandle=setInterval(()=>{
-    secondsLeft--;
-    updateTimer();
-    if(secondsLeft<=0){
-      clearInterval(timerHandle);
-      submitTest(true);
-    }
-  },1000);
-}
+function generateNotes(){
+  const topic=$("notesTopic").value.trim();
+  if(!topic){
+    $("notesResult").textContent="Please enter a topic first.";
+    return;
+  }
 
-function updateTimer(){
-  const m=Math.floor(Math.max(0,secondsLeft)/60);
-  const s=Math.max(0,secondsLeft)%60;
-  $("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
-  $("timer").style.color=secondsLeft<=300?"var(--red)":"var(--cyan)";
-}
-function renderQuestion(){
-  const q=testQuestions[current];
-  $("qPosition").textContent="Question "+(current+1)+" of "+testQuestions.length;
-  $("testProgress").style.width=((current+1)/testQuestions.length*100)+"%";
-  $("subjectBadge").textContent="JEE CBT";
-  $("questionText").textContent=q.q;
-  $("questionFeedback").textContent="";
-  const box=$("options");box.innerHTML="";
-  q.options.forEach((opt,i)=>{
-    const b=document.createElement("button");b.className="option";
-    const letter=document.createElement("span");letter.className="letter";letter.textContent="ABCD"[i];
-    const txt=document.createElement("span");txt.textContent=opt;
-    b.append(letter,txt);
-    if(answers[current]===i)b.classList.add("selected");
-    b.onclick=()=>{if(reviewMode)return;answers[current]=i;renderQuestion();};
-    box.appendChild(b);
-  });
-  renderPalette();
-}
-function renderPalette(){
-  const p=$("palette");p.innerHTML="";
-  testQuestions.forEach((q,i)=>{
-    const b=document.createElement("button");
-    b.className="qnum "+(answers[i]!==undefined?"answered":"unanswered")+(reviewMarks[i]?" review":"")+(i===current?" current":"");
-    b.textContent=i+1;b.onclick=()=>{current=i;renderQuestion()};
-    p.appendChild(b);
+  const subject=$("notesSubject").value;
+  const format=$("notesFormat").value;
+  const prompt=
+    "Create accurate JEE Main 2027 study material. Subject: "+subject+
+    ". Topic: "+topic+". Format: "+format+". "+
+    "Use clear headings, important concepts, correct formulas with symbol meanings, "+
+    "one short solved example when appropriate, common mistakes, and quick revision points. "+
+    "Use simple Hinglish. Keep it focused for exam revision. "+
+    "If a formula depends on assumptions, state them. Do not invent formulas or facts.";
+
+  $("notesResult").textContent="Generating notes...";
+  askWorker(prompt).then(answer=>{
+    $("notesText").value=answer;
+    $("notesResult").textContent="Notes ready. Check the content, then tap Save.";
+  }).catch(error=>{
+    $("notesResult").textContent="Could not generate notes: "+error.message;
   });
 }
-function nextQuestion(){if(current<testQuestions.length-1){current++;renderQuestion()}else confirmSubmit()}
-function previousQuestion(){if(current>0){current--;renderQuestion()}}
-function clearAnswer(){delete answers[current];renderQuestion()}
-function toggleReview(){reviewMarks[current]=!reviewMarks[current];renderPalette()}
-function confirmSubmit(){
-  const done=Object.keys(answers).length;
-  if(confirm("Submit this test now?\nAnswered: "+done+" of "+testQuestions.length)){
-    submitTest(false);
+
+function saveNotes(){
+  try{
+    const notes={
+      topic:$("notesTopic").value,
+      subject:$("notesSubject").value,
+      format:$("notesFormat").value,
+      text:$("notesText").value
+    };
+    localStorage.setItem(NOTES_KEY,JSON.stringify(notes));
+    $("notesResult").textContent="Notes saved on this device.";
+  }catch(error){
+    $("notesResult").textContent="Could not save notes in this browser.";
   }
 }
-function submitTest(auto){
-  if(testFinished)return;
-  testFinished=true;testStarted=false;clearInterval(timerHandle);
-  $("testPanel").classList.add("hidden");
-  $("resultPanel").classList.remove("hidden");
-  let correct=0,wrong=0,unkeyed=0;
-  testQuestions.forEach((q,i)=>{
-    if(q.answer===null||q.answer===undefined){unkeyed++;return}
-    if(answers[i]===q.answer)correct++;
-    else if(answers[i]!==undefined)wrong++;
-  });
-  const marked=Object.keys(answers).length;
-  const scored=testQuestions.length-unkeyed;
-  const score=correct*4-wrong;
-  const accuracy=marked?Math.round(correct/marked*100):0;
-  $("resScore").textContent=score;
-  $("resCorrect").textContent=correct;
-  $("resAccuracy").textContent=accuracy+"%";
-  $("resultSummary").textContent=
-    (auto?"Time is up. Test submitted automatically. ":"Test submitted. ")+
-    "Answered: "+marked+"/"+testQuestions.length+
-    " · Wrong: "+wrong+
-    " · Unanswered: "+(testQuestions.length-marked)+
-    " · Without reliable answer key: "+unkeyed+
-    ". Score uses +4 for correct and −1 for wrong only where an answer key exists. This is a practice score, not an official JEE result.";
-  completedTests++;totalAnswered+=marked;
-  saveStats();
-  $("reviewList").innerHTML="";
-}
-function startReview(){
-  if(!testQuestions.length)return;
-  reviewMode=true;
-  $("resultPanel").classList.add("hidden");
-  $("testPanel").classList.remove("hidden");
-  $("timer").textContent="REVIEW";
-  $("questionFeedback").textContent="Answer review mode — answers are locked.";
-  current=0;
-  renderQuestion();
-  $("questionFeedback").textContent="Answer review mode — answers are locked.";
-  const q=testQuestions[current];
-  document.querySelectorAll("#options .option").forEach((b,i)=>{
-    if(q.answer===i)b.classList.add("correct");
-    else if(answers[current]===i)b.classList.add("wrong");
-  });
-  $("questionFeedback").textContent=q.answer===null||q.answer===undefined
-    ?"No reliable answer key is available for this question."
-    :"Correct answer: "+"ABCD"[q.answer]+". "+(q.explanation||"");
-  // In review mode, Previous/Next navigate without altering responses.
-  $("testPanel").querySelectorAll(".actions button").forEach(b=>{if(b.textContent.includes("Submit"))b.disabled=true});
-  $("testPanel").querySelectorAll(".option").forEach(b=>b.disabled=true);
-  $("testPanel").querySelectorAll(".qnum").forEach((b,i)=>b.onclick=()=>showReviewQuestion(i));
-}
-function showReviewQuestion(i){
-  current=i;renderQuestion();
-  const q=testQuestions[current];
-  document.querySelectorAll("#options .option").forEach((b,j)=>{
-    b.disabled=true;
-    if(q.answer===j)b.classList.add("correct");
-    else if(answers[current]===j)b.classList.add("wrong");
-  });
-  $("questionFeedback").textContent=q.answer===null||q.answer===undefined
-    ?"No reliable answer key is available for this question."
-    :"Correct answer: "+"ABCD"[q.answer]+". "+(q.explanation||"");
-}
-function backToSetup(){
-  clearInterval(timerHandle);
-  testFinished=true;testStarted=false;reviewMode=false;
-  $("testPanel").classList.add("hidden");
-  $("resultPanel").classList.add("hidden");
-  $("readyPanel").classList.add("hidden");
-  $("cbtSetupResult").textContent="Ready to prepare another test.";
-}
 
-/* AI Tutor */
-async function runAI(prompt,resultId){
-  $(resultId).textContent="Thinking...";
-  try{$(resultId).textContent=await askWorker(prompt)}
-  catch(e){$(resultId).textContent="AI response unavailable: "+e.message+". Check your internet connection and Worker configuration."}
-}
-function askTutor(){
-  const t=$("tutorPrompt").value.trim();
-  if(!t){$("tutorResult").textContent="Enter a question first.";return}
-  runAI("Explain step by step in simple language. Subject: "+$("tutorSubject").value+". Question: "+t,"tutorResult");
-}
-function generateNotes(){
-  const t=$("notesTopic").value.trim();
-  if(!t){$("notesResult").textContent="Enter a topic first.";return}
-  runAI("Create organised study notes with headings, key points, formulas and examples. Subject: "+$("notesSubject").value+". Topic: "+t,"notesResult").then(()=>{
-    const r=$("notesResult").textContent;
-    if(r&&!r.startsWith("AI response unavailable"))$("notesText").value=r;
-  });
-}
-function saveNotes(){
-  try{localStorage.setItem(NOTES_KEY,JSON.stringify({topic:$("notesTopic").value,subject:$("notesSubject").value,text:$("notesText").value}));$("notesResult").textContent="Notes saved on this device."}
-  catch(e){$("notesResult").textContent="Could not save notes."}
-}
 function loadNotes(){
   try{
-    const n=JSON.parse(localStorage.getItem(NOTES_KEY)||"null");
-    if(!n){$("notesResult").textContent="No saved notes found.";return}
-    $("notesTopic").value=n.topic||"";$("notesSubject").value=n.subject||"Physics";$("notesText").value=n.text||"";
+    const notes=JSON.parse(localStorage.getItem(NOTES_KEY)||"null");
+    if(!notes){
+      $("notesResult").textContent="No saved notes found on this device.";
+      return;
+    }
+    $("notesTopic").value=notes.topic||"";
+    $("notesSubject").value=notes.subject||"Physics";
+    $("notesFormat").value=notes.format||"complete revision notes";
+    $("notesText").value=notes.text||"";
     $("notesResult").textContent="Saved notes loaded.";
-  }catch(e){$("notesResult").textContent="Could not load notes."}
+  }catch(error){
+    $("notesResult").textContent="Could not load saved notes.";
+  }
 }
+
+function clearNotes(){
+  $("notesText").value="";
+  $("notesResult").textContent="Notes editor cleared. Saved notes were not deleted.";
+}
+
 function exportNotes(){
   const text=$("notesText").value;
-  if(!text.trim()){$("notesResult").textContent="No notes to export.";return}
-  const url=URL.createObjectURL(new Blob([text],{type:"text/plain;charset=utf-8"}));
-  const a=document.createElement("a");a.href=url;a.download="AI-Study-3D-Notes.txt";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  if(!text.trim()){
+    $("notesResult").textContent="There are no notes to export.";
+    return;
+  }
+  const blob=new Blob([text],{type:"text/plain;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="AI-Study-3D-Notes.txt";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  $("notesResult").textContent="Export requested. If the iPad does not download it, copy the notes from the text box.";
 }
+
+/* 3D-style animated educational models */
+function changeModel(){
+  const model=$("scienceModel");
+  const type=$("modelType").value;
+  const label=$("sceneLabel");
+
+  model.style.animationName="rotateModel";
+  model.style.animationDuration=$("scienceSpeed").value+"s";
+  model.style.width="180px";
+  model.style.height="180px";
+
+  if(type==="atom"){
+    label.textContent="ATOM · ILLUSTRATIVE MODEL";
+    model.innerHTML=`
+      <div class="core"></div>
+      <div class="orbit"></div>
+      <div class="orbit two"></div>
+      <div class="orbit three"></div>
+      <div class="electron"></div>`;
+  }else if(type==="solar"){
+    label.textContent="SOLAR SYSTEM · NOT TO SCALE";
+    model.innerHTML=`
+      <div style="position:absolute;top:65px;left:65px;width:50px;height:50px;border-radius:50%;background:radial-gradient(circle,#fff5ae,#ff9d26);box-shadow:0 0 32px #ffb52e"></div>
+      <div style="position:absolute;inset:10px;border:1px solid #44e8ff99;border-radius:50%"></div>
+      <div style="position:absolute;inset:30px;border:1px solid #a16aff;border-radius:50%"></div>
+      <div style="position:absolute;top:8px;left:82px;width:13px;height:13px;border-radius:50%;background:#44e8ff;box-shadow:0 0 15px #44e8ff"></div>
+      <div style="position:absolute;top:38px;right:17px;width:18px;height:18px;border-radius:50%;background:#b68aff"></div>`;
+  }else if(type==="molecule"){
+    label.textContent="MOLECULE · SCHEMATIC MODEL";
+    model.innerHTML=`
+      <div style="position:absolute;top:62px;left:55px;width:55px;height:55px;border-radius:50%;background:radial-gradient(circle,#fff,#ff718a 45%,#812849);box-shadow:0 0 22px #ff718a"></div>
+      <div style="position:absolute;top:28px;left:105px;width:37px;height:37px;border-radius:50%;background:radial-gradient(circle,#fff,#44e8ff 50%,#245a98)"></div>
+      <div style="position:absolute;top:112px;left:105px;width:37px;height:37px;border-radius:50%;background:radial-gradient(circle,#fff,#44e8ff 50%,#245a98)"></div>
+      <div style="position:absolute;top:57px;left:95px;width:38px;height:7px;background:#dce8ff;transform:rotate(-40deg);border-radius:5px"></div>
+      <div style="position:absolute;top:105px;left:95px;width:38px;height:7px;background:#dce8ff;transform:rotate(40deg);border-radius:5px"></div>`;
+  }else{
+    label.textContent="3D GEOMETRY · ROTATING CUBE";
+    model.innerHTML=`
+      <div style="position:absolute;inset:25px;border:3px solid #44e8ff;background:#44e8ff25;box-shadow:0 0 25px #44e8ff55;transform:translateZ(40px)"></div>
+      <div style="position:absolute;inset:25px;border:3px solid #a16aff;background:#a16aff22;transform:rotateY(180deg) translateZ(40px)"></div>
+      <div style="position:absolute;inset:25px;border:3px solid #8da4ff;background:#8da4ff22;transform:rotateY(90deg) translateZ(40px)"></div>
+      <div style="position:absolute;inset:25px;border:3px solid #44e8ff;background:#44e8ff22;transform:rotateY(-90deg) translateZ(40px)"></div>
+      <div style="position:absolute;inset:25px;border:3px solid #b68aff;background:#b68aff22;transform:rotateX(90deg) translateZ(40px)"></div>
+      <div style="position:absolute;inset:25px;border:3px solid #dce8ff;background:#dce8ff18;transform:rotateX(-90deg) translateZ(40px)"></div>`;
+  }
+}
+
+function setSpeed(){
+  $("scienceModel").style.animationDuration=$("scienceSpeed").value+"s";
+}
+
 function explain3D(){
-  const t=$("threeDTopic").value.trim();
-  if(!t){$("threeDResult").textContent="Enter a concept first.";return}
-  runAI("Explain this concept with a simple visual analogy and example: "+t,"threeDResult");
+  const topic=$("threeDTopic").value.trim();
+  if(!topic){
+    $("threeDResult").textContent="Enter a concept first.";
+    return;
+  }
+  runAI(
+    "Explain this JEE Main 2027 concept in simple Hinglish: "+topic+
+    ". Include the physical or mathematical idea, relevant formula with symbol meanings, "+
+    "a simple real-world analogy, and one short example. Be accurate and concise.",
+    "threeDResult"
+  );
 }
 
-/* Sample practice */
-const sampleQuestions=[
-  {q:"SI unit of force?",o:["Joule","Newton","Watt","Pascal"],a:1},
-  {q:"Derivative of x²?",o:["x","2x","x³","2"],a:1},
-  {q:"Approximate Avogadro constant?",o:["6.022 × 10²³","3 × 10⁸","9.8","1.6 × 10⁻¹⁹"],a:0}
-];
-let sampleIndex=0;
-function renderSample(){
-  const q=sampleQuestions[sampleIndex%sampleQuestions.length];
-  const root=$("samplePractice");root.innerHTML="";
-  const title=document.createElement("p");title.textContent="Question "+(sampleIndex%sampleQuestions.length+1)+": "+q.q;root.appendChild(title);
-  q.o.forEach((o,i)=>{
-    const b=document.createElement("button");b.className="option";b.textContent="ABCD"[i]+". "+o;
-    b.onclick=()=>{
-      [...root.querySelectorAll("button")].forEach(x=>x.disabled=true);
-      b.classList.add(i===q.a?"correct":"wrong");
-      const r=document.createElement("p");r.textContent=i===q.a?"Correct!":"Correct answer: "+"ABCD"[q.a];root.appendChild(r);
-      const n=document.createElement("button");n.className="btn";n.textContent="Next";n.onclick=()=>{sampleIndex++;renderSample()};root.appendChild(n);
-    };root.appendChild(b);
-  });
-}
-
-/* Daily goals and stats */
-const defaultGoals=["Study for 30 minutes","Revise one topic","Solve 10 questions","Review study notes"];
-function getGoals(){
-  try{
-    const x=JSON.parse(localStorage.getItem(GOALS_KEY)||"null");
-    if(x&&x.date===new Date().toDateString())return x.items;
-  }catch(e){}
-  return defaultGoals.map(text=>({text,done:false}));
-}
-function saveGoals(items){localStorage.setItem(GOALS_KEY,JSON.stringify({date:new Date().toDateString(),items}))}
-function renderGoals(){
-  const items=getGoals();const root=$("goalList");root.innerHTML="";
-  items.forEach((g,i)=>{
-    const row=document.createElement("label");row.className="goal"+(g.done?" done":"");
-    const c=document.createElement("input");c.type="checkbox";c.checked=g.done;
-    c.onchange=()=>{const all=getGoals();all[i].done=c.checked;saveGoals(all);renderGoals();updateStats()};
-    const s=document.createElement("span");s.textContent=g.text;row.append(c,s);root.appendChild(row);
-  });
-  const percent=Math.round(items.filter(x=>x.done).length/items.length*100);
-  $("goalPercent").textContent=percent+"%";$("goalFill").style.width=percent+"%";$("statGoals").textContent=percent+"%";
-}
-function resetGoals(){saveGoals(defaultGoals.map(text=>({text,done:false})));renderGoals();updateStats()}
-function saveStats(){localStorage.setItem(STATS_KEY,JSON.stringify({completedTests,totalAnswered}))}
-function updateStats(){
-  $("statTests").textContent=completedTests;$("statQuestions").textContent=totalAnswered;
-  const items=getGoals();$("statGoals").textContent=Math.round(items.filter(x=>x.done).length/items.length*100)+"%";
-}
-function loadStats(){
-  try{const s=JSON.parse(localStorage.getItem(STATS_KEY)||"{}");completedTests=s.completedTests||0;totalAnswered=s.totalAnswered||0}catch(e){}
-}
-
-loadStats();
-renderGoals();
-renderSample();
-updateStats();
+changeModel();
 </script>
 </body>
 </html>

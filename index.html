@@ -5,553 +5,337 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#080d1c">
-<meta name="description" content="AI STUDY 3D - Smart AI learning, practice tests and study progress.">
 <link rel="manifest" href="/-ai-study-3d/manifest.json">
-<title>AI STUDY 3D — Learn Beyond Limits</title>
-
+<title>AI STUDY 3D | Smart JEE Learning</title>
 <style>
-:root{
-  --bg:#080d1c;--panel:#10182b;--panel2:#141f36;
-  --blue:#4c8dff;--cyan:#42e8ff;--text:#f2f6ff;
-  --muted:#8e9bb8;--border:rgba(148,175,255,.14);
-  --green:#50e3a4;--red:#ff7189;
-}
+:root{--bg:#080d1c;--panel:#121b30;--blue:#4d8dff;--cyan:#49e5ff;--text:#f3f6ff;--muted:#98a6c2;--line:#263652;--green:#4de0a2}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;background:radial-gradient(ellipse at 50% -20%,#18366a 0%,#080d1c 55%);
- color:var(--text);font-family:system-ui,-apple-system,Arial,sans-serif;
- min-height:100vh;overflow-x:hidden
-}
+body{margin:0;background:radial-gradient(ellipse at top,#172b50,var(--bg) 55%);color:var(--text);font-family:system-ui,Arial,sans-serif}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer;color:inherit}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
- outline:2px solid var(--cyan);outline-offset:3px
-}
-.app{max-width:1100px;margin:auto;padding:16px 15px 105px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{
- width:45px;height:45px;border-radius:15px;display:grid;place-items:center;
- background:linear-gradient(135deg,#5b8dff,#5d45db);
- box-shadow:0 0 25px #477bff40;font-size:23px
-}
-.brand h1{font-size:17px;letter-spacing:1px;margin:0}
-.brand small{display:block;color:var(--cyan);font-size:10px;letter-spacing:2px;margin-top:3px}
-.status{font-size:11px;color:var(--green);border:1px solid #50e3a433;padding:8px 10px;border-radius:20px}
-.page{display:none;animation:enter .25s ease}
-.page.active{display:block}
-@keyframes enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-h2{font-size:clamp(25px,6vw,37px);line-height:1.15;margin:10px 0}
-p{color:var(--muted);line-height:1.6}
-.hero{
- padding:25px 21px;border-radius:26px;position:relative;overflow:hidden;
- border:1px solid #6697ff36;
- background:linear-gradient(135deg,#172e55,#12172c 65%,#24204b);
- box-shadow:0 18px 60px #0002
-}
-.hero:after{
- content:"✦";position:absolute;right:20px;top:12px;font-size:90px;
- color:#74a6ff12;pointer-events:none
-}
-.hero p{max-width:540px;font-size:14px}
-.btn{
- border:0;border-radius:13px;padding:12px 16px;font-weight:750;
- background:linear-gradient(110deg,#477fff,#735bff);color:white;
- box-shadow:0 6px 20px #477fff25
-}
-.btn.secondary{background:#1b2943;border:1px solid var(--border);box-shadow:none}
-.btn.ghost{background:transparent;border:1px solid var(--border);box-shadow:none}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
-.card{
- background:linear-gradient(145deg,#131d32,#0e1628);
- border:1px solid var(--border);border-radius:19px;padding:17px;min-width:0
-}
-.feature{cursor:pointer;transition:transform .18s,border-color .18s}
+.app{max-width:1000px;margin:auto;padding:16px 14px 100px}
+header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#55a0ff,#694bff);font-size:23px}
+.brand h1{font-size:16px;margin:0;letter-spacing:1px}
+.brand small{display:block;font-size:10px;color:var(--cyan);letter-spacing:1.5px;margin-top:4px}
+.badge{font-size:10px;border:1px solid #4de0a255;color:var(--green);padding:7px 9px;border-radius:20px}
+.page{display:none}.page.active{display:block;animation:appear .25s ease}
+@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero,.card{border:1px solid #728fca28;background:linear-gradient(145deg,#162442,#10172a);border-radius:20px;padding:18px;margin-bottom:13px}
+.hero{padding:25px 20px;background:linear-gradient(125deg,#1b3a6b,#161b36 70%,#29204d)}
+.eyebrow{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:2px}
+h2{font-size:clamp(26px,6vw,38px);line-height:1.15;margin:12px 0}
+h3{font-size:15px;margin:5px 0 9px}
+p{color:var(--muted);font-size:13px;line-height:1.6}
+.btn{background:linear-gradient(110deg,#477fff,#7359ff);border:0;border-radius:12px;padding:12px 15px;font-weight:750;color:white}
+.btn.secondary{background:#1c2a45;border:1px solid var(--line)}
+.btn:disabled{opacity:.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.feature{padding:15px;min-height:130px;cursor:pointer;transition:.2s}
 .feature:active{transform:scale(.98)}
-.feature:hover{border-color:#4c8dff75}
-.feature .ico{font-size:26px;margin-bottom:12px}
-.feature h3{font-size:14px;margin:0 0 6px}
-.feature p{font-size:12px;margin:0;line-height:1.5}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:25px 0 12px}
-.section-title h3{font-size:17px;margin:0}
-.muted{color:var(--muted)}
-.small{font-size:12px}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:14px}
-.stat{padding:14px 10px;text-align:center;background:#10182b;border:1px solid var(--border);border-radius:16px}
-.stat strong{font-size:21px;display:block}
-.stat span{font-size:10px;color:var(--muted)}
-.progress{height:7px;background:#27334b;border-radius:20px;overflow:hidden}
-.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .3s}
-select,input,textarea{
- width:100%;background:#0b1324;border:1px solid var(--border);color:var(--text);
- border-radius:12px;padding:12px;outline:none
-}
-label{display:block;font-size:12px;color:#b5c3df;margin:13px 0 7px}
-textarea{resize:vertical;min-height:105px;line-height:1.5}
-.chatbox{
- margin-top:15px;height:min(42vh,370px);min-height:210px;overflow-y:auto;
- display:flex;flex-direction:column;gap:12px;padding:12px;
- background:#090f1d;border:1px solid var(--border);border-radius:17px
-}
-.msg{max-width:92%;padding:12px 13px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.6}
-.msg.user{align-self:flex-end;background:#284b91;border-bottom-right-radius:4px}
-.msg.ai{align-self:flex-start;background:#172238;border:1px solid var(--border);border-bottom-left-radius:4px}
-.msg.error{border-color:#ff718966;color:#ffc0ca}
-.chat-compose{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px;align-items:end}
-.chat-compose textarea{min-height:48px;max-height:120px}
-#chatStatus{font-size:12px;color:var(--muted);margin-top:9px;min-height:18px}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.pill{border:1px solid var(--border);background:#141f36;border-radius:20px;padding:8px 11px;font-size:11px}
-.big-number{font-size:36px;font-weight:850}
-.scene{
- height:230px;display:grid;place-items:center;overflow:hidden;
- background:radial-gradient(ellipse,#193c71,#0b1324 70%);
- border-radius:18px;border:1px solid var(--border);perspective:600px
-}
-.cube{width:85px;height:85px;position:relative;transform-style:preserve-3d;animation:rotate 8s linear infinite}
-.face{position:absolute;width:85px;height:85px;border:2px solid #62eaff;
- background:#398dff24;box-shadow:inset 0 0 25px #3cbaff22}
-.face:nth-child(1){transform:translateZ(42px)}
-.face:nth-child(2){transform:rotateY(180deg) translateZ(42px)}
-.face:nth-child(3){transform:rotateY(90deg) translateZ(42px)}
-.face:nth-child(4){transform:rotateY(-90deg) translateZ(42px)}
-.face:nth-child(5){transform:rotateX(90deg) translateZ(42px)}
-.face:nth-child(6){transform:rotateX(-90deg) translateZ(42px)}
-@keyframes rotate{to{transform:rotateX(360deg) rotateY(360deg)}}
-.question{margin:14px 0;font-weight:700;line-height:1.5}
-.option{display:block;width:100%;text-align:left;background:#101a2d;border:1px solid var(--border);padding:13px;border-radius:12px;margin:8px 0}
-.option.selected{border-color:var(--blue);background:#1a3156}
-.option.correct{border-color:var(--green)}
-.option.wrong{border-color:var(--red)}
-.bottom-nav{
- position:fixed;bottom:0;left:0;right:0;z-index:10;
- display:flex;justify-content:center;gap:2px;padding:9px 5px calc(9px + env(safe-area-inset-bottom));
- background:#0b1122f5;backdrop-filter:blur(18px);border-top:1px solid var(--border)
-}
-.navbtn{flex:1;max-width:125px;background:none;border:0;color:#8290ae;font-size:10px;padding:7px 2px;border-radius:12px}
-.navbtn span{display:block;font-size:19px;margin-bottom:4px}
-.navbtn.active{color:var(--cyan);background:#19345a}
-.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:20;
- background:#1a2944;border:1px solid var(--border);padding:11px 15px;border-radius:13px;
- max-width:90%;font-size:12px;display:none}
-footer{text-align:center;color:#667492;font-size:10px;margin-top:30px}
-@media(min-width:700px){
- .app{padding:25px 25px 110px}
- .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
- .hero{padding:35px}
- .chatbox{height:400px}
-}
-@media(max-width:360px){
- .app{padding-left:10px;padding-right:10px}
- .navbtn{font-size:9px}
- .navbtn span{font-size:17px}
- .card{padding:13px}
-}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+.icon{font-size:25px;margin-bottom:9px}
+.feature h3{font-size:13px}.feature p{font-size:11px;margin-bottom:0}
+.heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:23px 0 12px}
+.heading h3{margin:0;font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}
+.stat{text-align:center;background:#111a2c;border:1px solid var(--line);padding:12px 4px;border-radius:14px}
+.stat strong{display:block;font-size:21px}.stat span{font-size:10px;color:var(--muted)}
+input,textarea,select{width:100%;background:#0a1223;color:white;border:1px solid var(--line);border-radius:11px;padding:12px;margin:6px 0}
+textarea{resize:vertical;min-height:100px}
+label{display:block;font-size:12px;color:#bac7df;margin-top:12px}
+.chatbox{height:300px;overflow:auto;display:flex;flex-direction:column;gap:10px;background:#090f1c;border:1px solid var(--line);border-radius:15px;padding:11px}
+.msg{padding:11px 12px;border-radius:13px;max-width:95%;font-size:13px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.ai{background:#18253d;align-self:flex-start}.msg.user{background:#284b91;align-self:flex-end}
+.msg.error{border:1px solid #ff778877}
+.compose{display:grid;grid-template-columns:1fr auto;gap:7px;align-items:end}
+.compose textarea{margin-bottom:0}
+.status{font-size:11px;color:var(--muted);margin:9px 0;overflow-wrap:anywhere}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+.pill{background:#1a2943;border:1px solid var(--line);padding:8px 10px;border-radius:20px;font-size:11px}
+.progress{height:7px;background:#29354b;border-radius:10px;overflow:hidden}
+.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.scene{height:230px;border-radius:18px;border:1px solid var(--line);display:grid;place-items:center;perspective:600px;background:radial-gradient(ellipse,#1c4376,#0a1223 70%);overflow:hidden}
+.cube{width:80px;height:80px;position:relative;transform-style:preserve-3d;animation:spin 8s linear infinite}
+.face{position:absolute;width:80px;height:80px;border:2px solid var(--cyan);background:#438cff25;box-shadow:inset 0 0 20px #438cff35}
+.face:nth-child(1){transform:translateZ(40px)}.face:nth-child(2){transform:rotateY(180deg) translateZ(40px)}.face:nth-child(3){transform:rotateY(90deg) translateZ(40px)}.face:nth-child(4){transform:rotateY(-90deg) translateZ(40px)}.face:nth-child(5){transform:rotateX(90deg) translateZ(40px)}.face:nth-child(6){transform:rotateX(-90deg) translateZ(40px)}
+@keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
+.option{display:block;width:100%;text-align:left;background:#111d32;border:1px solid var(--line);border-radius:11px;padding:12px;margin:7px 0}
+.option.selected{border-color:var(--blue)}.option.correct{border-color:var(--green)}.option.wrong{border-color:#ff7189}
+.note{border-left:3px solid var(--cyan);padding:10px 12px;background:#101d32;border-radius:0 10px 10px 0;margin:10px 0;font-size:12px;line-height:1.6}
+.bottom{position:fixed;z-index:10;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:2px;background:#0a1122f5;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:7px 3px calc(7px + env(safe-area-inset-bottom))}
+.nav{flex:1;max-width:125px;border:0;background:transparent;color:#8997b4;font-size:9px;padding:7px 1px;border-radius:10px}
+.nav span{display:block;font-size:18px;margin-bottom:3px}.nav.active{color:var(--cyan);background:#1b3455}
+.toast{display:none;position:fixed;z-index:20;bottom:90px;left:50%;transform:translateX(-50%);background:#1b2c49;border:1px solid var(--line);border-radius:12px;padding:12px;max-width:90%;font-size:12px}
+footer{text-align:center;color:#657493;font-size:10px;padding:15px}
+@media(min-width:700px){.app{padding:25px 25px 110px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:35px}}
+@media(prefers-reduced-motion:reduce){.cube{animation:none}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
- <div class="brand">
-  <div class="logo">✦</div>
-  <div><h1>AI STUDY <span style="color:#6d9dff">3D</span></h1><small>LEARN BEYOND LIMITS</small></div>
- </div>
- <div class="status">● STUDY MODE</div>
+ <div class="brand"><div class="logo">✦</div><div><h1>AI STUDY <span style="color:#7da8ff">3D</span></h1><small>SMART JEE LEARNING</small></div></div>
+ <div class="badge">● STUDY MODE</div>
 </header>
 
-<main>
-<section class="page active" id="dashboard">
+<section id="home" class="page active">
  <div class="hero">
-  <div class="eyebrow">YOUR PERSONAL AI LEARNING SPACE</div>
-  <h2>Think smarter.<br><span style="color:var(--cyan)">Learn faster.</span></h2>
-  <p>Your study companion for concepts, practice and exam preparation. One step closer to your goal, every day.</p>
-  <button class="btn" onclick="showPage('teacher')">✦ Ask AI Teacher →</button>
+  <div class="eyebrow">YOUR PERSONAL LEARNING SPACE</div>
+  <h2>Learn smarter.<br><span style="color:var(--cyan)">Aim higher.</span></h2>
+  <p>JEE preparation with AI notes, interactive visual learning, practice questions and mock tests.</p>
+  <button class="btn" onclick="go('teacher')">✦ Ask AI Teacher →</button>
  </div>
  <div class="stats">
-  <div class="stat"><strong id="statDone">0</strong><span>Questions done</span></div>
-  <div class="stat"><strong id="statGoals">0/3</strong><span>Daily goals</span></div>
-  <div class="stat"><strong id="statTests">0</strong><span>Tests completed</span></div>
+  <div class="stat"><strong id="doneStat">0</strong><span>Answers checked</span></div>
+  <div class="stat"><strong id="goalStat">0/3</strong><span>Goals completed</span></div>
+  <div class="stat"><strong id="testStat">0</strong><span>Mocks completed</span></div>
  </div>
- <div class="section-title"><h3>Learning studio</h3><span class="small muted">Choose a feature</span></div>
+ <div class="heading"><h3>Learning Studio</h3></div>
  <div class="grid">
-  <div class="card feature" onclick="showPage('teacher')"><div class="ico">🤖</div><h3>AI Teacher</h3><p>Ask questions and understand concepts step by step.</p></div>
-  <div class="card feature" onclick="showPage('threeD')"><div class="ico">🧊</div><h3>3D Learning</h3><p>Explore a simple interactive 3D visual.</p></div>
-  <div class="card feature" onclick="showPage('practice')"><div class="ico">⚡</div><h3>Practice zone</h3><p>Sharpen your skills with quick questions.</p></div>
-  <div class="card feature" onclick="showPage('cbt')"><div class="ico">📝</div><h3>CBT Mock</h3><p>Try a timed practice test and review results.</p></div>
-  <div class="card feature" onclick="showPage('goals')"><div class="ico">🎯</div><h3>Daily goals</h3><p>Set small targets and track your progress.</p></div>
-  <div class="card feature" onclick="showPage('progress')"><div class="ico">📈</div><h3>My progress</h3><p>See your activity saved on this device.</p></div>
+  <div class="card feature" onclick="go('teacher')"><div class="icon">🤖</div><h3>AI Teacher</h3><p>Ask questions and learn step by step.</p></div>
+  <div class="card feature" onclick="go('notes')"><div class="icon">📚</div><h3>AI Notes</h3><p>Create chapter notes and explanations.</p></div>
+  <div class="card feature" onclick="go('short')"><div class="icon">⚡</div><h3>Short Notes</h3><p>Quick revision and formula sheets.</p></div>
+  <div class="card feature" onclick="go('visual')"><div class="icon">🧊</div><h3>3D Learning</h3><p>Explore interactive visual concepts.</p></div>
+  <div class="card feature" onclick="go('pyq')"><div class="icon">📖</div><h3>JEE PYQs</h3><p>Browse available verified question sets.</p></div>
+  <div class="card feature" onclick="go('practice')"><div class="icon">🎯</div><h3>AI Practice</h3><p>Sample practice and AI-generated questions.</p></div>
+  <div class="card feature" onclick="go('cbt')"><div class="icon">📝</div><h3>CBT Mock</h3><p>Timed sample test and score.</p></div>
+  <div class="card feature" onclick="go('goals')"><div class="icon">📈</div><h3>Daily Goals</h3><p>Track your daily study targets.</p></div>
  </div>
- <footer>Made for curious minds · AI STUDY 3D</footer>
+ <footer>Learn • Practice • Revise • Improve</footer>
 </section>
 
-<section class="page" id="teacher">
- <div class="eyebrow">YOUR PERSONAL STUDY ASSISTANT</div>
- <h2>AI <span style="color:var(--cyan)">Teacher</span></h2>
- <p>Ask in English or Hinglish. Select your subject and ask one clear question.</p>
+<section id="teacher" class="page">
+ <div class="eyebrow">YOUR STUDY ASSISTANT</div><h2>AI <span style="color:var(--cyan)">Teacher</span></h2>
+ <p>Ask in Hinglish or English. Select a subject and send your question.</p>
  <div class="card">
-  <label for="subject">Subject</label>
-  <select id="subject">
-   <option>JEE Main - Physics</option><option>JEE Main - Chemistry</option>
-   <option>JEE Main - Mathematics</option><option>Science</option>
-   <option>Mathematics</option><option>English</option><option>General Study</option>
-  </select>
-  <div class="pills">
-   <button class="pill" onclick="suggest('Explain this concept in simple Hinglish with an example.')">Explain simply</button>
-   <button class="pill" onclick="suggest('Give me a step-by-step solution and explain each step.')">Step-by-step</button>
-   <button class="pill" onclick="suggest('Give me 3 practice questions with answers.')">Practice questions</button>
-  </div>
-  <div class="chatbox" id="chatbox" aria-live="polite">
-   <div class="msg ai">Namaste! 👋 Main AI Teacher hoon. Apna question bhejo. Main use simple language mein samjhane ki koshish karunga.</div>
-  </div>
-  <div class="chat-compose">
-   <textarea id="question" placeholder="Apna question yahan likho..." aria-label="Your question"></textarea>
-   <button class="btn" id="sendBtn" onclick="askAI()">Send ↑</button>
-  </div>
-  <div id="chatStatus" role="status">Ready to help.</div>
-  <button class="btn ghost" style="margin-top:10px" onclick="testWorker()">Check AI connection</button>
-  <p class="small">Connection check sirf Worker ka response dekhta hai. Isse AI provider ki availability guaranteed nahi hoti.</p>
- </div>
- <div class="card" style="margin-top:14px">
-  <h3 style="margin-top:0">Troubleshooting</h3>
-  <p class="small">502 = Worker ya upstream AI service ne gateway error diya. 401/403 = access ya credentials issue ho sakta hai. 429 = rate limit. Network/CORS errors alag hote hain.</p>
-  <p class="small">Is page par API key enter mat karo. Agar 502 aaye, Worker ke logs aur provider response check karna hoga.</p>
+  <label>Subject</label><select id="subject"><option>JEE Main Physics</option><option>JEE Main Chemistry</option><option>JEE Main Mathematics</option><option>General Study</option></select>
+  <div class="pills"><button class="pill" onclick="prefill('Explain this concept in simple Hinglish with an example.')">Explain simply</button><button class="pill" onclick="prefill('Explain step by step with formulas.')">Step-by-step</button></div>
+  <div id="chat" class="chatbox" aria-live="polite"><div class="msg ai">Namaste! Apna study question bhejo. Main tumhe concept samajhne mein madad karunga.</div></div>
+  <div class="compose"><textarea id="question" placeholder="Apna question likho..." aria-label="Study question"></textarea><button id="send" class="btn" onclick="askAI()">Send ↑</button></div>
+  <div id="aiStatus" class="status">Ready.</div>
+  <button class="btn secondary" onclick="checkWorker()">Check connection</button>
+  <div class="note">Agar 502 aaye, Worker ya uski AI provider service check karni hogi. HTML akela server-side error fix nahi kar sakta.</div>
  </div>
 </section>
 
-<section class="page" id="threeD">
+<section id="notes" class="page">
+ <div class="eyebrow">SMART REVISION STUDIO</div><h2>AI <span style="color:var(--cyan)">Notes</span></h2>
+ <p>Chapter choose karo aur AI se notes banwane ki request bhejo.</p>
+ <div class="card">
+  <label>Subject</label><select id="noteSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
+  <label>Chapter name</label><input id="noteChapter" placeholder="e.g. Laws of Motion">
+  <label>Notes type</label><select id="noteType"><option>Detailed chapter notes</option><option>Easy explanation with examples</option><option>Important formulas and concepts</option><option>Revision notes for JEE Main</option></select>
+  <button class="btn" onclick="generateNotes()">✦ Generate with AI</button>
+  <div id="notesOutput" class="note" style="margin-top:15px">Your generated notes will appear here. AI connection is required.</div>
+  <button class="btn secondary" onclick="copyText('notesOutput')">Copy notes</button>
+ </div>
+</section>
+
+<section id="short" class="page">
+ <div class="eyebrow">QUICK REVISION</div><h2>Short <span style="color:var(--cyan)">Notes</span></h2>
+ <p>Quick revision notes ke liye subject aur chapter select karo.</p>
+ <div class="card">
+  <label>Subject</label><select id="shortSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
+  <label>Chapter</label><input id="shortChapter" placeholder="e.g. Electrostatics">
+  <button class="btn" onclick="generateShort()">Generate short notes</button>
+  <div id="shortOutput" class="note" style="margin-top:15px">AI se concise revision notes generate karo. Formulas ko textbook se verify karna.</div>
+  <button class="btn secondary" onclick="copyText('shortOutput')">Copy notes</button>
+ </div>
+</section>
+
+<section id="visual" class="page">
  <div class="eyebrow">VISUAL LEARNING LAB</div><h2>3D <span style="color:var(--cyan)">Learning</span></h2>
- <p>Explore the rotating cube. Ye lightweight visual demo hai, full physics simulation nahi.</p>
- <div class="scene"><div class="cube" aria-label="Rotating 3D cube"><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div></div></div>
- <div class="card" style="margin-top:14px">
-  <h3>Learn with a question</h3>
-  <p>Example: What is a vector?</p>
-  <button class="btn" onclick="document.getElementById('question').value='Explain vectors and scalars with examples for JEE Main.';showPage('teacher')">Ask AI about vectors</button>
+ <p>Ye interactive rotating-cube demo hai. Real scientific animations ko chapter-wise add kiya ja sakta hai.</p>
+ <div class="scene"><div class="cube"><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div></div></div>
+ <div class="card" style="margin-top:14px"><h3>Learn a concept</h3><label>Choose a topic</label><select id="visualTopic"><option>Vectors and scalars</option><option>Electric field</option><option>Atomic structure</option><option>3D geometry</option><option>Wave motion</option></select><button class="btn" onclick="visualExplain()">Explain this topic with AI</button><div id="visualOutput" class="note">Choose a topic to request an explanation.</div></div>
+</section>
+
+<section id="pyq" class="page">
+ <div class="eyebrow">JEE MAIN QUESTION LIBRARY</div><h2>Chapter-wise <span style="color:var(--cyan)">PYQs</span></h2>
+ <div class="card">
+  <p>Yahan abhi verified full PYQ database bundled nahi hai. Pehle subject aur chapter choose karke practice section use karo; official source se verify kiye hue papers ko hi PYQ label dena chahiye.</p>
+  <label>Subject</label><select id="pyqSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select>
+  <label>Chapter</label><input id="pyqChapter" placeholder="Enter chapter name">
+  <button class="btn" onclick="makePYQPractice()">Create AI practice request</button>
+  <div class="note" id="pyqInfo">AI-generated practice is not an official previous-year question.</div>
+  <button class="btn secondary" onclick="go('practice')">Open practice →</button>
+  <p><a href="https://jeemain.nta.nic.in/" target="_blank" rel="noopener" style="color:var(--cyan)">Open official JEE Main website ↗</a></p>
  </div>
 </section>
 
-<section class="page" id="practice">
+<section id="practice" class="page">
  <div class="eyebrow">QUICK PRACTICE</div><h2>Practice <span style="color:var(--cyan)">Zone</span></h2>
- <p>Choose an answer, then check it. These are sample questions, not official exam questions.</p>
- <div class="card">
-  <div class="small muted" id="practiceCount">Question 1 of 3</div>
-  <div class="question" id="practiceQuestion"></div>
-  <div id="practiceOptions"></div>
-  <p id="practiceFeedback" class="small"></p>
-  <div class="pills"><button class="btn" id="practiceCheck" onclick="checkPractice()">Check answer</button><button class="btn secondary" onclick="nextPractice()">Next →</button></div>
- </div>
+ <p>Built-in sample questions hain; ye official PYQs nahi hain.</p>
+ <div class="card"><div id="qCount" class="status">Question 1 of 3</div><h3 id="qText"></h3><div id="options"></div><p id="feedback"></p><button id="checkAnswer" class="btn" onclick="checkPractice()">Check answer</button> <button class="btn secondary" onclick="nextQuestion()">Next →</button></div>
+ <div class="card"><h3>Generate more with AI</h3><label>Topic</label><input id="practiceTopic" placeholder="e.g. Newton's laws"><button class="btn" onclick="generateQuestions()">Generate questions</button><div id="generatedOutput" class="note">AI-generated questions will appear here when the AI service is working.</div></div>
 </section>
 
-<section class="page" id="cbt">
+<section id="cbt" class="page">
  <div class="eyebrow">COMPUTER BASED PRACTICE</div><h2>CBT <span style="color:var(--cyan)">Mock</span></h2>
- <p>Short sample test with a timer and result summary.</p>
- <div class="card">
-  <div class="section-title" style="margin-top:0"><h3>Mini mock test</h3><strong id="timer">05:00</strong></div>
-  <div class="progress"><span id="timerBar" style="width:100%"></span></div>
-  <p class="small">3 sample questions · One mark per correct answer · No negative marking</p>
-  <div id="cbtBody"></div>
-  <button class="btn" id="startTest" onclick="startTest()">Start test</button>
-  <button class="btn secondary" id="submitTest" onclick="submitTest()" style="display:none">Submit test</button>
-  <p id="testResult"></p>
- </div>
+ <div class="card"><div class="heading" style="margin-top:0"><h3>Sample test</h3><strong id="timer">05:00</strong></div><div class="progress"><span id="timerBar" style="width:100%"></span></div><p>3 built-in sample questions · 1 mark per correct answer. Not an official full-length JEE mock.</p><div id="cbtBody">Press Start when ready.</div><button id="startTest" class="btn" onclick="startTest()">Start mock</button> <button id="submitTest" class="btn secondary" onclick="submitTest()" style="display:none">Submit test</button><p id="testResult"></p></div>
 </section>
 
-<section class="page" id="goals">
- <div class="eyebrow">SMALL STEPS, BIG PROGRESS</div><h2>Daily <span style="color:var(--cyan)">Goals</span></h2>
- <p>Tick your goals when you complete them. Progress is saved on this device where browser storage is available.</p>
- <div class="card">
-  <div id="goalList"></div>
-  <div class="progress" style="margin-top:18px"><span id="goalBar"></span></div>
-  <p id="goalSummary" class="small"></p>
-  <button class="btn secondary" onclick="resetGoals()">Reset today's goals</button>
- </div>
+<section id="goals" class="page">
+ <div class="eyebrow">DAILY CONSISTENCY</div><h2>Daily <span style="color:var(--cyan)">Goals</span></h2>
+ <div class="card"><div id="goalList"></div><div class="progress"><span id="goalBar"></span></div><p id="goalSummary"></p><button class="btn secondary" onclick="resetGoals()">Reset goals</button></div>
 </section>
-
-<section class="page" id="progress">
- <div class="eyebrow">YOUR LEARNING JOURNEY</div><h2>My <span style="color:var(--cyan)">Progress</span></h2>
- <div class="grid">
-  <div class="card"><div class="ico">⚡</div><div class="big-number" id="progressDone">0</div><p>Practice answers checked</p></div>
-  <div class="card"><div class="ico">📝</div><div class="big-number" id="progressTests">0</div><p>Mock tests submitted</p></div>
- </div>
- <div class="card" style="margin-top:14px"><h3>Local progress</h3><p class="small">Progress is stored locally on this device when storage is available. It is not a cloud account or cross-device sync.</p><button class="btn ghost" onclick="showPage('goals')">View daily goals</button></div>
-</section>
-</main>
 </div>
 
-<nav class="bottom-nav" aria-label="Main navigation">
- <button class="navbtn active" data-page="dashboard" onclick="showPage('dashboard')"><span>⌂</span>Home</button>
- <button class="navbtn" data-page="teacher" onclick="showPage('teacher')"><span>✦</span>AI Teacher</button>
- <button class="navbtn" data-page="practice" onclick="showPage('practice')"><span>⚡</span>Practice</button>
- <button class="navbtn" data-page="cbt" onclick="showPage('cbt')"><span>▤</span>CBT Mock</button>
- <button class="navbtn" data-page="goals" onclick="showPage('goals')"><span>◎</span>Goals</button>
+<nav class="bottom" aria-label="Main navigation">
+ <button class="nav active" data-id="home" onclick="go('home')"><span>⌂</span>Home</button>
+ <button class="nav" data-id="teacher" onclick="go('teacher')"><span>✦</span>AI Teacher</button>
+ <button class="nav" data-id="notes" onclick="go('notes')"><span>📚</span>Notes</button>
+ <button class="nav" data-id="practice" onclick="go('practice')"><span>⚡</span>Practice</button>
+ <button class="nav" data-id="goals" onclick="go('goals')"><span>◎</span>Goals</button>
 </nav>
-<div class="toast" id="toast" role="status"></div>
+<div id="toast" class="toast" role="status"></div>
 
 <script>
 "use strict";
 
-/* Existing Worker URL preserved. */
-const API_URL = "https://quiet-feather-9c7b.yji461392.workers.dev/";
-const STORAGE_KEY = "aistudy3d-premium-progress-v1";
-
-const questions = [
+/* Keep the existing Worker endpoint and manifest path. */
+const API_URL="https://quiet-feather-9c7b.yji461392.workers.dev/";
+const STORE="ai-study-3d-progress-v2";
+const qs=[
  {q:"What is the SI unit of force?",o:["Joule","Newton","Watt","Pascal"],a:1,e:"Force ka SI unit Newton (N) hai."},
  {q:"If f(x) = 2x + 3, what is f(2)?",o:["5","6","7","8"],a:2,e:"f(2) = 2 × 2 + 3 = 7."},
  {q:"Which particle has a negative charge?",o:["Proton","Neutron","Electron","Photon"],a:2,e:"Electron par negative electric charge hota hai."}
 ];
-let practiceIndex=0, practiceChoice=null, practiceChecked=false;
-let testIndex=0,testAnswers=[],testRunning=false,testEnded=false,timerInterval=null,testSeconds=300;
-let chatHistory=[];
-let busy=false;
+let qi=0,choice=null,checked=false,testIndex=0,testAnswers=[],testRunning=false,testEnded=false,seconds=300,timerId=null,busy=false;
 
-function showPage(id){
- const page=document.getElementById(id);
- if(!page)return;
- document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
- page.classList.add("active");
- document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
- window.scrollTo({top:0,behavior:"smooth"});
+function go(id){
+ const target=document.getElementById(id);if(!target)return;
+ document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+ target.classList.add("active");
+ document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.id===id));
+ window.scrollTo(0,0);
  if(id==="practice")renderPractice();
- if(id==="cbt"&&!testRunning)renderCBTIntro();
  if(id==="goals")renderGoals();
- if(id==="progress")updateStats();
-}
-function notify(message){
- const t=document.getElementById("toast");
- t.textContent=message;t.style.display="block";
- clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.style.display="none",2800);
-}
-function safeLoad(){
- try{
-  const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}");
-  return {done:Number(data.done)||0,tests:Number(data.tests)||0,goals:Array.isArray(data.goals)?data.goals:[false,false,false],date:data.date||""};
- }catch(e){return {done:0,tests:0,goals:[false,false,false],date:""}}
-}
-function safeSave(data){
- try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}catch(e){}
-}
-function progressData(){
- const d=safeLoad(),today=new Date().toLocaleDateString();
- if(d.date!==today){d.goals=[false,false,false];d.date=today;safeSave(d)}
- return d;
-}
-function updateStats(){
- const d=progressData();
- document.getElementById("statDone").textContent=d.done;
- document.getElementById("statGoals").textContent=d.goals.filter(Boolean).length+"/3";
- document.getElementById("statTests").textContent=d.tests;
- document.getElementById("progressDone").textContent=d.done;
- document.getElementById("progressTests").textContent=d.tests;
-}
-function recordDone(){
- const d=progressData();d.done++;safeSave(d);updateStats();
-}
-
-function addMessage(text,who="ai",isError=false){
- const box=document.getElementById("chatbox"),div=document.createElement("div");
- div.className="msg "+who+(isError?" error":"");
- div.textContent=text;
- box.appendChild(div);box.scrollTop=box.scrollHeight;return div;
-}
-function setChatStatus(text){document.getElementById("chatStatus").textContent=text}
-function makePrompt(question){
- const subject=document.getElementById("subject").value;
- return "You are a helpful study tutor for a student. Subject: "+subject+
- ". Explain accurately in simple language, preferably Hinglish if the student uses Hinglish. Show steps for calculations, mention assumptions, and never invent official exam answers. Student question: "+question;
-}
-function suggest(text){
- const q=document.getElementById("question");q.value=text;q.focus();
-}
-async function readResponse(response){
- const text=await response.text();
- let data=null;
- try{data=JSON.parse(text)}catch(e){}
- return {text,data};
-}
-function extractAnswer(result){
- const d=result.data;
- if(d){
-  if(typeof d.answer==="string"&&d.answer.trim())return d.answer;
-  if(typeof d.response==="string"&&d.response.trim())return d.response;
-  if(typeof d.message==="string"&&d.message.trim())return d.message;
-  if(d.error)return "Worker error: "+(typeof d.error==="string"?d.error:JSON.stringify(d.error));
- }
- return "";
-}
-async function askAI(){
- const input=document.getElementById("question"),question=input.value.trim(),button=document.getElementById("sendBtn");
- if(busy)return;
- if(!question){notify("Pehle apna question likho.");input.focus();return}
- busy=true;button.disabled=true;button.textContent="...";input.disabled=true;
- addMessage(question,"user");input.value="";
- const thinking=addMessage("Soch raha hoon…","ai");setChatStatus("Connecting to AI Teacher…");
- try{
-  const controller=new AbortController();
-  const timeout=setTimeout(()=>controller.abort(),35000);
-  let response;
-  try{
-   response=await fetch(API_URL,{
-    method:"POST",
-    headers:{"Content-Type":"application/json","Accept":"application/json"},
-    body:JSON.stringify({topic:makePrompt(question)}),
-    signal:controller.signal
-   });
-  }finally{clearTimeout(timeout)}
-  const result=await readResponse(response);
-  const answer=extractAnswer(result);
-  thinking.remove();
-
-  if(response.status===502){
-   addMessage("Server error 502 (Bad Gateway).\n\nRequest Worker tak pahunch sakti hai, lekin Worker ya uski upstream AI service se valid response nahi aaya. Worker logs aur AI provider response check karna hoga. HTML akela server-side 502 fix nahi kar sakta.","ai",true);
-   setChatStatus("HTTP 502 · Worker/upstream diagnosis needed");
-  }else if(response.status===429){
-   addMessage("Rate limit (429). Thodi der baad dobara try karo. Worker/provider ki usage limit bhi check karo.","ai",true);
-   setChatStatus("HTTP 429 · Rate limit");
-  }else if(response.status===401||response.status===403){
-   addMessage("Access error ("+response.status+"). Worker ki authentication, permissions aur provider credentials check karne honge. API key yahan paste mat karo.","ai",true);
-   setChatStatus("HTTP "+response.status+" · Access problem");
-  }else if(!response.ok){
-   addMessage("Server ne HTTP "+response.status+" return kiya.\n"+(result.text||"Response body empty hai.").slice(0,700),"ai",true);
-   setChatStatus("HTTP "+response.status+" · Request failed");
-  }else if(answer){
-   addMessage(answer,"ai");
-   chatHistory.push({role:"user",content:question},{role:"assistant",content:answer});
-   if(chatHistory.length>12)chatHistory=chatHistory.slice(-12);
-   setChatStatus("Answer received · HTTP "+response.status);
-  }else{
-   addMessage("Worker ne HTTP "+response.status+" diya, lekin expected 'answer' field nahi mili.\n\nReceived: "+(result.text||"(empty response)").slice(0,700)+"\n\nExpected JSON format: {\"answer\":\"...\"}. Agar Worker alag format return karta hai, uske contract ke hisaab se integration update karna hoga.","ai",true);
-   setChatStatus("Response format mismatch · HTTP "+response.status);
-  }
- }catch(error){
-  thinking.remove();
-  if(error.name==="AbortError"){
-   addMessage("Request 35 seconds se zyada chali aur timeout ho gayi. Worker logs aur AI provider response check karo.","ai",true);
-   setChatStatus("Request timed out");
-  }else{
-   addMessage("Network request fail hui: "+error.message+"\n\nInternet check karo. Agar Chrome mein bhi fail ho, Worker endpoint ya CORS/network configuration check karni hogi.","ai",true);
-   setChatStatus("Network error · "+error.message);
-  }
- }finally{
-  busy=false;button.disabled=false;button.textContent="Send ↑";input.disabled=false;input.focus();
- }
-}
-document.getElementById("question").addEventListener("keydown",e=>{
- if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();askAI()}
-});
-
-async function testWorker(){
- setChatStatus("Checking Worker response…");
- try{
-  const response=await fetch(API_URL,{method:"GET",headers:{"Accept":"application/json"}});
-  const result=await readResponse(response);
-  const detail="Worker GET response: HTTP "+response.status+
-   (result.text?" · "+result.text.slice(0,220):" · Empty body");
-  setChatStatus(detail);
-  addMessage(detail+"\n\nNote: GET health response successful hone ka matlab ye nahi ki POST AI endpoint bhi successful hai. AI request ke liye actual POST test zaroori hai.","ai",!response.ok);
- }catch(error){
-  setChatStatus("GET check failed: "+error.message);
-  addMessage("Worker GET check failed: "+error.message+"\n\nCORS, network ya Worker configuration check karo. Kuch Workers GET requests support nahi karte, isliye is result se POST endpoint ka final status pata nahi chalta.","ai",true);
- }
-}
-
-function renderPractice(){
- const q=questions[practiceIndex];
- document.getElementById("practiceCount").textContent="Question "+(practiceIndex+1)+" of "+questions.length;
- document.getElementById("practiceQuestion").textContent=q.q;
- document.getElementById("practiceOptions").innerHTML="";
- q.o.forEach((option,i)=>{
-  const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+option;
-  b.onclick=()=>{if(practiceChecked)return;practiceChoice=i;document.querySelectorAll("#practiceOptions .option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")};
-  document.getElementById("practiceOptions").appendChild(b);
- });
- document.getElementById("practiceFeedback").textContent="";
- document.getElementById("practiceCheck").disabled=false;
- practiceChoice=null;practiceChecked=false;
-}
-function checkPractice(){
- if(practiceChecked)return;
- if(practiceChoice===null){notify("Ek option choose karo.");return}
- practiceChecked=true;recordDone();
- const q=questions[practiceIndex],buttons=document.querySelectorAll("#practiceOptions .option");
- buttons[q.a].classList.add("correct");
- if(practiceChoice!==q.a)buttons[practiceChoice].classList.add("wrong");
- document.getElementById("practiceFeedback").textContent=(practiceChoice===q.a?"Correct! ":"Not quite. ")+q.e;
- document.getElementById("practiceCheck").disabled=true;
-}
-function nextPractice(){practiceIndex=(practiceIndex+1)%questions.length;renderPractice()}
-
-function renderCBTIntro(){
- if(testRunning||testEnded)return;
- document.getElementById("cbtBody").innerHTML="<p class='muted'>Start when you're ready. Each question has four options.</p>";
- document.getElementById("startTest").style.display="inline-block";
- document.getElementById("submitTest").style.display="none";
-}
-function renderCBTQuestion(){
- const q=questions[testIndex],body=document.getElementById("cbtBody");
- body.innerHTML="";
- const count=document.createElement("div");count.className="small muted";count.textContent="Question "+(testIndex+1)+" of "+questions.length;body.appendChild(count);
- const title=document.createElement("div");title.className="question";title.textContent=q.q;body.appendChild(title);
- q.o.forEach((option,i)=>{
-  const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+option;
-  if(testAnswers[testIndex]===i)b.classList.add("selected");
-  b.onclick=()=>{if(!testRunning)return;testAnswers[testIndex]=i;renderCBTQuestion()};
-  body.appendChild(b);
- });
- const controls=document.createElement("div");controls.className="pills";
- const prev=document.createElement("button");prev.className="btn secondary";prev.textContent="← Previous";prev.disabled=testIndex===0;prev.onclick=()=>{testIndex--;renderCBTQuestion()};
- const next=document.createElement("button");next.className="btn secondary";next.textContent=testIndex===questions.length-1?"Review answers":"Next →";next.onclick=()=>{testIndex=(testIndex+1)%questions.length;renderCBTQuestion()};
- controls.append(prev,next);body.appendChild(controls);
-}
-function startTest(){
- testIndex=0;testAnswers=[];testRunning=true;testEnded=false;testSeconds=300;
- document.getElementById("startTest").style.display="none";
- document.getElementById("submitTest").style.display="inline-block";
- document.getElementById("testResult").textContent="";
- renderCBTQuestion();updateTimer();
- clearInterval(timerInterval);
- timerInterval=setInterval(()=>{testSeconds--;updateTimer();if(testSeconds<=0)submitTest()},1000);
-}
-function updateTimer(){
- const m=Math.floor(testSeconds/60),s=testSeconds%60;
- document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
- document.getElementById("timerBar").style.width=(testSeconds/300*100)+"%";
-}
-function submitTest(){
- if(!testRunning)return;
- testRunning=false;testEnded=true;clearInterval(timerInterval);
- const score=questions.reduce((sum,q,i)=>sum+(testAnswers[i]===q.a?1:0),0);
- const d=progressData();d.tests++;safeSave(d);updateStats();
- document.getElementById("cbtBody").innerHTML="";
- document.getElementById("submitTest").style.display="none";
- document.getElementById("startTest").style.display="inline-block";
- document.getElementById("startTest").textContent="Try again";
- document.getElementById("testResult").textContent="Test complete: "+score+" / "+questions.length+" correct. This is a sample practice score.";
- document.getElementById("timer").textContent="Done";
- notify("Mock test complete!");
-}
-function renderGoals(){
- const d=progressData(),names=["Study for 25 minutes","Solve 10 practice questions","Revise one concept"];
- const list=document.getElementById("goalList");list.innerHTML="";
- names.forEach((name,i)=>{
-  const label=document.createElement("label");label.style.display="flex";label.style.alignItems="center";label.style.gap="12px";label.style.padding="13px 0";label.style.borderBottom="1px solid var(--border)";
-  const check=document.createElement("input");check.type="checkbox";check.checked=!!d.goals[i];check.style.width="20px";check.style.height="20px";check.style.accentColor="#4c8dff";
-  check.onchange=()=>{const fresh=progressData();fresh.goals[i]=check.checked;safeSave(fresh);renderGoals();updateStats()};
-  const span=document.createElement("span");span.textContent=name;span.style.color=d.goals[i]?"var(--green)":"var(--text)";
-  label.append(check,span);list.appendChild(label);
- });
- const count=d.goals.filter(Boolean).length;
- document.getElementById("goalBar").style.width=(count/3*100)+"%";
- document.getElementById("goalSummary").textContent=count+" of 3 daily goals completed.";
+ if(id==="cbt"&&!testRunning&&!testEnded)document.getElementById("cbtBody").textContent="Press Start when ready.";
  updateStats();
 }
-function resetGoals(){
- const d=progressData();d.goals=[false,false,false];safeSave(d);renderGoals();notify("Daily goals reset.");
+function toast(s){const t=document.getElementById("toast");t.textContent=s;t.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display="none",2500)}
+function loadData(){
+ try{let d=JSON.parse(localStorage.getItem(STORE)||"{}");if(d.date!==new Date().toLocaleDateString())d={...d,goals:[false,false,false],date:new Date().toLocaleDateString()};return {done:Number(d.done)||0,tests:Number(d.tests)||0,goals:Array.isArray(d.goals)?d.goals:[false,false,false],date:d.date}}catch(e){return {done:0,tests:0,goals:[false,false,false],date:new Date().toLocaleDateString()}}
 }
-
-renderPractice();renderGoals();updateStats();renderCBTIntro();
+function saveData(d){try{localStorage.setItem(STORE,JSON.stringify(d))}catch(e){}}
+function updateStats(){const d=loadData();document.getElementById("doneStat").textContent=d.done;document.getElementById("goalStat").textContent=d.goals.filter(Boolean).length+"/3";document.getElementById("testStat").textContent=d.tests}
+function recordDone(){const d=loadData();d.done++;saveData(d);updateStats()}
+function addMsg(text,who="ai",error=false){const box=document.getElementById("chat"),el=document.createElement("div");el.className="msg "+who+(error?" error":"");el.textContent=text;box.appendChild(el);box.scrollTop=box.scrollHeight;return el}
+function prefill(t){document.getElementById("question").value=t;document.getElementById("question").focus()}
+function promptFor(text,subject){return "You are a reliable JEE Main study tutor. Subject: "+subject+". Explain in simple Hinglish when appropriate. Be accurate; show steps and formulas; do not claim invented questions are official PYQs. Request: "+text}
+async function fetchAI(text,subject){
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),35000);
+ try{
+  /* Existing integration shape retained: Worker expects {topic: ...}. */
+  const response=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({topic:promptFor(text,subject)}),signal:controller.signal});
+  const body=await response.text();let data=null;try{data=JSON.parse(body)}catch(e){}
+  if(!response.ok){let msg="HTTP "+response.status+" "+response.statusText;if(body)msg+="\n"+body.slice(0,700);throw new Error(msg)}
+  if(data){
+   if(typeof data.answer==="string"&&data.answer.trim())return data.answer;
+   if(typeof data.response==="string"&&data.response.trim())return data.response;
+   if(typeof data.message==="string"&&data.message.trim())return data.message;
+   if(data.error)throw new Error(typeof data.error==="string"?data.error:JSON.stringify(data.error));
+  }
+  throw new Error("Worker response mein answer/response/message field nahi mili. Body: "+(body||"(empty)").slice(0,500));
+ }finally{clearTimeout(timeout)}
+}
+function explainError(error){
+ const s=String(error.message||error);
+ if(s.includes("502"))return "502 Bad Gateway: Worker ya upstream AI provider fail hua. Cloudflare Worker logs aur provider response check karna hoga.";
+ if(s.includes("429"))return "429 Rate limit: thodi der baad try karo aur provider usage limits check karo.";
+ if(s.includes("401")||s.includes("403"))return "Access/authentication error: Worker ke credentials aur permissions check karne honge. API key HTML mein mat rakho.";
+ if(s.includes("AbortError"))return "Request timeout: AI service ne 35 seconds mein response nahi diya.";
+ if(s.includes("Failed to fetch")||s.includes("NetworkError"))return "Network/CORS request fail hui. Internet aur Worker CORS settings check karo.";
+ return "AI request failed:\n"+s;
+}
+async function askAI(){
+ const input=document.getElementById("question"),text=input.value.trim(),btn=document.getElementById("send");
+ if(busy)return;if(!text){toast("Pehle question likho.");return}
+ busy=true;btn.disabled=true;btn.textContent="...";addMsg(text,"user");input.value="";
+ const thinking=addMsg("AI Teacher se connect ho raha hoon…");document.getElementById("aiStatus").textContent="Request in progress…";
+ try{const answer=await fetchAI(text,document.getElementById("subject").value);thinking.remove();addMsg(answer);document.getElementById("aiStatus").textContent="Answer received."}
+ catch(e){thinking.remove();const message=explainError(e);addMsg(message,"ai",true);document.getElementById("aiStatus").textContent=message}
+ finally{busy=false;btn.disabled=false;btn.textContent="Send ↑"}
+}
+document.getElementById("question").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();askAI()}});
+async function checkWorker(){
+ document.getElementById("aiStatus").textContent="Checking GET endpoint…";
+ try{const r=await fetch(API_URL,{method:"GET",headers:{"Accept":"application/json"}});const t=await r.text();document.getElementById("aiStatus").textContent="GET returned HTTP "+r.status+". "+t.slice(0,180)+" — GET success does not guarantee AI POST success."}
+ catch(e){document.getElementById("aiStatus").textContent="GET check failed: "+explainError(e)+" Some Workers may not support GET."}
+}
+async function outputAI(target,text,subject){
+ const el=document.getElementById(target);el.textContent="Generating…";
+ try{el.textContent=await fetchAI(text,subject)}catch(e){el.textContent=explainError(e)}
+}
+function generateNotes(){
+ const subject=document.getElementById("noteSubject").value,chapter=document.getElementById("noteChapter").value.trim(),type=document.getElementById("noteType").value;
+ if(!chapter){toast("Chapter name likho.");return}
+ outputAI("notesOutput","Create "+type+" for JEE Main. Chapter: "+chapter+". Organize with headings, definitions, formulas, examples and common mistakes. Clearly state anything uncertain.",subject);
+}
+function generateShort(){
+ const subject=document.getElementById("shortSubject").value,chapter=document.getElementById("shortChapter").value.trim();
+ if(!chapter){toast("Chapter name likho.");return}
+ outputAI("shortOutput","Create concise JEE Main revision short notes for chapter "+chapter+". Use key definitions, formula list, conditions, quick reminders and common traps. Keep it easy to revise.",subject);
+}
+function visualExplain(){
+ const topic=document.getElementById("visualTopic").value;
+ outputAI("visualOutput","Explain "+topic+" for JEE Main in simple language. Include a mental visualisation, important formulae and one example. Do not claim the current rotating cube is a scientific simulation.", "JEE Main Physics / interdisciplinary");
+}
+function makePYQPractice(){
+ const subject=document.getElementById("pyqSubject").value,chapter=document.getElementById("pyqChapter").value.trim();
+ if(!chapter){toast("Chapter name likho.");return}
+ document.getElementById("pyqInfo").textContent="Request ready: "+subject+" / "+chapter+". AI-created questions will not be labelled as official PYQs. Verified PYQs need source papers and answer-key validation.";
+ document.getElementById("practiceTopic").value=chapter;
+}
+async function generateQuestions(){
+ const topic=document.getElementById("practiceTopic").value.trim();if(!topic){toast("Topic likho.");return}
+ await outputAI("generatedOutput","Create 5 JEE Main style MCQs on "+topic+". Give four options, correct answer and a short solution. Label these as AI-generated practice, NOT official PYQs.","JEE Main");
+}
+function renderPractice(){
+ const q=qs[qi];document.getElementById("qCount").textContent="Sample question "+(qi+1)+" of "+qs.length;
+ document.getElementById("qText").textContent=q.q;const box=document.getElementById("options");box.innerHTML="";
+ q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>{if(checked)return;choice=i;box.querySelectorAll("button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")};box.appendChild(b)});
+ document.getElementById("feedback").textContent="";document.getElementById("checkAnswer").disabled=false;choice=null;checked=false;
+}
+function checkPractice(){
+ if(checked)return;if(choice===null){toast("Ek option choose karo.");return}checked=true;recordDone();
+ const q=qs[qi],buttons=document.querySelectorAll("#options button");buttons[q.a].classList.add("correct");if(choice!==q.a)buttons[choice].classList.add("wrong");
+ document.getElementById("feedback").textContent=(choice===q.a?"Correct! ":"Incorrect. ")+q.e;document.getElementById("checkAnswer").disabled=true;
+}
+function nextQuestion(){qi=(qi+1)%qs.length;renderPractice()}
+function startTest(){
+ testIndex=0;testAnswers=[];testRunning=true;testEnded=false;seconds=300;
+ document.getElementById("startTest").style.display="none";document.getElementById("submitTest").style.display="inline-block";document.getElementById("testResult").textContent="";
+ renderTestQuestion();updateTimer();clearInterval(timerId);timerId=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)submitTest()},1000);
+}
+function renderTestQuestion(){
+ const q=qs[testIndex],body=document.getElementById("cbtBody");body.innerHTML="";
+ const title=document.createElement("h3");title.textContent="Question "+(testIndex+1)+" of "+qs.length+": "+q.q;body.appendChild(title);
+ q.o.forEach((v,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+v;if(testAnswers[testIndex]===i)b.classList.add("selected");b.onclick=()=>{testAnswers[testIndex]=i;renderTestQuestion()};body.appendChild(b)});
+ const controls=document.createElement("div");controls.className="pills";
+ const prev=document.createElement("button");prev.className="btn secondary";prev.textContent="← Previous";prev.disabled=testIndex===0;prev.onclick=()=>{testIndex--;renderTestQuestion()};
+ const next=document.createElement("button");next.className="btn secondary";next.textContent=testIndex===qs.length-1?"Back to first":"Next →";next.onclick=()=>{testIndex=(testIndex+1)%qs.length;renderTestQuestion()};controls.append(prev,next);body.appendChild(controls);
+}
+function updateTimer(){document.getElementById("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");document.getElementById("timerBar").style.width=(seconds/300*100)+"%"}
+function submitTest(){
+ if(!testRunning)return;testRunning=false;testEnded=true;clearInterval(timerId);
+ const score=qs.reduce((n,q,i)=>n+(testAnswers[i]===q.a?1:0),0),d=loadData();d.tests++;saveData(d);updateStats();
+ document.getElementById("cbtBody").textContent="Test submitted.";document.getElementById("submitTest").style.display="none";document.getElementById("startTest").style.display="inline-block";document.getElementById("startTest").textContent="Try again";document.getElementById("testResult").textContent="Score: "+score+" / "+qs.length+". This is a sample test, not an official full JEE mock.";
+}
+function renderGoals(){
+ const d=loadData(),names=["Study for 25 minutes","Solve practice questions","Revise one chapter"],box=document.getElementById("goalList");box.innerHTML="";
+ names.forEach((name,i)=>{const label=document.createElement("label");label.style.display="flex";label.style.alignItems="center";label.style.gap="10px";label.style.padding="12px 0";const cb=document.createElement("input");cb.type="checkbox";cb.style.width="20px";cb.checked=!!d.goals[i];cb.onchange=()=>{const fresh=loadData();fresh.goals[i]=cb.checked;saveData(fresh);renderGoals();updateStats()};const span=document.createElement("span");span.textContent=name;label.append(cb,span);box.appendChild(label)});
+ const n=d.goals.filter(Boolean).length;document.getElementById("goalBar").style.width=(n/3*100)+"%";document.getElementById("goalSummary").textContent=n+" of 3 goals completed.";
+}
+function resetGoals(){const d=loadData();d.goals=[false,false,false];saveData(d);renderGoals();updateStats()}
+function copyText(id){
+ const text=document.getElementById(id).innerText;
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>toast("Copied!")).catch(()=>toast("Text select karke copy karo."));
+ else toast("Text ko long-press karke copy karo.");
+}
+renderPractice();renderGoals();updateStats();
 </script>
 </body>
 </html>

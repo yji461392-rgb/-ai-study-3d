@@ -19,6 +19,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Diagnose Android Manifest
+        run: |
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+
+          path = "android/app/src/main/AndroidManifest.xml"
+
+          try:
+              ET.parse(path)
+              print("Manifest XML is valid")
+          except ET.ParseError as error:
+              print("Manifest XML ERROR:", error)
+              raise
+
+          with open(path, "rb") as file:
+              print("File starts with:", repr(file.read(100)))
+          PY
+
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:

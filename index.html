@@ -1,279 +1,88 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080b18">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#071b17">
 <link rel="manifest" href="/-ai-study-3d/manifest.json">
-<title>AI STUDY 3D — Premium Learning</title>
+<title>AI STUDY 3D</title>
 <style>
-:root{
-  --bg:#070a16;--panel:#11172b;--line:#293655;
-  --blue:#7594ff;--cyan:#53eaff;--purple:#b17cff;
-  --text:#f5f7ff;--muted:#9ba9c9;--green:#55e6b0;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;color:var(--text);font-family:system-ui,-apple-system,Arial,sans-serif;
- background:radial-gradient(ellipse at 85% 0%,#292060 0,transparent 34%),
- radial-gradient(ellipse at 0% 45%,#103750 0,transparent 32%),var(--bg);
- min-height:100vh
-}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;transition:transform .2s,border-color .2s}
-button:active{transform:scale(.97)}
-.app{max-width:1150px;margin:auto;padding:16px 15px 100px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 22px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.4px}
-.logo{
- width:48px;height:48px;display:grid;place-items:center;border-radius:16px;
- font-size:27px;background:linear-gradient(140deg,var(--blue),var(--purple));
- box-shadow:0 0 28px #7894ff55
-}
-.brand small{display:block;color:var(--cyan);font-size:9px;letter-spacing:2px;margin-top:3px}
-.pill{border:1px solid #46557e;background:#151c34;padding:8px 11px;border-radius:30px;font-size:11px;color:#d4ddff}
-.hero{
- position:relative;overflow:hidden;border:1px solid #424b83;border-radius:28px;
- padding:29px 23px;background:linear-gradient(125deg,#1a2c50,#251b50 65%,#103344);
- box-shadow:0 22px 65px #0006;isolation:isolate
-}
-.hero:before{
- content:"✦";position:absolute;right:18px;top:-18px;font-size:145px;
- color:#ffffff0d;z-index:-1;animation:float 5s ease-in-out infinite
-}
-.eyebrow{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--cyan)}
-h1{font-size:clamp(32px,7vw,57px);line-height:1.06;letter-spacing:-1.8px;margin:14px 0}
-.gradient{background:linear-gradient(90deg,#fff,#81eaff,#c3a0ff);background-clip:text;color:transparent}
-p{color:var(--muted);line-height:1.6}
-.hero p{max-width:550px;font-size:14px}
-.btnrow{display:flex;gap:9px;flex-wrap:wrap}
-.primary,.secondary{
- border-radius:13px;padding:12px 15px;font-weight:800;border:1px solid transparent
-}
-.primary{color:#07101d;background:linear-gradient(100deg,#91aaff,#5deaff);box-shadow:0 6px 25px #5deaff20}
-.secondary{color:var(--text);background:#161e36;border-color:#344363}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:23px}
-.stat{padding:13px 10px;border:1px solid #ffffff1c;border-radius:15px;background:#ffffff0b}
-.stat b{display:block;font-size:21px}.stat small{font-size:9px;color:#b6c4e5}
-.section{margin-top:29px}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-h2{font-size:19px;letter-spacing:-.4px;margin:0}
-.sub{font-size:12px;color:var(--muted);margin-top:5px}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.card{
- min-width:0;padding:16px;border:1px solid var(--line);border-radius:20px;
- background:linear-gradient(145deg,#161f38,#0d1325);transition:transform .25s,border-color .25s;
- box-shadow:0 12px 25px #0001
-}
-.card:hover{transform:translateY(-3px);border-color:#728fff}
-.subject-icon{
- width:46px;height:46px;display:grid;place-items:center;border-radius:15px;
- background:linear-gradient(145deg,#273657,#171d34);font-size:23px;margin-bottom:13px
-}
-.card h3{font-size:14px;margin:0 0 7px}
-.card p{font-size:11px;margin:0 0 13px}
-.card button{font-size:12px}
-.field{
- width:100%;padding:13px;border-radius:12px;border:1px solid #354566;
- background:#090f20;color:var(--text);outline:none
-}
-.field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #53eaff15}
-label{display:block;color:#bfcae8;font-size:12px;margin-bottom:8px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.full{grid-column:1/-1}
-textarea{resize:vertical}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
-.chip{font-size:11px;padding:8px 11px;border-radius:22px;border:1px solid #354566;background:#111a30;color:#d2ddff}
-.result{margin-top:16px;padding:17px;border:1px solid #354566;border-radius:17px;background:#090f20;overflow-wrap:anywhere}
-.result h3{margin:0 0 12px}
-.answer{white-space:pre-wrap;line-height:1.8;font-size:14px;color:#e7ecff}
-.hidden{display:none!important}
-.progress-track{height:8px;border-radius:20px;background:#252f49;overflow:hidden;margin:12px 0}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:20px;transition:width .4s}
-.task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #ffffff10;font-size:13px}
-.task:last-child{border:0}
-.task input{width:18px;height:18px;accent-color:#72e8ff}
-.task span{flex:1}
-.badge{font-size:10px;color:var(--cyan);border:1px solid #354566;padding:5px 8px;border-radius:20px}
-footer{text-align:center;color:#71809f;font-size:11px;line-height:1.8;margin-top:35px}
-@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(9px) rotate(7deg)}}
-@media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.app{padding:12px 12px 85px}.hero{padding:24px 18px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}}
-@media(max-width:370px){.grid{grid-template-columns:1fr}.stats{gap:5px}.stat{padding:10px 7px}.stat b{font-size:18px}.pill{font-size:9px}}
+:root{--bg:#071411;--panel:#10241e;--panel2:#163128;--green:#56f0a2;--muted:#9bb9ab;--line:#29463a;--text:#effff6;--red:#ff8585;--gold:#ffd77a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#17392b 0,#071411 55%);color:var(--text);font:15px system-ui,-apple-system,sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}header{position:sticky;top:0;z-index:5;background:#071411ed;backdrop-filter:blur(15px);border-bottom:1px solid var(--line);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}.brand{font-weight:900;letter-spacing:.4px}.brand span{color:var(--green)}.sub{font-size:11px;color:var(--muted)}.wrap{max-width:1000px;margin:auto;padding:16px 14px 90px}.hero{padding:20px 4px}.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:1.5px}.hero h1{font-size:clamp(28px,6vw,43px);line-height:1.12;margin:8px 0}.hero p,.muted{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}.stat,.card{background:linear-gradient(145deg,#122920,#0c1e18);border:1px solid var(--line);border-radius:17px;padding:14px}.stat b{font-size:22px;color:var(--green);display:block}.stat span{font-size:12px;color:var(--muted)}.tabs{display:flex;gap:7px;overflow:auto;padding:5px 0 14px;scrollbar-width:none}.tab,.btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#10251e;color:var(--text);white-space:nowrap}.tab.active,.btn.primary{background:var(--green);color:#062116;border-color:var(--green);font-weight:800}.btn.secondary{background:#18352a}.btn.danger{color:#ffb4b4}.view{display:none}.view.active{display:block}.section-title{font-size:21px;margin:8px 0 4px}.section-desc{color:var(--muted);font-size:13px;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0;color:var(--muted);font-size:13px}.field input,.field select,.field textarea,input[type=text],textarea{width:100%;background:#071711;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:12px;outline:none}.field textarea{min-height:85px;resize:vertical}.field input:focus,.field select:focus,textarea:focus{border-color:var(--green)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.small{font-size:12px;color:var(--muted)}.chatlog{height:300px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:10px 0}.bubble{padding:12px;border-radius:14px;max-width:95%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55}.bubble.ai{background:#18362a;border:1px solid #2c5743;align-self:flex-start}.bubble.me{background:#194f37;align-self:flex-end}.chatrow{display:flex;gap:7px}.chatrow input{flex:1;min-width:0}.note{white-space:pre-wrap;line-height:1.7;background:#0a1a14;border:1px solid var(--line);border-radius:12px;padding:14px;overflow-wrap:anywhere}.modelstage{height:270px;position:relative;overflow:hidden;border-radius:16px;background:radial-gradient(ellipse,#244d3a,#07140f 72%);border:1px solid var(--line);display:grid;place-items:center;perspective:600px;touch-action:pan-y}.orbit{width:150px;height:150px;border:1px solid #8affc0;border-radius:50%;position:absolute;transform:rotateX(65deg);box-shadow:0 0 18px #56f0a255}.sphere{width:105px;height:105px;border-radius:50%;background:radial-gradient(circle at 28% 25%,#e2ffad 0,#59ed9a 18%,#18865a 50%,#092d22 80%);box-shadow:inset -15px -15px 25px #00170f,0 0 35px #56f0a255;transform-style:preserve-3d;position:relative}.sphere:before,.sphere:after{content:"";position:absolute;border:1px solid #b2ffd0a8;border-radius:50%;inset:12px -14px;transform:rotateY(60deg)}.sphere:after{transform:rotateY(-60deg)}.model-label{position:absolute;bottom:13px;color:#c5ffdf;font-size:12px}.mockhead{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.timer{font-size:22px;font-weight:900;color:var(--gold)}.palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:12px 0}.qnum{padding:10px 0;border-radius:9px;background:#11251c;border:1px solid var(--line);color:var(--text)}.qnum.current{outline:2px solid var(--green)}.qnum.answered{background:#176b47}.qnum.review{border-color:var(--gold);color:var(--gold)}.option{display:block;width:100%;text-align:left;padding:12px;margin:8px 0;background:#0a1b14;color:var(--text);border:1px solid var(--line);border-radius:11px}.option.chosen{border-color:var(--green);background:#17422e}.progress{height:8px;border-radius:10px;background:#1b352a;overflow:hidden}.progress div{height:100%;width:0;background:var(--green);transition:width .2s}.task{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.task input{accent-color:var(--green);width:18px;height:18px}.task span{flex:1}.task.done span{text-decoration:line-through;color:var(--muted)}.footer{text-align:center;font-size:11px;color:var(--muted);padding:22px 0}.hidden{display:none!important}.result{padding:16px;border-radius:14px;background:#10291e;border:1px solid var(--green);margin-top:12px} @media(max-width:600px){.grid{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat b{font-size:19px}.wrap{padding-left:12px;padding-right:12px}.hero{padding-top:15px}.card{padding:12px}}
 </style>
 </head>
 <body>
-<div class="app">
-<header>
- <div class="brand"><div class="logo">✦</div><div>AI STUDY 3D<small>YOUR SMART STUDY SPACE</small></div></div>
- <div class="pill">⚡ PREMIUM LEARNING</div>
-</header>
-
-<section class="hero">
- <div class="eyebrow">LEARN • PRACTICE • ACHIEVE</div>
- <h1>Unlock your<br><span class="gradient">next level.</span></h1>
- <p>Your personal study space for school, JEE and NEET. Understand concepts, create revision notes and practise questions with AI assistance.</p>
- <div class="btnrow">
-  <button class="primary" onclick="goTo('studio')">✦ Start Learning</button>
-  <button class="secondary" onclick="goTo('planner')">My Study Plan ↓</button>
- </div>
- <div class="stats">
-  <div class="stat"><b>6–12</b><small>SCHOOL CLASSES</small></div>
-  <div class="stat"><b>JEE</b><small>EXAM PRACTICE</small></div>
-  <div class="stat"><b>NEET</b><small>MEDICAL PREP</small></div>
- </div>
-</section>
-
-<section class="section">
- <div class="section-head"><div><h2>Choose your path</h2><div class="sub">Your next step starts here.</div></div><span class="badge">4 COURSES</span></div>
- <div class="grid">
-  <div class="card"><div class="subject-icon">📘</div><h3>School Learning</h3><p>Classes 6–10. Build strong foundations.</p><button class="secondary" onclick="choosePath('school')">Explore →</button></div>
-  <div class="card"><div class="subject-icon">🎓</div><h3>Class 11–12</h3><p>Concepts, revision and examples.</p><button class="secondary" onclick="choosePath('senior')">Explore →</button></div>
-  <div class="card"><div class="subject-icon">⚡</div><h3>JEE Preparation</h3><p>Physics, Chemistry and Mathematics.</p><button class="secondary" onclick="choosePath('jee')">Explore →</button></div>
-  <div class="card"><div class="subject-icon">🧬</div><h3>NEET Preparation</h3><p>Biology, Physics and Chemistry.</p><button class="secondary" onclick="choosePath('neet')">Explore →</button></div>
- </div>
-</section>
-
-<section class="section" id="studio">
- <div class="section-head"><div><h2>✦ AI Study Studio</h2><div class="sub">Choose your subject and enter a topic.</div></div><span class="badge">AI TOOLS</span></div>
- <div class="card">
-  <div class="formgrid">
-   <div><label for="course">Course</label><select id="course" class="field"><option value="school">School Learning</option><option value="senior">Senior Secondary</option><option value="jee">JEE Main / Advanced</option><option value="neet">NEET</option></select></div>
-   <div><label for="grade">Class / Level</label><select id="grade" class="field"></select></div>
-   <div><label for="subject">Subject</label><select id="subject" class="field"></select></div>
-   <div><label for="language">Explanation language</label><select id="language" class="field"><option>Simple English</option><option>Hindi</option><option>Hinglish</option></select></div>
-   <div class="full"><label for="topic">Topic or question</label><textarea id="topic" class="field" rows="3" placeholder="Example: Newton's Laws of Motion"></textarea>
-    <div class="chips">
-     <button class="chip" onclick="setTopic('Fractions and decimals')">Fractions</button>
-     <button class="chip" onclick="setTopic('Chemical bonding')">Chemical bonding</button>
-     <button class="chip" onclick="setTopic('Newton’s Laws of Motion')">Newton’s Laws</button>
-     <button class="chip" onclick="setTopic('Human physiology')">Human physiology</button>
-    </div>
-   </div>
-   <div class="full btnrow">
-    <button class="primary" id="notesBtn" onclick="askAI('notes')">✦ Generate Notes</button>
-    <button class="secondary" id="solveBtn" onclick="askAI('solve')">Solve Question</button>
-    <button class="secondary" id="quizBtn" onclick="askAI('quiz')">Create Quiz</button>
-   </div>
-  </div>
-  <div id="result" class="result hidden" aria-live="polite"></div>
- </div>
-</section>
-
-<section class="section">
- <div class="section-head"><div><h2>Explore subjects</h2><div class="sub">Choose a subject to begin.</div></div></div>
- <div class="grid">
-  <div class="card"><div class="subject-icon">⚛️</div><h3>Physics</h3><p>Motion, energy and electricity.</p><button class="secondary" onclick="pickSubject('Physics')">Study Physics →</button></div>
-  <div class="card"><div class="subject-icon">🧪</div><h3>Chemistry</h3><p>Atoms, reactions and bonding.</p><button class="secondary" onclick="pickSubject('Chemistry')">Study Chemistry →</button></div>
-  <div class="card"><div class="subject-icon">📐</div><h3>Mathematics</h3><p>Formulas and worked examples.</p><button class="secondary" onclick="pickSubject('Mathematics')">Study Maths →</button></div>
-  <div class="card"><div class="subject-icon">🧬</div><h3>Biology</h3><p>Cells and human biology.</p><button class="secondary" onclick="pickSubject('Biology')">Study Biology →</button></div>
- </div>
-</section>
-
-<section class="section" id="planner">
- <div class="section-head"><div><h2>🎯 My Study Plan</h2><div class="sub">Tick off your tasks as you complete them.</div></div><span class="badge" id="progressText">0% DONE</span></div>
- <div class="card">
-  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="task"><input type="checkbox" class="studyTask"><span>Revise one important concept</span></div>
-  <div class="task"><input type="checkbox" class="studyTask"><span>Practise five questions</span></div>
-  <div class="task"><input type="checkbox" class="studyTask"><span>Review notes and formulas</span></div>
-  <div class="task"><input type="checkbox" class="studyTask"><span>Take a short self-test</span></div>
-  <p style="font-size:11px;margin-bottom:0">Your progress is tracked on this page while it remains open.</p>
- </div>
-</section>
-
-<section class="section">
- <div class="card">
-  <div class="subject-icon">💡</div><h3>Study smarter</h3>
-  <p>Understand one concept, explain it in your own words, then test yourself. AI can help you learn the steps, but always verify important answers with your textbook.</p>
- </div>
-</section>
-<footer>AI STUDY 3D · Independent learning project<br>AI answers may contain mistakes. Verify important information with trusted study materials.</footer>
-</div>
-
+<header><div><div class="brand">✦ AI STUDY <span>3D</span></div><div class="sub">Your personal AI learning space</div></div><button class="btn" id="resetDay">↻ Today</button></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">LEARN • VISUALIZE • PRACTICE</div><h1>Study smarter.<br><span style="color:var(--green)">One chapter at a time.</span></h1><p>Apna exam choose karo, AI se samjho, practice karo aur daily target complete karo.</p>
+<div class="stats"><div class="stat"><b id="xp">0</b><span>Study points</span></div><div class="stat"><b id="doneCount">0/3</b><span>Daily targets</span></div><div class="stat"><b id="testCount">0</b><span>Tests completed</span></div></div>
+<div class="progress"><div id="dayProgress"></div></div><div class="small" id="progressText" style="margin-top:7px">Today's progress: 0%</div></section>
+<nav class="tabs" aria-label="Study sections"><button class="tab active" data-view="home">⌂ Home</button><button class="tab" data-view="tutor">✦ AI Teacher</button><button class="tab" data-view="learn">◉ 3D Learn</button><button class="tab" data-view="practice">✎ Practice</button><button class="tab" data-view="mock">◷ CBT Mock</button><button class="tab" data-view="targets">✓ Daily Goals</button></nav>
+<section class="view active" id="home"><div class="card"><h2 class="section-title">Start your study session</h2><p class="section-desc">Exam aur topic select karke apni learning customize karo.</p><div class="grid"><label class="field">Exam / course<select id="exam"><option>JEE Main</option><option>JEE Advanced</option><option>NEET UG</option><option>CBSE Class 6</option><option>CBSE Class 7</option><option>CBSE Class 8</option><option>CBSE Class 9</option><option>CBSE Class 10</option><option>CBSE Class 11</option><option>CBSE Class 12</option><option>CUET</option><option>UPSC</option><option>SSC</option><option>Banking</option><option>Other exam</option></select></label><label class="field">Subject<select id="subject"><option>Physics</option><option>Mathematics</option><option>Chemistry</option><option>Biology</option><option>English</option><option>Science</option><option>Social Science</option><option>Computer Science</option><option>General Studies</option></select></label></div><label class="field">Chapter / topic<input id="topic" type="text" placeholder="e.g. Laws of Motion, Quadratic Equations"></label><div class="actions"><button class="btn primary" id="startTutor">Ask AI Teacher ↗</button><button class="btn" id="startLearn">Explore 3D ↗</button><button class="btn" id="startPractice">Practice questions ↗</button></div></div><div class="grid" style="margin-top:12px"><div class="card"><div class="eyebrow">YOUR ROUTINE</div><h3>Daily goals</h3><p class="muted">Chhote targets, daily progress.</p><button class="btn" data-goto="targets">Open goals</button></div><div class="card"><div class="eyebrow">EXAM MODE</div><h3>CBT practice</h3><p class="muted">Timer aur question palette ke saath.</p><button class="btn" data-goto="mock">Start mock test</button></div></div></section>
+<section class="view" id="tutor"><h2 class="section-title">✦ AI Teacher</h2><p class="section-desc">Hinglish mein question poochho. Topic aur exam selection upar Home mein set kar sakte ho.</p><div class="card"><div id="chatlog" class="chatlog"><div class="bubble ai">Hey! 👋 Main tumhara AI study helper hoon. Topic poochho, concept samjho ya short notes maango. Chalo shuru karte hain!</div></div><div class="chatrow"><input id="chatInput" type="text" placeholder="Apna question yahan likho..." maxlength="1500"><button class="btn primary" id="sendChat">Send</button></div><div class="actions"><button class="btn" id="makeNotes">✎ Short notes</button><button class="btn" id="explainTopic">Explain chapter</button></div><p class="small">AI response ke liye internet aur Worker/API quota required hai.</p></div></section>
+<section class="view" id="learn"><h2 class="section-title">◉ Interactive 3D Learn</h2><p class="section-desc">Model ko finger se drag karke rotate karo. Ye demo 3D-style visual hai; har chapter ka scientific model abhi available nahi hai.</p><div class="card"><label class="field">Model type<select id="modelType"><option value="atom">Atom / Electron cloud</option><option value="orbit">Circular motion</option><option value="wave">Wave motion</option><option value="molecule">Molecule concept</option></select></label><div class="modelstage" id="modelstage"><div class="orbit" id="orbit"></div><div class="sphere" id="sphere"></div><div class="model-label" id="modelLabel">Atom concept • Drag to rotate</div></div><div class="actions"><button class="btn" id="rotateModel">↻ Rotate</button><button class="btn" id="modelExplain">Explain this concept</button></div><div class="note" id="modelInfo" style="margin-top:12px">Atom: centre mein nucleus hota hai aur electrons quantum orbitals mein describe kiye jaate hain. Ye visual sirf simplified concept model hai.</div></div></section>
+<section class="view" id="practice"><h2 class="section-title">✎ Practice questions</h2><p class="section-desc">AI se original practice MCQs banwao. Inhe verified PYQs nahi maana jaana chahiye.</p><div class="card"><div class="grid"><label class="field">Question count<select id="qcount"><option value="5">5 questions</option><option value="10">10 questions</option><option value="15">15 questions</option></select></label><label class="field">Difficulty<select id="difficulty"><option>Mixed</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label></div><button class="btn primary" id="generatePractice">Generate AI questions</button><p class="small">Agar AI response structured format mein na ho, to response chat mein show hoga.</p><div id="practiceOut" style="margin-top:12px"></div></div></section>
+<section class="view" id="mock"><h2 class="section-title">◷ CBT Mock Test</h2><p class="section-desc">Demo mock test mein timer, navigation, mark for review aur result kaam karte hain. Questions practice set hain, official paper nahi.</p><div class="card"><div class="mockhead"><div><b id="mockTitle">Practice CBT</b><div class="small" id="mockMeta">5 questions • 5 minutes</div></div><div class="timer" id="timer">05:00</div></div><div class="actions" id="mockStartRow"><button class="btn primary" id="beginMock">Start test</button><button class="btn" id="useAIQuestions">Use AI practice set</button></div><div id="mockArea" class="hidden"><div class="palette" id="palette"></div><div class="small" id="questionCounter"></div><h3 id="questionText"></h3><div id="options"></div><div class="actions"><button class="btn" id="prevQ">← Previous</button><button class="btn" id="markQ">⚑ Mark review</button><button class="btn primary" id="nextQ">Next →</button></div><div class="actions"><button class="btn danger" id="finishMock">Finish test</button></div></div><div id="mockResult"></div></div></section>
+<section class="view" id="targets"><h2 class="section-title">✓ Daily targets</h2><p class="section-desc">Aaj ke goals set karo. Progress isi browser/device par save hoti hai.</p><div class="card"><div class="grid"><label class="field">Add a target<input id="taskInput" type="text" placeholder="e.g. Revise 20 formulas"></label><label class="field">Study minutes<input id="minutesInput" type="number" min="5" max="600" value="30"></label></div><button class="btn primary" id="addTask">+ Add daily target</button><div id="taskList" style="margin-top:12px"></div><div class="actions"><button class="btn" id="defaultTasks">Restore sample goals</button></div></div><div class="card" style="margin-top:12px"><h3>Study summary</h3><p id="summary" class="muted">Complete a goal to start tracking your progress.</p></div></section>
+<div class="footer">AI STUDY 3D • Learning support, not an official exam platform</div>
+</main>
 <script>
-const API_URL="https://quiet-feather-9c7b.yji461392.workers.dev/";
+const WORKER_URL='https://quiet-feather-9c7b.yji461392.workers.dev/';
 const $=id=>document.getElementById(id);
-
-const courseData={
- school:{grades:["Class 6","Class 7","Class 8","Class 9","Class 10"],subjects:["Mathematics","Science","English","Social Science","Biology","Physics","Chemistry"]},
- senior:{grades:["Class 11","Class 12"],subjects:["Physics","Chemistry","Mathematics","Biology","English"]},
- jee:{grades:["JEE Foundation","JEE Main","JEE Advanced"],subjects:["Physics","Chemistry","Mathematics"]},
- neet:{grades:["NEET Foundation","NEET UG"],subjects:["Biology","Physics","Chemistry"]}
-};
-
-function fillSelect(id,items,preferred){
- const el=$(id);el.replaceChildren();
- items.forEach(item=>{const opt=document.createElement("option");opt.value=item;opt.textContent=item;el.appendChild(opt)});
- if(preferred&&items.includes(preferred))el.value=preferred;
-}
-function updateOptions(){
- const d=courseData[$("course").value];
- fillSelect("grade",d.grades);fillSelect("subject",d.subjects);
-}
-$("course").addEventListener("change",updateOptions);
-updateOptions();
-
-function goTo(id){$(id).scrollIntoView({behavior:"smooth",block:"start"})}
-function choosePath(path){
- $("course").value=path;updateOptions();goTo("studio");
-}
-function setTopic(t){$("topic").value=t;$("topic").focus()}
-function pickSubject(s){
- if([...$("subject").options].some(o=>o.value===s))$("subject").value=s;
- goTo("studio");$("topic").focus();
-}
-function makePrompt(mode){
- const course=$("course").selectedOptions[0].textContent;
- const grade=$("grade").value,subject=$("subject").value;
- const language=$("language").value,topic=$("topic").value.trim();
- const action=mode==="solve"
- ? "Solve the question step by step. Explain the method, formulas and final answer."
- :mode==="quiz"
- ? "Create 5 multiple-choice practice questions. Give four options per question, mark the correct answer and briefly explain why."
- :"Create clear study notes with headings, definitions, key concepts, examples, formulas when relevant, common mistakes and a short revision summary.";
- return `You are an accurate, encouraging tutor for ${course}, ${grade}, subject ${subject}. Explain in ${language}. ${action}\nTopic or question: ${topic}\nUse age-appropriate language. If information is uncertain, say so.`;
-}
-function showMessage(text){
- const box=$("result");box.classList.remove("hidden");box.replaceChildren();
- const heading=document.createElement("h3");heading.textContent="✦ Study Result";
- const content=document.createElement("div");content.className="answer";content.textContent=text;
- const copy=document.createElement("button");copy.className="secondary";copy.style.marginTop="14px";copy.textContent="Copy answer";
- copy.onclick=async()=>{
-  try{await navigator.clipboard.writeText(text);copy.textContent="Copied ✓"}
-  catch(e){copy.textContent="Select and copy the answer"}
- };
- box.append(heading,content,copy);
-}
-async function askAI(mode){
- const topic=$("topic").value.trim();
- if(!topic){showMessage("Please enter a topic or question first.");$("topic").focus();return}
- const buttons=["notesBtn","solveBtn","quizBtn"].map(id=>$(id));
- buttons.forEach(b=>b.disabled=true);
- showMessage("✦ Connecting to AI… Please wait.");
- try{
-  const response=await fetch(API_URL,{
-   method:"POST",headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({topic:makePrompt(mode)})
-  });
-  const data=await response.json();
-  if(!response.ok||data.error)throw new Error(data.error||`Request failed (${response.status})`);
-  if(!data.answer)throw new Error("The AI returned no answer. Please try again.");
-  showMessage(data.answer);
- }catch(err){
-  showMessage("AI could not complete this request.\n\n"+err.message+"\n\nThe AI service may be busy or its free usage limit may have been reached. Please try again later.");
- }finally{buttons.forEach(b=>b.disabled=false)}
-}
-document.querySelectorAll(".studyTask").forEach(task=>{
- task.addEventListener("change",()=>{
-  const all=[...document.querySelectorAll(".studyTask")];
-  const done=all.filter(t=>t.checked).length;
-  const percent=Math.round(done/all.length*100);
-  $("progressFill").style.width=percent+"%";
-  $("progressText").textContent=percent+"% DONE";
- });
-});
+const safe=(v)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>new Date().toLocaleDateString('en-CA');
+let data;try{data=JSON.parse(localStorage.getItem('ais3d-data')||'null')}catch(e){}
+if(!data||data.date!==today())data={date:today(),xp:0,tests:0,tasks:[{text:'Study one chapter',done:false},{text:'Solve 10 questions',done:false},{text:'Revise short notes',done:false}]};
+function save(){localStorage.setItem('ais3d-data',JSON.stringify(data));renderTasks();renderStats()}
+function renderStats(){let done=data.tasks.filter(t=>t.done).length,pct=data.tasks.length?Math.round(done/data.tasks.length*100):0;$('xp').textContent=data.xp;$('doneCount').textContent=done+'/'+data.tasks.length;$('testCount').textContent=data.tests;$('dayProgress').style.width=pct+'%';$('progressText').textContent="Today's progress: "+pct+'%';$('summary').textContent=done+' of '+data.tasks.length+' goals complete. '+data.xp+' study points earned across this day.'}
+function renderTasks(){$('taskList').innerHTML=data.tasks.map((t,i)=>'<label class="task '+(t.done?'done':'')+'"><input type="checkbox" data-task="'+i+'" '+(t.done?'checked':'')+'><span>'+safe(t.text)+'</span><small>'+ (t.done?'Done':'To do')+'</small><button class="btn danger" data-remove="'+i+'" type="button">×</button></label>').join('')||'<p class="muted">No targets yet. Add one above.</p>'}
+$('taskList').addEventListener('change',e=>{let i=e.target.dataset.task;if(i===undefined)return;data.tasks[+i].done=e.target.checked;if(e.target.checked)data.xp+=10;save()});
+$('taskList').addEventListener('click',e=>{let b=e.target.closest('[data-remove]');if(!b)return;data.tasks.splice(+b.dataset.remove,1);save()});
+$('addTask').onclick=()=>{let t=$('taskInput').value.trim();if(!t)return;data.tasks.push({text:t+' ('+Math.max(5,Number($('minutesInput').value)||30)+' min)',done:false});$('taskInput').value='';save()};
+$('defaultTasks').onclick=()=>{if(!data.tasks.length)data.tasks=[{text:'Study one chapter',done:false},{text:'Solve 10 questions',done:false},{text:'Revise short notes',done:false}];save()};
+$('resetDay').onclick=()=>{if(confirm('Reset today’s targets and points?')){data={date:today(),xp:0,tests:0,tasks:[{text:'Study one chapter',done:false},{text:'Solve 10 questions',done:false},{text:'Revise short notes',done:false}]};save()}};
+function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>showView(b.dataset.goto));
+function topic(){return $('topic').value.trim()||'Basic concepts'}
+function exam(){return $('exam').value}
+function subject(){return $('subject').value}
+function addBubble(text,who='ai'){let d=document.createElement('div');d.className='bubble '+who;d.textContent=text;$('chatlog').appendChild(d);$('chatlog').scrollTop=$('chatlog').scrollHeight;return d}
+async function askAI(prompt){let res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:prompt})});let raw=await res.text();let j;try{j=JSON.parse(raw)}catch(e){j=null}if(!res.ok)throw Error((j&&(j.error?.message||j.message))||('Server error '+res.status+'. API quota ya Worker configuration check karo.'));if(j){if(j.error)throw Error(j.error.message||'AI request failed');return j.text||j.response||j.answer||j.result||raw}return raw}
+function aiPrompt(kind,extra=''){return 'You are a careful personal tutor. Explain in friendly Roman Hindi + English Hinglish. Exam: '+exam()+'. Subject: '+subject()+'. Topic: '+topic()+'. Task: '+kind+'. '+extra+' Use accurate explanations, step-by-step reasoning and clear formatting. Do not claim unverified questions are official PYQs.'}
+$('startTutor').onclick=()=>{showView('tutor');$('chatInput').value='Mujhe '+topic()+' simple Hinglish mein samjhao.';$('chatInput').focus()};
+$('startLearn').onclick=()=>{showView('learn');updateModel()};
+$('startPractice').onclick=()=>{showView('practice')};
+async function sendPrompt(prompt){addBubble(prompt,'me');let b=addBubble('Thinking…','ai');$('sendChat').disabled=true;try{b.textContent=await askAI(prompt)}catch(e){b.textContent='AI abhi response nahi de paya: '+e.message+'\n\nInternet check karo. Agar 429 aaye to API quota/rate limit check karo; agar 503/524 aaye to thodi der baad retry karo.'}finally{$('sendChat').disabled=false}}
+$('sendChat').onclick=()=>{let v=$('chatInput').value.trim();if(!v)return;$('chatInput').value='';sendPrompt(aiPrompt('Answer the student’s question and invite a useful follow-up if appropriate.',v))};
+$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('sendChat').click()});
+$('makeNotes').onclick=()=>sendPrompt(aiPrompt('Create concise revision short notes with definitions, key formulas, common mistakes and 3 quick recall points.'));
+$('explainTopic').onclick=()=>sendPrompt(aiPrompt('Teach the chapter from basics to exam level using an analogy, step-by-step explanation and two worked examples.'));
+let rotation=0;function updateModel(){let t=$('modelType').value,info={atom:['Atom concept • Drag to rotate','Atom model simplified: nucleus centre mein hota hai; electrons quantum orbitals se describe hote hain.'],orbit:['Circular motion • Rotate model','Circular motion mein velocity ki direction continuously change hoti hai. Centripetal acceleration centre ki taraf hoti hai.'],wave:['Wave motion • Rotate model','Wave energy transfer karti hai. Transverse wave mein vibration propagation direction ke perpendicular hota hai.'],molecule:['Molecule concept • Rotate model','Molecules atoms ke combinations hote hain. Real geometry molecule aur bonding par depend karti hai.']}[t];$('modelLabel').textContent=info[0];$('modelInfo').textContent=info[1];$('sphere').style.borderRadius=t==='wave'?'25%':t==='molecule'?'35%':'50%';$('orbit').style.borderStyle=t==='wave'?'dashed':'solid'}
+$('modelType').onchange=updateModel;$('rotateModel').onclick=()=>{rotation+=45;$('sphere').style.transform='rotateY('+rotation+'deg) rotateX('+(rotation/2)+'deg)';$('orbit').style.transform='rotateX(65deg) rotateZ('+rotation+'deg)'};
+let dragX=null;$('modelstage').addEventListener('pointerdown',e=>{dragX=e.clientX});$('modelstage').addEventListener('pointerup',e=>{if(dragX===null)return;rotation+=(e.clientX-dragX)*1.4;$('sphere').style.transform='rotateY('+rotation+'deg) rotateX('+(rotation/2)+'deg)';$('orbit').style.transform='rotateX(65deg) rotateZ('+rotation+'deg)';dragX=null});
+$('modelExplain').onclick=()=>{showView('tutor');sendPrompt(aiPrompt('Explain the science behind the selected visual model in beginner Hinglish.', $('modelType').selectedOptions[0].text))};
+let practiceQuestions=[],mockQuestions=[],answers={},reviews=new Set(),current=0,remaining=300,interval=null;
+function parseQuestions(txt){let s=txt.indexOf('{'),e=txt.lastIndexOf('}');if(s<0||e<s)return null;try{let o=JSON.parse(txt.slice(s,e+1));return Array.isArray(o.questions)?o.questions:null}catch(e){return null}}
+$('generatePractice').onclick=async()=>{let out=$('practiceOut');out.textContent='AI questions generate ho rahe hain…';$('generatePractice').disabled=true;try{let raw=await askAI(aiPrompt('Generate exactly '+$('qcount').value+' ORIGINAL multiple choice practice questions at '+$('difficulty').value+' difficulty. Return ONLY valid JSON in this schema: {"questions":[{"question":"...","options":["A...","B...","C...","D..."],"answer":0,"explanation":"..."}]}. answer is zero-based option index. Questions must be original practice, not claimed as official PYQs.'));let qs=parseQuestions(raw);if(!qs||!qs.length)throw Error('AI ne valid question JSON nahi diya. Chat section mein plain response try karo.');practiceQuestions=qs.map(q=>({question:String(q.question||''),options:Array.isArray(q.options)?q.options.map(String):[],answer:Number(q.answer),explanation:String(q.explanation||'')})).filter(q=>q.question&&q.options.length>=2&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<q.options.length);if(!practiceQuestions.length)throw Error('Question format invalid hai. Dobara try karo.');out.innerHTML='<p class="muted">'+practiceQuestions.length+' questions ready. Original AI practice; verified PYQs nahi.</p><button class="btn primary" id="practiceStartTest">Open these in CBT</button><div id="practiceReview"></div>';$('practiceStartTest').onclick=()=>{mockQuestions=practiceQuestions;beginTest()};$('practiceReview').innerHTML=practiceQuestions.map((q,i)=>'<div class="note" style="margin-top:8px"><b>'+(i+1)+'. '+safe(q.question)+'</b><br>'+q.options.map((o,j)=>String.fromCharCode(65+j)+'. '+safe(o)).join('<br>')+'<br><span class="small">Answer: '+String.fromCharCode(65+q.answer)+' — '+safe(q.explanation)+'</span></div>').join('')}catch(e){out.textContent='Question generation failed: '+e.message+' Check Worker response, internet aur API quota.'}finally{$('generatePractice').disabled=false}};
+const sampleQuestions=[
+{question:'Newton ka second law kis relation ko express karta hai?',options:['F = ma','V = IR','P = VI','E = mc'],answer:0,explanation:'Net force = mass × acceleration, yani F = ma.'},
+{question:'SI unit of force kya hai?',options:['Joule','Newton','Watt','Pascal'],answer:1,explanation:'Force ka SI unit Newton (N) hai.'},
+{question:'Agar speed constant aur direction change ho rahi ho, to velocity constant hai?',options:['Haan, hamesha','Nahi, velocity direction par bhi depend karti hai','Sirf rest par','Mass par depend karta hai'],answer:1,explanation:'Velocity vector quantity hai, direction badalne se velocity badalti hai.'},
+{question:'Acceleration ka SI unit kya hai?',options:['m/s','m/s²','kg m/s','N/m'],answer:1,explanation:'Acceleration velocity change per unit time hai: m/s².'},
+{question:'Net force zero ho to object ka acceleration kya hoga?',options:['Zero','Always positive','Always negative','Infinite'],answer:0,explanation:'Newton ke second law ke according Fnet = ma; zero net force se acceleration zero hota hai.'}
+];
+$('beginMock').onclick=()=>{mockQuestions=sampleQuestions;beginTest()};
+$('useAIQuestions').onclick=()=>{if(!practiceQuestions.length){alert('Pehle Practice tab mein AI questions generate karo.');return}mockQuestions=practiceQuestions;beginTest()};
+function beginTest(){if(!mockQuestions.length)mockQuestions=sampleQuestions;answers={};reviews=new Set();current=0;remaining=Math.max(60,mockQuestions.length*60);$('mockTitle').textContent=exam()+' • CBT';$('mockMeta').textContent=mockQuestions.length+' questions • timed practice';$('mockStartRow').classList.add('hidden');$('mockResult').innerHTML='';$('mockArea').classList.remove('hidden');clearInterval(interval);renderMock();renderTimer();interval=setInterval(()=>{remaining--;renderTimer();if(remaining<=0)finishTest(true)},1000)}
+function renderTimer(){let m=Math.floor(remaining/60),s=remaining%60;$('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');$('timer').style.color=remaining<60?'var(--red)':'var(--gold)'}
+function renderMock(){let q=mockQuestions[current];$('questionCounter').textContent='Question '+(current+1)+' of '+mockQuestions.length;$('questionText').textContent=q.question;$('options').innerHTML=q.options.map((o,i)=>'<button class="option '+(answers[current]===i?'chosen':'')+'" data-opt="'+i+'">'+String.fromCharCode(65+i)+'. '+safe(o)+'</button>').join('');$('palette').innerHTML=mockQuestions.map((_,i)=>'<button class="qnum '+(i===current?'current ':'')+(answers[i]!==undefined?'answered ':'')+(reviews.has(i)?'review':'')+'" data-q="'+i+'">'+(i+1)+'</button>').join('');$('prevQ').disabled=current===0;$('nextQ').textContent=current===mockQuestions.length-1?'Last question':'Next →'}
+$('options').addEventListener('click',e=>{let b=e.target.closest('[data-opt]');if(!b)return;answers[current]=+b.dataset.opt;renderMock()});
+$('palette').addEventListener('click',e=>{let b=e.target.closest('[data-q]');if(b){current=+b.dataset.q;renderMock()}});
+$('prevQ').onclick=()=>{if(current>0){current--;renderMock()}};$('nextQ').onclick=()=>{if(current<mockQuestions.length-1){current++;renderMock()}else alert('Last question. Finish test dabao ya palette se review karo.')};
+$('markQ').onclick=()=>{if(reviews.has(current))reviews.delete(current);else reviews.add(current);renderMock()};
+$('finishMock').onclick=()=>{if(confirm('Test finish karna hai?'))finishTest(false)};
+function finishTest(auto){clearInterval(interval);let correct=mockQuestions.filter((q,i)=>answers[i]===q.answer).length,attempted=Object.keys(answers).length;data.tests++;data.xp+=correct*5;save();$('mockArea').classList.add('hidden');$('mockStartRow').classList.remove('hidden');$('mockResult').innerHTML='<div class="result"><h3>'+(auto?'Time up!':'Test complete!')+'</h3><p>Score: <b>'+correct+' / '+mockQuestions.length+'</b></p><p>Attempted: '+attempted+' • Unattempted: '+(mockQuestions.length-attempted)+'</p><p>Accuracy: '+(attempted?Math.round(correct/attempted*100):0)+'%</p><p>Marked for review: '+reviews.size+'</p><button class="btn primary" id="reviewAnswers">Review answers</button></div>';$('reviewAnswers').onclick=()=>{$('mockResult').innerHTML=mockQuestions.map((q,i)=>'<div class="note" style="margin-top:8px"><b>'+(i+1)+'. '+safe(q.question)+'</b><p>Your answer: '+(answers[i]===undefined?'Not answered':safe(q.options[answers[i]]))+'</p><p>Correct answer: '+safe(q.options[q.answer])+'</p><p>'+safe(q.explanation)+'</p></div>').join('')}}
+renderTasks();renderStats();updateModel();
 </script>
 </body>
 </html>
